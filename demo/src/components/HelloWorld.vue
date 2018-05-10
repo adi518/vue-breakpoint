@@ -1,27 +1,26 @@
 <template>
-  <div style="text-align: center">
-    <h1>V-Breakpoint Component Demo</h1>
+  <div class="demo">
+    <img src="../assets/logo.png" style="width: 4rem">
+    <h1>V-Breakpoint</h1>
     <!-- <v-multiple>
       foo foo foo
       <span>bar</span>
       <span>bar</span>
       <span>bar</span>
     </v-multiple> -->
-    <v-show-at breakpoint="small">
+    <!-- <v-show-at breakpoint="small">
       foo foo foo
       <span>bar</span>
       <span>bar</span>
       <span>bar</span>
-    </v-show-at>
+    </v-show-at> -->
+    <p>
+      A Render-less component for sharing CSS breakpoint state.
+    </p>
     <v-breakpoint>
-      <!-- <template slot-scope="api"> -->
-      <v-multiple>
-        foo foo foo
-      </v-multiple>
-      <!-- {{capitalize(api.breakpoint)}} -->
-      <!-- test -->
-      <!-- </v-multiple> -->
-      <!-- </template> -->
+      <div slot-scope="api" class="state">
+        ( {{ api.breakpoint ? capitalize(api.breakpoint) : undefined }} )
+      </div>
     </v-breakpoint>
   </div>
 </template>
@@ -29,11 +28,17 @@
 <script>
 /* eslint-disable space-before-function-paren */
 
+// https://brandcolors.net/b/vue-js
+
+//  Components
 import VShowAt from './ShowAt'
 import VMultiple from './Multiple'
 import VBreakpoint from './Breakpoint'
+
+// Resources
 import capitalize from 'lodash.capitalize'
 
+// Implementation
 export default {
   name: 'HelloWorld',
   components: {
@@ -41,13 +46,45 @@ export default {
     VMultiple,
     VBreakpoint
   },
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
+  data: () => ({
+    //
+  }),
   methods: {
     capitalize
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.demo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  color: #42b883;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: darken(#35495e, 16%);
+  // background-color: #171717;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Ubuntu;
+}
+
+.state {
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-weight: 300;
+  color: aliceblue;
+}
+
+p {
+  font-size: 1.2rem;
+  color: lightslategrey;
+  margin-top: 0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+</style>
