@@ -17,6 +17,7 @@
     "custom-event-polyfill": "^0.3.0",
     "lodash.capitalize": "^4.2.1",
     "lodash.debounce": "^4.0.8",
+    "media-match": "^2.0.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

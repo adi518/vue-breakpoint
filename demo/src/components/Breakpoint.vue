@@ -2,6 +2,7 @@
 /* eslint-disable space-before-function-paren */
 
 // https://vuejs.org/v2/api/#vm-watch
+// https://github.com/weblinc/media-match
 // https://github.com/apertureless/vue-breakpoints
 // https://www.npmjs.com/package/custom-event-polyfill
 // https://adamwathan.me/renderless-components-in-vuejs/
@@ -16,10 +17,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
 
 // Polyfills
+import 'media-match'
 import 'custom-event-polyfill'
-
-// Components
-import VMultiple from './Multiple'
 
 // Resources
 import debounce from 'lodash.debounce'
@@ -28,10 +27,10 @@ import capitalize from 'lodash.capitalize'
 // Implementation
 export default {
   name: 'VBreakpoint',
-  components: {
-    VMultiple
-  },
   props: {
+    value: {
+      type: Object
+    },
     mediaQueries: {
       type: Object,
       default: () => ({
@@ -51,16 +50,15 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      breakpoint: null
-    }
-  },
+  data: () => ({
+    breakpoint: null
+  }),
   watch: {
     breakpoint(value) {
       // Vue Devtools has a bug where events
       // will not show up if they are fired
       // on page load, while in reality they do.
+      this.$emit('input', this.api)
       this.$emit('change', this.api)
       this.$emit(this.api.breakpoint)
       this.$emit('breakpoint', this.api.breakpoint)
@@ -68,7 +66,7 @@ export default {
   },
   beforeCreate() {
     if (window.matchMedia) {
-      // Continue
+      // Browser Supported ✔
     } else if (this.debug) {
       this.log('incompatible browser')
     }
@@ -90,6 +88,13 @@ export default {
       this.$root.$_wBreakpoint = this
       window.addEventListener('resize', this.match)
       window.dispatchEvent(new window.CustomEvent('resize'))
+    }
+  },
+  beforeDestroy() {
+    if (this.$root.$_wBreakpoint) {
+      if (this.$root.$_wBreakpoint._uid === this._uid) {
+        delete this.$root.$_wBreakpoint
+      }
     }
   },
   destroyed() {
@@ -121,9 +126,7 @@ export default {
     },
     log(message) {
       console.warn(
-        `[${capitalize(this.$options.name)} warn]: ${capitalize(
-          message
-        )}.`
+        `[${capitalize(this.$options.name)} warn]: ${capitalize(message)}.`
       )
     }
   },
