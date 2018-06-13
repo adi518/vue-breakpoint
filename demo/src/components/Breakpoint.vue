@@ -8,15 +8,13 @@
 // https://adamwathan.me/renderless-components-in-vuejs/
 // https://forum.vuejs.org/t/v-if-removing-event-listeners/24735/2
 // https://vuejs.org/v2/style-guide/#Private-property-names-essential
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
 // https://gist.github.com/adi518/a2c1555009cb6f90b4dd41fd48962853/edit
 // https://medium.com/@uiuxlab/the-most-used-responsive-breakpoints-in-2017-of-mine-9588e9bd3a8a
 // https://forum.vuejs.org/t/vue-component-as-singleton-never-to-be-destroyed-and-mounted-again/25010
 // https://github.com/chrisvfritz/7-secret-patterns/blob/master/slides-2018-03-03-spotlight-export.pdf
 
-// Browser support: IE10+
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-
-// Polyfills
+// Polyfills (Browser Support: IE9+)
 import 'media-match'
 import 'custom-event-polyfill'
 

@@ -19,7 +19,8 @@
     "lodash.debounce": "^4.0.8",
     "media-match": "^2.0.3",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-slider-component": "^2.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

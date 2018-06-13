@@ -1,6 +1,4 @@
 <script>
-/* eslint-disable space-before-function-paren */
-
 // https://vuejs.org/v2/guide/render-function.html#Functional-Components
 
 // Implementation
