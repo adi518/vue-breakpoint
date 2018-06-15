@@ -21,7 +21,7 @@
           </div>
         </v-breakpoint>
         <p style="margin-top: 2rem">
-          <a class="d-github-button github-button" :href="process.env.NODE_ENV === 'production' ? pkg.repository.url : ''" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          <a class="d-github-button github-button" :href="env === 'development' ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
         </p>
         <p style="margin-top: 1rem; color: lightslategrey">
           Made with ❤️ by <a class="d-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
@@ -296,7 +296,7 @@ const pkg = {
 
 // Implementation
 export default {
-  name: 'HelloWorld',
+  name: 'VDemo',
   components: {
     VShowAt,
     VSlider,
@@ -309,7 +309,7 @@ export default {
   data: () => ({
     pkg,
     value: 1,
-    process,
+    env: process.env.NODE_ENV,
     model: undefined,
     breakpoint: undefined,
     markdowns: {
