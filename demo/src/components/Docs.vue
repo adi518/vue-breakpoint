@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="d">
 
     <!-- FIRST PAGE -->
     <div class="d-container d--has-jumbotron">
@@ -395,25 +395,28 @@ export default {
 // https://gist.github.com/roachhd/1f029bd4b50b8a524f3c
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
+$d-min-width: 320px;
+
+// Override Bootstrap variables
 $pre-color: aliceblue;
 
 @import '~@/assets/sass/bootstrap';
 
 /* Reset Bootstrap to User-agent */
-p,
-pre {
-  margin-top: 1rem;
-}
-
-.demo {
-  min-width: 320px;
+.d {
+  p,
+  pre {
+    margin-top: 1rem;
+  }
 }
 /* end */
 
 /* Override Prismjs styles */
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: transparent;
+.d-markdown {
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    background: transparent;
+  }
 }
 /* end */
 
@@ -428,6 +431,10 @@ a {
 
 p {
   font-size: 1.1rem;
+}
+
+.d {
+  min-width: $d-min-width;
 }
 
 .d-c-pointer {
