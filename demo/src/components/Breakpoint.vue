@@ -42,18 +42,16 @@ import capitalize from 'lodash.capitalize'
 // Implementation
 export default {
   name: 'VBreakpoint',
+  config: {
+    breakpoints: {
+      small: 'only screen and (min-width: 576px)',
+      medium: 'only screen and (min-width: 768px)',
+      large: 'only screen and (min-width: 992px)'
+    }
+  },
   props: {
     value: {
       type: Object
-    },
-    mediaQueries: {
-      type: Object,
-      default: () => ({
-        small: 'only screen and (min-width: 576px)',
-        medium: 'only screen and (min-width: 768px)',
-        large: 'only screen and (min-width: 992px)'
-      }),
-      description: 'Media-Queries to test against.'
     },
     debounceTime: {
       type: Number,
@@ -65,9 +63,7 @@ export default {
       default: false
     }
   },
-  data: () => ({
-    breakpoint: null
-  }),
+  data: () => ({ breakpoint: null, breakpoints: {} }),
   watch: {
     breakpoint(value) {
       // Vue Devtools has a bug where events
@@ -90,6 +86,7 @@ export default {
     }
   },
   created() {
+    this.breakpoints = this.$options.config.breakpoints
     this.match = debounce(this.match, this.debounceTime)
   },
   mounted() {
@@ -135,7 +132,7 @@ export default {
       }
     },
     queries() {
-      return Object.keys(this.mediaQueries).reduce((queries, breakpoint) => {
+      return Object.keys(this.breakpoints).reduce((queries, breakpoint) => {
         const query = `is${capitalize(breakpoint)}`
         queries[query] = breakpoint === this.breakpoint
         return queries
@@ -144,7 +141,7 @@ export default {
   },
   methods: {
     match() {
-      this.breakpoint = Object.entries(this.mediaQueries).reduce(
+      this.breakpoint = Object.entries(this.breakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint

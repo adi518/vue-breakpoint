@@ -1,6 +1,6 @@
 <template>
   <v-fragment :show="show">
-    <v-breakpoint @change="onChange"></v-breakpoint>
+    <v-breakpoint :breakpoints="breakpoints" @change="onChange"></v-breakpoint>
     <slot></slot>
   </v-fragment>
 </template>
@@ -16,6 +16,7 @@ import VBreakpoint from './Breakpoint'
 // Implementation
 export default {
   name: 'v-show-at',
+  config: {},
   components: { VFragment, VBreakpoint },
   props: {
     breakpoint: {
@@ -24,8 +25,12 @@ export default {
     }
   },
   data: () => ({
-    show: true
+    show: true,
+    breakpoints: {}
   }),
+  created() {
+    this.breakpoints = this.$options.config.breakpoints
+  },
   methods: {
     onChange({ breakpoint, noMatch }) {
       if (noMatch) {
