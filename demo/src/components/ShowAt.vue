@@ -23,9 +23,14 @@ export default {
       default: ''
     }
   },
-  data: () => ({ show: true }),
+  data: () => ({
+    show: true
+  }),
   methods: {
-    onChange({ breakpoint }) {
+    onChange({ breakpoint, noMatch }) {
+      if (noMatch) {
+        breakpoint = 'no-match'
+      }
       this.show =
         this.breakpoint === breakpoint || this.$attrs.hasOwnProperty(breakpoint)
     }

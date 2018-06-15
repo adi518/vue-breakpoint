@@ -14,11 +14,15 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bootstrap": "^4.1.1",
     "custom-event-polyfill": "^0.3.0",
     "lodash.capitalize": "^4.2.1",
     "lodash.debounce": "^4.0.8",
+    "lodash.reject": "^4.6.0",
     "media-match": "^2.0.3",
+    "prismjs": "^1.14.0",
     "vue": "^2.5.2",
+    "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1",
     "vue-slider-component": "^2.7.1"
   },
