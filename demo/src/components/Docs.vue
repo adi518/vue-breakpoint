@@ -354,6 +354,8 @@ export default {
           return '4rem'
         case 'large':
           return '6rem'
+        default:
+          return '4rem'
       }
     }
   },
