@@ -2,105 +2,113 @@
   <div class="demo">
 
     <!-- FIRST PAGE -->
-    <div class="demo-container demo--has-jumbotron">
+    <div class="d-container d--has-jumbotron">
       <!-- JUMBOTRON -->
-      <div class="demo-jumbotron">
+      <div class="d-jumbotron">
         <img src="../assets/logo-gradient.png" style="width: 4rem">
-        <h1 class="demo-control mt-1">V-Breakpoint</h1>
-        <p class="demo-control" style="text-align: center">
+        <h1 class="d-control mt-1">V-Breakpoint</h1>
+        <p class="d-control" style="text-align: center">
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model" @change="payload => breakpoint = payload.breakpoint">
           <div slot-scope="api" class="text-center">
-            <div class="demo-state">
+            <div class="d-state">
               ( {{ api.breakpoint ? `${capitalize(api.breakpoint)}` : 'No match' }} )
             </div>
-            <div class="demo-emoji mt-3">
+            <div class="d-emoji mt-3">
               <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ api.noMatch ? '😿' : '😸' }}</span>
             </div>
           </div>
         </v-breakpoint>
         <p style="margin-top: 2rem">
-          <a class="demo-github-button github-button" :href="process.env.NODE_ENV === 'production' ? pkg.repository.url : ''" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          <a class="d-github-button github-button" :href="process.env.NODE_ENV === 'production' ? pkg.repository.url : ''" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
         </p>
         <p style="margin-top: 1rem; color: lightslategrey">
-          Made with ❤️ by <a class="demo-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
+          Made with ❤️ by <a class="d-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
         </p>
       </div>
-      <a class="demo-fixed-anchor" @click="scrollTo('docs')" tabindex="">Install, Examples & Documentation</a>
+      <a class="d-fixed-anchor d-c-pointer" @click="scrollTo('docs')" tabindex="">Install, Examples & Documentation</a>
     </div>
 
     <!-- SECOND PAGE -->
-    <div ref="docs" class="demo-container pb-5">
-      <div class="container demo-clearfix">
+    <div ref="docs" class="d-container pb-5">
+      <div class="container d-clearfix">
 
         <!-- INSTALL -->
-        <h2 class="demo-control mt-3 mb-3">Install</h2>
-        <div class="demo-markdown demo-markdown--is-one-liner demo-clearfix mt-2">
+        <h2 class="d-control mt-3 mb-3">Install</h2>
+        <div class="d-markdown d-markdown--is-one-liner d-clearfix mt-2">
           <v-markdown>```$ npm install --save vue-breakpoint-component```</v-markdown>
         </div>
 
         <!-- USAGE -->
-        <h2 class="demo-control mt-4">Usage</h2>
+        <h2 class="d-control mt-4">Usage</h2>
         <p>
           To use the component in your templates, simply import
           and register it with your component:
         </p>
         <h4 class="mt-3">Script</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown>```{{markdowns.examples.default.script}}```</v-markdown>
         </div>
         <h4 class="mt-3">Template</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.examples.default.template}}```</v-markdown>
         </div>
 
         <!-- USAGE (SHOW-AT) -->
-        <h2 class="demo-control mt-5">Show-At Usage</h2>
+        <h2 class="d-control mt-5">Show-At Usage</h2>
         <p>
           To use the component in your templates, simply import
           and register itwith your component:
         </p>
         <h4 class="mt-3">Script</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown>```{{markdowns.examples.showAt.script}}```</v-markdown>
         </div>
         <h4 class="mt-3">Template</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.examples.showAt.template}}```</v-markdown>
+        </div>
+        <h3 class="mt-4">Multiple Root Elements</h3>
+        <p class="d-p">
+          Notice that you can also show/hide <b>multiple</b> elements!
+          This works thanks to a Fragment-like component hack, described <a class="d-c-pointer" @click="scrollTo('fragment')" tabindex="">here</a>.
+        </p>
+        <div class="d-markdown">
+          <v-markdown emoji>```{{markdowns.examples.showAt.multiple}}```</v-markdown>
         </div>
 
         <!-- V-MODEL -->
-        <h2 class="demo-control mt-5">V-Model</h2>
+        <h2 class="d-control mt-5">V-Model</h2>
         <p>
           You can also take leverage of the breakpoint state without composing inside it, using a V-model.
         </p>
         <h4>Script</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown>```{{markdowns.examples.vModel.script}}```</v-markdown>        
         </div>
         <h4 class="mt-3">Template</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.examples.vModel.template}}```</v-markdown>        
         </div>
 
         <!-- API PROPS -->
-        <h2 class="demo-control mt-5">API Props</h2>
-        <div class="demo-markdown">
+        <h2 class="d-control mt-5">API Props</h2>
+        <div class="d-markdown">
           <v-markdown>```{{markdowns.api.props.meta}}```</v-markdown>
         </div>
 
         <!-- API EVENTS -->
-        <h2 class="demo-control mt-5">API Events</h2>
+        <h2 class="d-control mt-5">API Events</h2>
         <p>
-          The component emits two basic events, <code class="demo-code--inline">input</code>
-          and <code class="demo-code--inline">change</code>.
-          The <code class="demo-code--inline">input</code> event is required for
-          <code class="demo-code--inline">v-model</code> usage, but other than that,
-          it's fairly similar to <code class="demo-code--inline">change</code> event.
+          The component emits two basic events, <code class="d-code--inline">input</code>
+          and <code class="d-code--inline">change</code>.
+          The <code class="d-code--inline">input</code> event is required for
+          <code class="d-code--inline">v-model</code> usage, but other than that,
+          it's fairly similar to <code class="d-code--inline">change</code> event.
           Each of these events benefit different composition styles.
         </p>
-        <div class="demo-markdown demo-markdown--is-one-liner mt-2">
+        <div class="d-markdown d-markdown--is-one-liner mt-2">
           <v-markdown>```{{markdowns.examples.events.basic}}```</v-markdown>
         </div>
 
@@ -110,18 +118,18 @@
         <p>
           Each of these events has the same payload.
           Besides breakpoint state, they also supply some auxiliary state, like <b>viewport</b>
-          and current <b>window dimensions</b> (which are also aliased for convenience). <code class="demo-code--inline">Param[Type]: (state[Object])</code>. Example:
+          and current <b>window dimensions</b> (which are also aliased for convenience). <code class="d-code--inline">Param[Type]: (state[Object])</code>. Example:
         </p>
-        <div class="demo-markdown mt-2">
+        <div class="d-markdown mt-2">
           <v-markdown>```{{markdowns.api.events.payload.basic}}```</v-markdown>
         </div>
 
         <!-- API EVENT BREAKPOINT -->
         <h5 class="mt-4">Breakpoint Event</h5>
         <p>
-          This event has a fairly simply payload. <code class="demo-code--inline">Param[Type]: (state[String])</code>. Example:
+          This event has a fairly simply payload. <code class="d-code--inline">Param[Type]: (state[String])</code>. Example:
         </p>
-        <div class="demo-markdown mt-2">
+        <div class="d-markdown mt-2">
           <v-markdown>```{{markdowns.api.events.payload.breakpoint}}```</v-markdown>
         </div>
 
@@ -131,58 +139,58 @@
           Besides those events, the component also emits a breakpoint-namespace event
           per breakpoint defined. Thus, you can do something like:
         </p>        
-        <div class="demo-markdown demo-markdown--is-one-liner mt-2">
+        <div class="d-markdown d-markdown--is-one-liner mt-2">
           <v-markdown>```{{markdowns.examples.events.breakpoint}}```</v-markdown>
         </div>
 
         <!-- CONFIGURATION -->
-        <h2 class="demo-control mt-4">Configuration</h2>
-        <p class="demo-p">
+        <h2 class="d-control mt-4">Configuration</h2>
+        <p class="d-p">
           The default breakpoints are based on <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints">Bootstrap 4 (Stable)</a>
           To customize the component to your specific needs, you can pass a new set of breakpoints
-          to prop <code class="demo-code--inline">breakpoints</code>.
+          to prop <code class="d-code--inline">breakpoints</code>.
           However, you will have to do so everytime you import the component,
           therefore it can become repetitive quite fast, which is against the concept of DRY.
           To solve this, you will have to create a "subclass" of the base constructor
           and export it.
         </p>
         <h5>Note</h5>
-        <p class="demo-p">
-          For the following routine, you should familiarize with the <code class="demo-code--inline">Vue.extend()</code>
+        <p class="d-p">
+          For the following routine, you should familiarize with the <code class="d-code--inline">Vue.extend()</code>
           API. See its documentation <a href="https://vuejs.org/v2/api/#Vue-extend" target="_blank">here</a>.
         </p>
         <h4>Bootstrap 4 Breakpoints</h4>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.api.props.breakpoints}}```</v-markdown>        
         </div>
         <h4 class="mt-4">Custom Breakpoints</h4>
-        <p class="demo-p">
+        <p class="d-p">
           You can define an <b>infinite</b> amount of breakpoints, it's completely up to you.
-          To create a "subclass" of <code class="demo-code--inline">V-Breakpoint</code>,
-          start by creating a new component asset, e.g.: <code class="demo-code--inline">VBreakpoint.js</code>.
+          To create a "subclass" of <code class="d-code--inline">V-Breakpoint</code>,
+          start by creating a new component asset, e.g.: <code class="d-code--inline">VBreakpoint.js</code>.
           Then, copy the following snippet and adjust configuration to your needs.
         </p>
         <h5>Note</h5>
-        <p class="demo-p">          
+        <p class="d-p">          
           A great site to get started with popular breakpoint stats is
           <a href="http://dpi.lv/" target="_blank">dpi.lv</a>.
         </p>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.examples.configuration.extend}}```</v-markdown>        
         </div>        
         <h3 class="mt-4">Usage</h3>
-        <p class="demo-p">
+        <p class="d-p">
           Import <b>locally</b> and use as you would normally.
         </p>
-        <div class="demo-markdown">
+        <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.examples.configuration.script}}```</v-markdown>        
         </div>
 
         <!-- MULTIPLE ROOT ELEMENTS -->
-        <h2 class="mt-5">Wrapping Multiple Root Elements</h2>
-        <p class="demo-p">
+        <h2 ref="fragment" class="mt-5">Wrapping Multiple Root Elements (Fragment Hack)</h2>
+        <p class="d-p">
           As you may know, Vue does not support a stateful
-          <code class="demo-code--inline">Fragment</code> component, which allows
+          <code class="d-code--inline">Fragment</code> component, which allows
           you to render a component with multiple root elements, overruling the
           "single root element" principle dictated initially.
           It was introduced to React during a full re-write.
@@ -197,11 +205,11 @@
           I elaborated his
           <a href="https://github.com/y-nk/vue-fragments" target="_blank">solution</a>
           so it can also show/hide content
-          (using directives like <code class="demo-code--inline">v-show</code>
-          or <code class="demo-code--inline">v-if</code> won't work here).          
+          (using directives like <code class="d-code--inline">v-show</code>
+          or <code class="d-code--inline">v-if</code> won't work here).          
         </p>
         <h5>🚧 Note</h5>
-        <p class="demo-p">
+        <p class="d-p">
           Since this is a hack, it is expected to be more of an experimental feature
           than a fully supported one. That doesn't mean I won't relate to issues
           or avoid fixing them at all.
@@ -209,7 +217,7 @@
 
         <!-- SUPPORT -->
         <h2 class="mt-5">Related Links</h2>
-        <ul class="demo-p">
+        <ul class="d-p">
           <li>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">Using media queries</a>
           </li>
@@ -223,20 +231,20 @@
 
         <!-- SUPPORT -->
         <h2 class="mt-5">Support</h2>
-        <p class="demo-p">
+        <p class="d-p">
           Please open an
-          <a class="demo-contrast-anchor" :href="pkg.bugs.url" target="_blank">issue</a> for support.
+          <a class="d-contrast-anchor" :href="pkg.bugs.url" target="_blank">issue</a> for support.
         </p>
 
         <!-- LICENSE -->
         <h2 class="mt-5">License</h2>
-        <p class="demo-p">
-          Copyright (c) 2018 <a class="demo-contrast-anchor" href="https://github.com/adi518" target="_blank">{{pkg.author}}</a> by <a class="demo-contrast-anchor" href="https://opensource.org/licenses/MIT" target="_blank">{{pkg.license}}</a>
+        <p class="d-p">
+          Copyright (c) 2018 <a class="d-contrast-anchor" href="https://github.com/adi518" target="_blank">{{pkg.author}}</a> by <a class="d-contrast-anchor" href="https://opensource.org/licenses/MIT" target="_blank">{{pkg.license}}</a>
         </p>
 
       </div>
     </div>
-    <div class="demo-version">{{pkg.version}}</div>
+    <div class="d-version">{{pkg.version}}</div>
     <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />
   </div>
 </template>
@@ -247,6 +255,7 @@
 // https://favicon.io/emoji-favicons
 // https://gist.github.com/rxaviers/7360908
 // https://github.com/miaolz123/vue-markdown
+// https://stackoverflow.com/a/35528998/4106263
 // https://github.com/miaolz123/vue-markdown/issues/14
 // https://gist.github.com/roachhd/1f029bd4b50b8a524f3c
 // https://gist.github.com/oliveratgithub/0bf11a9aff0d6da7b46f1490f86a71eb
@@ -311,7 +320,8 @@ export default {
         },
         showAt: {
           script: require('@/markdowns/examples/show-at/script.js'),
-          template: require('@/markdowns/examples/show-at/template.js')
+          template: require('@/markdowns/examples/show-at/template.js'),
+          multiple: require('@/markdowns/examples/show-at/multiple.template.js')
         },
         vModel: {
           script: require('@/markdowns/examples/v-model/script.js'),
@@ -420,20 +430,24 @@ p {
   font-size: 1.1rem;
 }
 
-.demo-version {
+.d-c-pointer {
+  cursor: pointer;
+}
+
+.d-version {
   top: 1rem;
   left: 1rem;
   position: absolute;
   color: lighten(#35495e, 16%);
 }
 
-.demo-code--inline {
+.d-code--inline {
   color: #f8f8f2;
   padding: 0.2rem 0.4rem;
   background-color: #888;
 }
 
-.demo-clearfix {
+.d-clearfix {
   // https://www.rachelandrew.co.uk/archives/2017/01/24/the-end-of-the-clearfix-hack/
   &::after,
   &::before {
@@ -448,7 +462,7 @@ p {
   }
 }
 
-.demo-emoji {
+.d-emoji {
   &:hover {
     animation: nodYes 2s;
     animation-fill-mode: forwards;
@@ -474,19 +488,19 @@ p {
   }
 }
 
-.demo-container {
+.d-container {
   min-height: 100vh;
   // background-color: sandybrown;
   background-color: darken(sandybrown, 6.66%);
 }
 
-.demo--has-jumbotron {
+.d--has-jumbotron {
   display: flex;
   align-items: center;
   background-color: darken(#35495e, 16%);
 }
 
-.demo-jumbotron {
+.d-jumbotron {
   width: 100%;
   display: flex;
   color: #42b883;
@@ -495,11 +509,11 @@ p {
   justify-content: center;
 }
 
-.demo-state {
+.d-state {
   font-size: 1.2rem;
 }
 
-.demo-markdown {
+.d-markdown {
   font-size: 1.3rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -510,14 +524,14 @@ p {
   }
 }
 
-.demo-markdown--is-one-liner {
+.d-markdown--is-one-liner {
   code {
     color: aliceblue;
     font-size: inherit;
   }
 }
 
-.demo-anchor--author {
+.d-anchor--author {
   position: relative;
   color: lightslategrey;
 
@@ -542,16 +556,15 @@ p {
   }
 }
 
-.demo-fixed-anchor {
+.d-fixed-anchor {
   width: 100%;
   bottom: 0.8rem;
-  cursor: pointer;
   color: aliceblue;
   position: absolute;
   text-align: center;
 }
 
-.demo-p {
+.d-p {
   a {
     color: aliceblue;
     padding-left: 0.2rem;
@@ -565,17 +578,17 @@ p {
   }
 }
 
-h1.demo-control {
+h1.d-control {
   font-weight: 300;
   font-size: 2.2rem;
   color: aliceblue;
 }
 
-h2.demo-control {
+h2.d-control {
   font-weight: 400;
 }
 
-p.demo-control {
+p.d-control {
   font-size: 1.5rem;
   margin-top: 0;
   margin-left: 3rem;
