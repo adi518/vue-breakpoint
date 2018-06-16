@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev-wifi": "cross-env npm run dev",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -23,6 +24,7 @@
     "lodash.reject": "^4.6.0",
     "media-match": "^2.0.3",
     "prismjs": "^1.14.0",
+    "vh-for-mobile": "^1.0.1",
     "vue": "^2.5.2",
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1",
@@ -46,6 +48,7 @@
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.2.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^4.15.0",

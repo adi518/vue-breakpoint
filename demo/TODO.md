@@ -1,0 +1,9 @@
+- [ ] Detect 1 root element and render without Fragment hack
+- [ ] Add manifest.json (Android)
+- [ ] Export
+- [ ] Tests
+- [ ] Bundle
+- [ ] CI/CD
+- [ ] SSR
+- [ ] Add clipboard to snippets
+- [ ] Fix native Android browser missing fixed anchor

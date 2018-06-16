@@ -2,16 +2,16 @@
   <div class="d">
 
     <!-- FIRST PAGE -->
-    <div class="d-container d--has-jumbotron">
+    <div class="d-container d--has-jumbotron vh-fix">
       <!-- JUMBOTRON -->
       <div class="d-jumbotron">
-        <img src="../assets/logo-gradient.png" style="width: 4rem">
+        <img class="d-v-logo" src="../assets/logo-gradient.png">
         <h1 class="d-control mt-1">V-Breakpoint</h1>
-        <p class="d-control" style="text-align: center">
+        <p class="d-control text-center">
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model" @change="payload => breakpoint = payload.breakpoint">
-          <div slot-scope="api" class="text-center">
+          <div class="text-center" slot-scope="api">
             <div class="d-state">
               ( {{ api.breakpoint ? `${capitalize(api.breakpoint)}` : 'No match' }} )
             </div>
@@ -20,10 +20,10 @@
             </div>
           </div>
         </v-breakpoint>
-        <p style="margin-top: 2rem">
+        <p class="mt-20">
           <a class="d-github-button github-button" :href="env === 'development' ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
         </p>
-        <p style="margin-top: 1rem; color: lightslategrey">
+        <p class="d-credit mt-3">
           Made with ❤️ by <a class="d-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
         </p>
       </div>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- SECOND PAGE -->
-    <div ref="docs" class="d-container pb-5">
+    <div ref="docs" class="d-container d-min-100vh pb-5 vh-for-mobile">
       <div class="container d-clearfix">
 
         <!-- INSTALL -->
@@ -252,13 +252,18 @@
 <script>
 // https://prismjs.com/#examples
 // https://brandcolors.net/b/vue-js
+// https://nuxtjs.org/faq/host-port/
 // https://favicon.io/emoji-favicons
 // https://gist.github.com/rxaviers/7360908
 // https://github.com/miaolz123/vue-markdown
+// https://github.com/christinecha/web-sparkle
+// https://stackoverflow.com/a/13333312/4106263
 // https://stackoverflow.com/a/35528998/4106263
+// https://stanko.github.io/mobile-chrome-vh-fix/
 // https://github.com/miaolz123/vue-markdown/issues/14
 // https://gist.github.com/roachhd/1f029bd4b50b8a524f3c
 // https://gist.github.com/oliveratgithub/0bf11a9aff0d6da7b46f1490f86a71eb
+// https://stackoverflow.com/questions/43619644/i-am-getting-an-invalid-host-header-message-when-running-my-react-app-in-a-we
 
 // Meta-data
 // import pkg from '../../package'
@@ -276,9 +281,13 @@ import VGitRibbon from './GitRibbon'
 import VBreakpoint from './Breakpoint'
 import VSlider from 'vue-slider-component'
 
+// Global CSS
+import 'prismjs/themes/prism-okaidia.css'
+
 // Resources
 import Prism from 'prismjs'
-import 'prismjs/themes/prism-okaidia.css'
+import { VHForMobile } from './VhFix'
+import { VHChromeFix } from './VhFix2'
 import capitalize from 'lodash.capitalize'
 
 const pkg = {
@@ -354,6 +363,17 @@ export default {
   }),
   mounted() {
     Prism.highlightAll()
+
+    /* eslint-disable no-new */
+    // new VHForMobile()
+    const vhElements = [
+      {
+        selector: '.vh-fix', // Mandatory, CSS selector
+        vh: 100 // Mandatory, height in vh units
+      }
+    ]
+
+    new VHChromeFix(vhElements)
   },
   computed: {
     emojiSize() {
@@ -365,7 +385,7 @@ export default {
         case 'large':
           return '6rem'
         default:
-          return '4rem'
+          return '3rem'
       }
     }
   },
@@ -398,13 +418,16 @@ export default {
 $d-min-width: 320px;
 
 // Override Bootstrap variables
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge((20: ($spacer * 2)), $spacers);
+
 $pre-color: aliceblue;
 
 @import '~@/assets/sass/bootstrap';
 
 /* Reset Bootstrap to User-agent */
 .d {
-  p,
   pre {
     margin-top: 1rem;
   }
@@ -446,6 +469,14 @@ p {
   left: 1rem;
   position: absolute;
   color: lighten(#35495e, 16%);
+}
+
+.d-credit {
+  color: lightslategrey;
+
+  @include media-breakpoint-down(xs) {
+    font-size: 0.9rem;
+  }
 }
 
 .d-code--inline {
@@ -496,9 +527,12 @@ p {
 }
 
 .d-container {
-  min-height: 100vh;
-  // background-color: sandybrown;
+  position: relative;
   background-color: darken(sandybrown, 6.66%);
+}
+
+.d-min-100vh {
+  min-height: 100vh;
 }
 
 .d--has-jumbotron {
@@ -525,6 +559,10 @@ p {
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: #18202a;
+
+  p {
+    margin-top: 1rem;
+  }
 
   pre {
     white-space: pre-wrap;
@@ -585,10 +623,22 @@ p {
   }
 }
 
+.d-v-logo {
+  width: 4rem;
+
+  @include media-breakpoint-down(xs) {
+    width: 3.7rem;
+  }
+}
+
 h1.d-control {
   font-weight: 300;
   font-size: 2.2rem;
   color: aliceblue;
+
+  @include media-breakpoint-down(xs) {
+    font-size: 1.9rem;
+  }
 }
 
 h2.d-control {
@@ -598,8 +648,12 @@ h2.d-control {
 p.d-control {
   font-size: 1.5rem;
   margin-top: 0;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   color: lightslategrey;
+
+  @include media-breakpoint-down(xs) {
+    font-size: 1.2rem;
+  }
 }
 </style>
