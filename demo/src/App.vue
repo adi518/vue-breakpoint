@@ -16,7 +16,7 @@ body {
 }
 
 #app {
-  color: darken(#35495e, 16%);    
+  color: darken(#35495e, 16%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu;
