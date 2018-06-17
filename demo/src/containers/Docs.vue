@@ -10,16 +10,15 @@
         <p class="docs-tagline text-center">
           A render-less component for<br>composing CSS breakpoint state.
         </p>
-        <v-breakpoint v-model="model" @change="payload => breakpoint = payload.breakpoint">
-          <div class="text-center" slot-scope="api">
-            <div class="docs-state">
-              ( {{ normalize(api.breakpoint) }} )
-            </div>
-            <div class="docs-emoji mt-3">
-              <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ api.noMatch ? '😸' : '😸' }}</span>
-            </div>
+        <v-breakpoint v-model="model"></v-breakpoint>
+        <div class="text-center">
+          <div class="docs-state">
+            ( {{ normalize(model.breakpoint) }} )
           </div>
-        </v-breakpoint>
+          <div class="docs-emoji mt-3">
+            <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ model.noMatch ? '😸' : '😸' }}</span>
+          </div>
+        </div>        
         <p class="mt-20">
           <a class="docs-github-button github-button" :href="env === 'development' ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
         </p>
@@ -90,7 +89,8 @@
         <!-- V-MODEL -->
         <h2 class="docs-h2 mt-5">V-Model</h2>
         <p>
-          You can also take leverage of the breakpoint state without composing inside it, using a <code class="docs-code--inline">v-model</code>.
+          You can also take leverage of the breakpoint state without composing inside it,
+          using a <code class="docs-code--inline">v-model</code>.
         </p>
         <h4>Script</h4>
         <div class="docs-markdown">
@@ -284,7 +284,7 @@ import 'prismjs/themes/prism-okaidia.css'
 // Components
 import VFragment from '@/components/Fragment'
 import VGitRibbon from '@/components/GitRibbon'
-import { VBreakpoint, VShowAt } from '@/components/local'
+import { VBreakpoint, VShowAt, Model } from '@/components/local'
 import VOrientationLock from '@/components/OrientationLock'
 
 // Vendor
@@ -323,7 +323,7 @@ export default {
   data: () => ({
     pkg,
     env: process.env.NODE_ENV,
-    model: undefined,
+    model: new Model(),
     breakpoint: undefined,
     markdowns: {
       examples: {
