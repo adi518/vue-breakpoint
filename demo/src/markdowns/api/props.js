@@ -1,15 +1,8 @@
 module.exports = `js
 value: {
-  type: Object
-},
-mediaQueries: {
   type: Object,
-  default: () => ({
-    small: 'only screen and (min-width: 576px)',
-    medium: 'only screen and (min-width: 768px)',
-    large: 'only screen and (min-width: 992px)'
-  }),
-  description: 'Media-Queries to test against.'
+  // Force one-way binding
+  validator: value => !value === false
 },
 debounceTime: {
   type: Number,

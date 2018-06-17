@@ -81,7 +81,7 @@
         <!-- V-MODEL -->
         <h2 class="d-control mt-5">V-Model</h2>
         <p>
-          You can also take leverage of the breakpoint state without composing inside it, using a V-model.
+          You can also take leverage of the breakpoint state without composing inside it, using a <code class="d-code--inline">v-model</code>.
         </p>
         <h4>Script</h4>
         <div class="d-markdown">
@@ -171,9 +171,9 @@
           Then, copy the following snippet and adjust configuration to your needs.
         </p>
         <h5>Note</h5>
-        <p class="d-p">          
-          A great site to get started with popular breakpoint stats is
-          <a href="http://dpi.lv/" target="_blank">dpi.lv</a>.
+        <p class="d-p">
+          For media-queries syntax see
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">MDN</a>.
         </p>
         <div class="d-markdown">
           <v-markdown emoji>```{{markdowns.examples.configuration.extend}}```</v-markdown>        
@@ -211,13 +211,16 @@
         <h5>🚧 Note</h5>
         <p class="d-p">
           Since this is a hack, it is expected to be more of an experimental feature
-          than a fully supported one. That doesn't mean I won't relate to issues
-          or avoid fixing them at all.
+          than a fully supported one. That doesn't mean I won't be fixing issues
+          or prevent contributions.
         </p>
 
         <!-- SUPPORT -->
         <h2 class="mt-5">Related Links</h2>
-        <ul class="d-p">
+        <ul class="d-p">          
+          <li>
+            <a href="http://dpi.lv/" target="_blank">dpi.lv</a>
+          </li>
           <li>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">Using media queries</a>
           </li>
@@ -245,7 +248,7 @@
       </div>
     </div>
     <div class="d-version">{{pkg.version}}</div>
-    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />
+    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />    
   </div>
 </template>
 

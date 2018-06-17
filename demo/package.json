@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "vue-breakpoint-component-docs",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "Adi Sahar <adisahar1@hotmail.com>",
@@ -23,6 +23,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.reject": "^4.6.0",
     "media-match": "^2.0.3",
+    "mobile-orientation": "^2.1.2",
     "prismjs": "^1.14.0",
     "vh-for-mobile": "^1.0.1",
     "vue": "^2.5.2",

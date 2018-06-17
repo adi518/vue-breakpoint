@@ -1,3 +1,5 @@
+// https://stanko.github.io/mobile-chrome-vh-units-fix/
+
 export class VHChromeFix {
 
   constructor(selectors) {

@@ -51,7 +51,9 @@ export default {
   },
   props: {
     value: {
-      type: Object
+      type: Object,
+      // Force one-way binding
+      validator: value => !value === false
     },
     debounceTime: {
       type: Number,
