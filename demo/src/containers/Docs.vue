@@ -671,7 +671,7 @@ p {
     clear: both;
   }
 }
-/* end */
+/* Utilities end */
 
 /* Animations */
 @keyframes nodYes {
