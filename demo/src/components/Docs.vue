@@ -2,7 +2,7 @@
   <div class="d">
 
     <!-- FIRST PAGE -->
-    <div class="d-container d--has-jumbotron vh-fix">
+    <div class="d-container d--has-jumbotron d-fixed-100vh vh-fix">
       <!-- JUMBOTRON -->
       <div class="d-jumbotron">
         <img class="d-v-logo" src="../assets/logo-gradient.png">
@@ -532,6 +532,10 @@ p {
 .d-container {
   position: relative;
   background-color: darken(sandybrown, 6.66%);
+}
+
+.d-fixed-100vh {
+  height: 100vh;
 }
 
 .d-min-100vh {
