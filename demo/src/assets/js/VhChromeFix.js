@@ -65,6 +65,6 @@ export class VhChromeFix {
   }
 
   destroy() {
-    window.removeEventListener(this.onResize)
+    window.removeEventListener('resize', this.onResize)
   }
 }

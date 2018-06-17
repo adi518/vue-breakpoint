@@ -1,17 +1,14 @@
+import breakpoints from '@/assets/js/breakpoints'
+
 import { Ctor } from './Breakpoint.Ctor'
 
 export { Ctor } from './Breakpoint.Ctor'
-
-export { default as VFragment } from './Fragment'
+export { Model } from './Breakpoint.Model'
 export { default as VBreakpoint } from './Breakpoint'
 
-export { Model } from './Breakpoint.Model'
-
 export const Install = {
-  install(Vue, config) {
-    const { VFragment, VShowAt, VBreakpoint } = new Ctor({ config })
-    Vue.component(VShowAt.name, VShowAt)
-    Vue.component(VFragment.name, VFragment)
-    Vue.component(VBreakpoint.name, VBreakpoint)
+  install(Vue, config = { breakpoints }) {
+    Object.keys(new Ctor({ config }))
+      .forEach((name, Component) => Vue.component(name, Component))
   }
 }

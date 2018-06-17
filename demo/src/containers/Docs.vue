@@ -281,15 +281,10 @@
 // Global CSS
 import 'prismjs/themes/prism-okaidia.css'
 
-//  Components
-import VShowAt from '@/components/ShowAt'
-// import {
-//   VShowAt as VShowAtExt,
-//   VBreakpoint as VBreakpointExt
-// } from './Extended'
+// Components
 import VFragment from '@/components/Fragment'
 import VGitRibbon from '@/components/GitRibbon'
-import VBreakpoint from '@/components/Breakpoint'
+import { VBreakpoint, VShowAt } from '@/components/local'
 import VOrientationLock from '@/components/OrientationLock'
 
 // Vendor
@@ -393,7 +388,7 @@ export default {
           return '6rem'
         case 'large':
           return '7rem'
-        case 'x-large':
+        case 'xlarge':
           return '8rem'
         default:
           return '4rem'
