@@ -299,7 +299,7 @@ import VSlider from 'vue-slider-component'
 // Resources
 import Prism from 'prismjs'
 import capitalize from 'lodash.capitalize'
-import { VHChromeFix } from '@/assets/js/VhFix2'
+import { VhChromeFix } from '@/assets/js/VhChromeFix'
 
 const pkg = {
   version: '0.0.0',
@@ -373,11 +373,16 @@ export default {
       }
     }
   }),
+  created() {
+    this.vhChromeFix = undefined
+  },
   mounted() {
     Prism.highlightAll()
 
-    /* eslint-disable no-new */
-    new VHChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
+    this.vhChromeFix = new VhChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
+  },
+  destroyed() {
+    this.vhChromeFix.destroy()
   },
   computed: {
     emojiSize() {
