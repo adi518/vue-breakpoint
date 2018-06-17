@@ -16,10 +16,10 @@ const config = {
 
 const components = { ...new Ctor(Vue, { config }) }
 
-export default components
-
 // If you want to stay consist with imports,
 // use this cherry-export approach instead.
 export const VShowAt = components.VShowAt
 export const VBreakpoint = components.VBreakpoint
+
+export default components
 `
