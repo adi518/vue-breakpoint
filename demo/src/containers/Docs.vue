@@ -13,7 +13,7 @@
         <v-breakpoint v-model="model" @change="payload => breakpoint = payload.breakpoint">
           <div class="text-center" slot-scope="api">
             <div class="docs-state">
-              ( {{ api.breakpoint ? `${capitalize(api.breakpoint)}` : 'X-Small' }} )
+              ( {{ normalize(api.breakpoint) }} )
             </div>
             <div class="docs-emoji mt-3">
               <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ api.noMatch ? '😸' : '😸' }}</span>
@@ -410,7 +410,15 @@ export default {
         return element
       }
     },
-    capitalize
+    normalize(state) {
+      if (state) {
+        if (state === 'xlarge') {
+          return 'X-Large'
+        }
+        return capitalize(state)
+      }
+      return 'X-Small'
+    }
   }
 }
 </script>

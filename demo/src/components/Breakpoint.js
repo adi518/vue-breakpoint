@@ -46,7 +46,7 @@ export default {
       small: '(min-width: 576px)',
       medium: '(min-width: 768px)',
       large: '(min-width: 992px)',
-      'x-large': '(min-width: 1200px)',
+      xlarge: '(min-width: 1200px)'
     }
   },
   props: {
@@ -65,7 +65,9 @@ export default {
       default: false
     }
   },
-  data: () => ({ breakpoint: null, breakpoints: {} }),
+  data: () => ({
+    breakpoint: null, breakpoints: {}
+  }),
   watch: {
     breakpoint(value) {
       // Vue Devtools has a bug where events
