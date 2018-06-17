@@ -2,8 +2,9 @@
 - [ ] Add manifest.json (Android)
 - [ ] Export
 - [ ] Tests
-- [ ] Bundle
 - [ ] CI/CD
+- [ ] Bundle
 - [ ] SSR
 - [ ] Add clipboard to snippets
 - [ ] Fix native Android browser missing fixed anchor
+- [ ] Orientation-Lock is still glitchy (possible fix: scroll-to top and restores)
