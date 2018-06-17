@@ -39,10 +39,6 @@ export default {
       type: Number,
       default: 50,
       description: 'Time to wait before invoking resize handler.'
-    },
-    debug: {
-      type: Boolean,
-      default: false
     }
   },
   data: () => ({
@@ -65,7 +61,7 @@ export default {
   beforeCreate() {
     if (window.matchMedia) {
       // Browser Supported ✔
-    } else if (this.debug) {
+    } else {
       this.log('incompatible browser')
     }
   },
