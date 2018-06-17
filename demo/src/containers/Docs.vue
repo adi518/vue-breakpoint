@@ -198,7 +198,7 @@
           As you may know, Vue does not support a stateful
           <code class="docs-code--inline">Fragment</code> component, which allows
           you to render a component with multiple root elements, overruling the
-          "single root element" principle dictated initially.
+          "single root element" principle dictated at the outset of component-based architecture.
           It was introduced to React during a full re-write.
           You can learn about it from
           <a href="https://reactjs.org/docs/fragments.html" target="_blank">React docs</a>.
