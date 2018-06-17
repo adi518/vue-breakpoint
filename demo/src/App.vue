@@ -15,9 +15,12 @@ export default {
 </script>
 
 <style lang="scss">
-html {  
+/* Meta-variables */
+@import '~@/assets/sass/variables.scss';
+
+html {
   // Fix draw of User-agent background (white)
-  background-color: darken(sandybrown, 6.66%);
+  background-color: $docs-color-mirage;
 }
 
 body {
