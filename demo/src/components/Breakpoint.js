@@ -22,10 +22,13 @@ import 'custom-event-polyfill'
 import debounce from 'lodash.debounce'
 import capitalize from 'lodash.capitalize'
 
+// Assets
+import breakpoints from '@/assets/js/breakpoints'
+
 // Implementation
 export default {
   name: 'VBreakpoint',
-  config: {},
+  config: { breakpoints },
   props: {
     value: {
       type: Object,

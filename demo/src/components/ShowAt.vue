@@ -10,13 +10,17 @@
 // https://github.com/vuejs/vue/issues/7088#issuecomment-364535373
 // https://vuejs.org/v2/guide/render-function.html#Functional-Components
 
+// Components
 import VFragment from './Fragment'
 import VBreakpoint from './Breakpoint'
+
+// Assets
+import breakpoints from '@/assets/js/breakpoints'
 
 // Implementation
 export default {
   name: 'v-show-at',
-  config: {},
+  config: { breakpoints },
   components: { VFragment, VBreakpoint },
   props: {
     breakpoint: {
