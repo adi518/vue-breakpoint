@@ -1,6 +1,8 @@
 module.exports = `js
 // <project-root>/src/components/VBreakpoint.js
 
+import Vue from 'vue'
+
 import { Ctor } from 'vue-breakpoint-component'
 
 const config = {
@@ -12,7 +14,7 @@ const config = {
   }
 }
 
-const components = { ...new Ctor({ config }) }
+const components = { ...new Ctor(Vue, { config }) }
 
 export default components
 
