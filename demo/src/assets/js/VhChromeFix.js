@@ -29,7 +29,7 @@ export class VhChromeFix {
         this.fixAll()
       }
 
-      window.addEventListener('resize', this.onResize)
+      window.addEventListener('resize', this.onResize, false)
     }
   }
 
