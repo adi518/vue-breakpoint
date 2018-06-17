@@ -13,10 +13,10 @@
         <v-breakpoint v-model="model" @change="payload => breakpoint = payload.breakpoint">
           <div class="text-center" slot-scope="api">
             <div class="docs-state">
-              ( {{ api.breakpoint ? `${capitalize(api.breakpoint)}` : 'No match' }} )
+              ( {{ api.breakpoint ? `${capitalize(api.breakpoint)}` : 'X-Small' }} )
             </div>
             <div class="docs-emoji mt-3">
-              <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ api.noMatch ? '😿' : '😸' }}</span>
+              <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ api.noMatch ? '😸' : '😸' }}</span>
             </div>
           </div>
         </v-breakpoint>
@@ -43,8 +43,8 @@
         <!-- USAGE -->
         <h2 class="docs-h2 mt-4">Usage</h2>
         <p>
-          To use the component in your templates, simply import
-          and register it with your component:
+          To use the component in your templates, simply import and
+          register it with your component:
         </p>
         <h4 class="mt-3">Script</h4>
         <div class="docs-markdown">
@@ -53,6 +53,15 @@
         <h4 class="mt-3">Template</h4>
         <div class="docs-markdown">
           <v-markdown emoji>```{{markdowns.examples.default.template}}```</v-markdown>
+        </div>        
+        <h4 class="mt-3">Global Install</h4>
+        <p class="docs-p">
+          You can also choose to install the component globally. This will install two
+          components <code class="docs-code--inline">v-breakpoint</code> and
+          <code class="docs-code--inline">v-show-at</code>.
+        </p>
+        <div class="docs-markdown">
+          <v-markdown emoji>```{{markdowns.examples.default.install}}```</v-markdown>
         </div>
 
         <!-- USAGE (SHOW-AT) -->
@@ -116,21 +125,22 @@
         <h4 class="mt-4">Payloads</h4>
         <h5 class="mt-3">Input and Change Events</h5>
         <p>
-          Each of these events has the same payload.
-          Besides breakpoint state, they also supply some auxiliary state, like <b>viewport</b>
-          and current <b>window dimensions</b> (which are also aliased for convenience). <code class="docs-code--inline">Param[Type]: (state[Object])</code>. Example:
+          Each of these events has the same payload. Besides breakpoint state,
+          they also supply some auxiliary state, like <b>viewport</b>
+          and current <b>inner window dimensions</b> (which are also aliased for convenience).
+          <code class="docs-code--inline">(state[Object])</code>. Example:
         </p>
         <div class="docs-markdown mt-2">
-          <v-markdown>```{{markdowns.api.events.payload.basic}}```</v-markdown>
+          <v-markdown>```{{markdowns.api.events.basic.payload}}```</v-markdown>
         </div>
 
         <!-- API EVENT BREAKPOINT -->
         <h5 class="mt-4">Breakpoint Event</h5>
         <p>
-          This event has a fairly simply payload. <code class="docs-code--inline">Param[Type]: (state[String])</code>. Example:
+          This event has a fairly simply payload. <code class="docs-code--inline">(state[String])</code>. Example:
         </p>
         <div class="docs-markdown mt-2">
-          <v-markdown>```{{markdowns.api.events.payload.breakpoint}}```</v-markdown>
+          <v-markdown>```{{markdowns.api.events.breakpoint.payload}}```</v-markdown>
         </div>
 
         <!-- API EVENT BREAKPOINT-NAMESPACE EVENT -->
@@ -148,11 +158,7 @@
         <p class="docs-p">
           The default breakpoints are based on <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints">Bootstrap 4 (Stable)</a>
           To customize the component to your specific needs, you can pass a new set of breakpoints
-          to prop <code class="docs-code--inline">breakpoints</code>.
-          However, you will have to do so everytime you import the component,
-          therefore it can become repetitive quite fast, which is against the concept of DRY.
-          To solve this, you will have to create a "subclass" of the base constructor
-          and export it. Here's how.
+          by creating a "subclass" of the base constructor. Here's how.
         </p>
         <h5>Note</h5>
         <p class="docs-p">
@@ -248,7 +254,8 @@
       </div>
     </div>
     <div class="docs-version">{{pkg.version}}</div>
-    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />    
+    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />        
+    <v-orientation-lock></v-orientation-lock>
   </div>
 </template>
 
@@ -283,6 +290,7 @@ import VShowAt from '@/components/ShowAt'
 import VFragment from '@/components/Fragment'
 import VGitRibbon from '@/components/GitRibbon'
 import VBreakpoint from '@/components/Breakpoint'
+import VOrientationLock from '@/components/OrientationLock'
 
 // Vendor
 import VMarkdown from 'vue-markdown'
@@ -294,7 +302,7 @@ import capitalize from 'lodash.capitalize'
 import { VHChromeFix } from '@/assets/js/VhFix2'
 
 const pkg = {
-  version: '1.0.0',
+  version: '0.0.0',
   repository: {
     type: 'git',
     url: 'https://github.com/adi518/vue-breakpoint-component'
@@ -314,7 +322,8 @@ export default {
     VFragment,
     VMarkdown,
     VGitRibbon,
-    VBreakpoint
+    VBreakpoint,
+    VOrientationLock
   },
   data: () => ({
     pkg,
@@ -325,6 +334,7 @@ export default {
       examples: {
         default: {
           script: require('@/markdowns/examples/default/script.js'),
+          install: require('@/markdowns/examples/default/install.js'),
           template: require('@/markdowns/examples/default/template.js')
         },
         showAt: {
@@ -353,9 +363,11 @@ export default {
         },
         events: {
           meta: require('@/markdowns/api/events.js'),
-          payload: {
-            basic: require('@/markdowns/api/events.basic.payload.js'),
-            breakpoint: require('@/markdowns/api/events.breakpoint.payload.js')
+          basic: {
+            payload: require('@/markdowns/api/events.basic.payload.js')
+          },
+          breakpoint: {
+            payload: require('@/markdowns/api/events.breakpoint.payload.js')
           }
         }
       }
@@ -371,13 +383,15 @@ export default {
     emojiSize() {
       switch (this.breakpoint) {
         case 'small':
-          return '3rem'
-        case 'medium':
           return '5rem'
+        case 'medium':
+          return '6rem'
         case 'large':
           return '7rem'
+        case 'x-large':
+          return '8rem'
         default:
-          return '3rem'
+          return '4rem'
       }
     }
   },

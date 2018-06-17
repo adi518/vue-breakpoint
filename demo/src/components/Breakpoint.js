@@ -43,9 +43,10 @@ export default {
   name: 'VBreakpoint',
   config: {
     breakpoints: {
-      small: 'only screen and (min-width: 576px)',
-      medium: 'only screen and (min-width: 768px)',
-      large: 'only screen and (min-width: 992px)'
+      small: '(min-width: 576px)',
+      medium: '(min-width: 768px)',
+      large: '(min-width: 992px)',
+      'x-large': '(min-width: 1200px)',
     }
   },
   props: {
@@ -94,22 +95,22 @@ export default {
     // We implement singleton pattern to avoid
     // more than one `resize` listener, which
     // can cause massive performance issues.
-    if (this.$root.$_wBreakpoint) {
-      this.breakpoint = this.$root.$_wBreakpoint.breakpoint
+    if (this.$root.$_vBreakpoint) {
+      this.breakpoint = this.$root.$_vBreakpoint.breakpoint
       this.$watch(
-        '$root.$_wBreakpoint.breakpoint',
+        '$root.$_vBreakpoint.breakpoint',
         breakpoint => (this.breakpoint = breakpoint)
       )
     } else {
-      this.$root.$_wBreakpoint = this
-      window.addEventListener('resize', this.match)
+      this.$root.$_vBreakpoint = this
+      window.addEventListener('resize', this.match, false)
       window.dispatchEvent(new window.CustomEvent('resize'))
     }
   },
   beforeDestroy() {
-    if (this.$root.$_wBreakpoint) {
-      if (this.$root.$_wBreakpoint._uid === this._uid) {
-        delete this.$root.$_wBreakpoint
+    if (this.$root.$_vBreakpoint) {
+      if (this.$root.$_vBreakpoint._uid === this._uid) {
+        delete this.$root.$_vBreakpoint
       }
     }
   },

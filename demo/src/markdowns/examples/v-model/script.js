@@ -1,12 +1,12 @@
 module.exports = `js
-import { VBreakpoint, VBreakpointModel } from 'vue-breakpoint-component'
+import { VBreakpoint, Model } from 'vue-breakpoint-component'
 
 export default {
   components: {
     VBreakpoint
   },
   data: () => ({
-    model: new VBreakpointModel()
+    model: new Model()
   }),
   computed: {
     style() {

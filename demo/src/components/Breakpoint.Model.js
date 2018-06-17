@@ -1,5 +1,1 @@
-export class VBreakpointModel {
-  constructor() {
-    return {}
-  }
-}
+export const Model = () => ({})

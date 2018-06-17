@@ -27,6 +27,10 @@ export default {
   name: 'VOrientationLock',
   // extends: WComponent,
   props: {
+    token: {
+      type: String,
+      default: token
+    },
     alt: {
       type: String,
       default: 'Rotate to Portrait'
@@ -41,16 +45,20 @@ export default {
     }
   },
   data: () => ({
-    token,
-    html: undefined,
-    namespace: { kebab: 'v-orientation-lock' },
     orientation: new MobileOrientation({
       withTouch: true,
       landscapeMediaQuery: 'screen and (max-width: 840px)'
     })
   }),
+  created() {
+    this.html = undefined
+    this.namespace = { kebab: 'v-orientation-lock' }
+  },
   mounted() {
     this.html = document.querySelector('html')
+  },
+  destroyed() {
+    this.orientation.destroy()
   },
   watch: {
     isLandscape(value) {

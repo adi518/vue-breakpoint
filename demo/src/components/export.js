@@ -5,7 +5,7 @@ export { Ctor } from './Breakpoint.Ctor'
 export { default as VFragment } from './Fragment'
 export { default as VBreakpoint } from './Breakpoint'
 
-export { VBreakpointModel } from './Breakpoint.Model'
+export { Model } from './Breakpoint.Model'
 
 export const Install = {
   install(Vue, config) {

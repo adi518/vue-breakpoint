@@ -1,16 +1,12 @@
 <template>
   <div id="app">
     <router-view/>
-    <v-orientation-lock></v-orientation-lock>
   </div>
 </template>
 
 <script>
-import VOrientationLock from '@/components/OrientationLock'
-
 export default {
-  name: 'App',
-  components: { VOrientationLock }
+  name: 'App'
 }
 </script>
 
