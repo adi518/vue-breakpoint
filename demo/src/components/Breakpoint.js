@@ -42,7 +42,7 @@ export default {
     }
   },
   data: () => ({
-    breakpoint: null, breakpoints: {}
+    breakpoint: undefined, breakpoints: {}
   }),
   watch: {
     breakpoint(value) {
