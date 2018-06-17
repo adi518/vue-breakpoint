@@ -1,1 +1,1 @@
-export const Model = () => ({})
+export class Model { constructor() { return {} } }
