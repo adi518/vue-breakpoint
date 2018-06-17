@@ -1,4 +1,3 @@
-<script>
 /* eslint-disable space-before-function-paren */
 
 // https://vuejs.org/v2/api/#vm-watch
@@ -165,4 +164,3 @@ export default {
     }
   }
 }
-</script>

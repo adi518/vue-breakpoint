@@ -20,7 +20,7 @@
 import { MobileOrientation } from 'mobile-orientation'
 
 // Assets
-import token from '@/assets/logo-gradient.png'
+import token from '@/assets/images/logo-gradient.png'
 
 // Implementation
 export default {

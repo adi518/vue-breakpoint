@@ -2,10 +2,10 @@
   <div class="d">
 
     <!-- FIRST PAGE -->
-    <div class="d-container d--has-jumbotron d-fixed-100vh vh-fix">
+    <div class="d-container d--has-jumbotron d-fixed-100vh js-vh-fix">
       <!-- JUMBOTRON -->
       <div class="d-jumbotron">
-        <img class="d-v-logo" src="../assets/logo-gradient.png">
+        <img class="d-v-logo" src="../assets/images/logo-gradient.png">
         <h1 class="d-control mt-1">V-Breakpoint</h1>
         <p class="d-control text-center">
           A render-less component for<br>composing CSS breakpoint state.
@@ -271,27 +271,27 @@
 // Meta-data
 // import pkg from '../../package'
 
-//  Components
-import VShowAt from './ShowAt'
-import {
-  VShowAt as VShowAtExt,
-  VBreakpoint as VBreakpointExt
-} from './Extended'
-import VFragment from './Fragment'
-import VMultiple from './Multiple'
-import VMarkdown from 'vue-markdown'
-import VGitRibbon from './GitRibbon'
-import VBreakpoint from './Breakpoint'
-import VSlider from 'vue-slider-component'
-
 // Global CSS
 import 'prismjs/themes/prism-okaidia.css'
 
+//  Components
+import VShowAt from '@/components/ShowAt'
+// import {
+//   VShowAt as VShowAtExt,
+//   VBreakpoint as VBreakpointExt
+// } from './Extended'
+import VFragment from '@/components/Fragment'
+import VGitRibbon from '@/components/GitRibbon'
+import VBreakpoint from '@/components/Breakpoint'
+
+// Vendor
+import VMarkdown from 'vue-markdown'
+import VSlider from 'vue-slider-component'
+
 // Resources
 import Prism from 'prismjs'
-import { VHForMobile } from './VhFix'
-import { VHChromeFix } from './VhFix2'
 import capitalize from 'lodash.capitalize'
+import { VHChromeFix } from '@/assets/js/VhFix2'
 
 const pkg = {
   version: '1.0.0',
@@ -311,8 +311,6 @@ export default {
   name: 'VDemo',
   components: {
     VShowAt,
-    VSlider,
-    VMultiple,
     VFragment,
     VMarkdown,
     VGitRibbon,
@@ -320,7 +318,6 @@ export default {
   },
   data: () => ({
     pkg,
-    value: 1,
     env: process.env.NODE_ENV,
     model: undefined,
     breakpoint: undefined,
@@ -368,15 +365,7 @@ export default {
     Prism.highlightAll()
 
     /* eslint-disable no-new */
-    // new VHForMobile()
-    const vhElements = [
-      {
-        selector: '.vh-fix', // Mandatory, CSS selector
-        vh: 100 // Mandatory, height in vh units
-      }
-    ]
-
-    new VHChromeFix(vhElements)
+    new VHChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
   },
   computed: {
     emojiSize() {
