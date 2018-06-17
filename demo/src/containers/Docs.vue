@@ -137,7 +137,7 @@
         <!-- API EVENT BREAKPOINT -->
         <h5 class="mt-4">Breakpoint Event</h5>
         <p>
-          This event has a fairly simply payload. <code class="docs-code--inline">(state[String])</code>. Example:
+          This event has a fairly simple payload. <code class="docs-code--inline">(state[String])</code>. Example:
         </p>
         <div class="docs-markdown mt-2">
           <v-markdown>```{{markdowns.api.events.breakpoint.payload}}```</v-markdown>
