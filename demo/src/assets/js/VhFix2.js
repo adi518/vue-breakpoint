@@ -20,14 +20,16 @@ export class VHChromeFix {
       this.windowWidth = window.innerWidth
       this.windowHeight = window.innerHeight
 
-      window.addEventListener('resize', () => {
+      this.onResize = () => {
         // Both width and height changed (orientation change)
         // This is a hack, as Android when keyboard pops up
         // Triggers orientation change
         this.windowWidth = window.innerWidth
         this.windowHeight = window.innerHeight
         this.fixAll()
-      })
+      }
+
+      window.addEventListener('resize', this.onResize)
     }
   }
 
@@ -60,5 +62,9 @@ export class VHChromeFix {
       const offset = element.offset
       element.domElement.style.height = (window.innerHeight * (element.vh / 100) - offset) + 'px'
     }
+  }
+
+  destroy() {
+    window.removeEventListener(this.onResize)
   }
 }
