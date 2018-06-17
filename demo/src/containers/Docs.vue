@@ -322,9 +322,8 @@ export default {
   },
   data: () => ({
     pkg,
-    env: process.env.NODE_ENV,
     model: new Model(),
-    breakpoint: undefined,
+    env: process.env.NODE_ENV,
     markdowns: {
       examples: {
         default: {
