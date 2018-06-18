@@ -284,8 +284,8 @@ import 'prismjs/themes/prism-okaidia.css'
 // Components
 import VFragment from '@/components/Fragment'
 import VGitRibbon from '@/components/GitRibbon'
-import { VBreakpoint, VShowAt, Model } from '@/components/local'
 import VOrientationLock from '@/components/OrientationLock'
+import { VBreakpoint, VShowAt, Model } from '@/components/local'
 
 // Vendor
 import VMarkdown from 'vue-markdown'
@@ -531,6 +531,7 @@ p {
 .docs-fixed-anchor {
   width: 100%;
   bottom: 0.8rem;
+  font-size: 1.2rem;
   position: absolute;
   text-align: center;
   color: $docs-color-aliceblue;
