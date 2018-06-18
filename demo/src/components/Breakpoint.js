@@ -31,9 +31,7 @@ export default {
   config: { breakpoints },
   props: {
     value: {
-      type: Object,
-      // Force one-way binding
-      validator: value => !value === false
+      type: Object
     },
     debounceTime: {
       type: Number,

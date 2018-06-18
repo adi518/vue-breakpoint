@@ -1,8 +1,6 @@
 module.exports = `js
 value: {
-  type: Object,
-  // Force one-way binding
-  validator: value => !value === false
+  type: Object
 },
 debounceTime: {
   type: Number,
