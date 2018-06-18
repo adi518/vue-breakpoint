@@ -20,7 +20,7 @@
           </div>
         </div>        
         <p class="mt-20">
-          <a class="docs-github-button github-button" :href="env === 'development' ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          <a class="docs-github-button github-button" :href="NODE_ENV === 'development' ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
         </p>
         <p class="docs-credit mt-3">
           Made with ❤️ by <a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
@@ -255,7 +255,7 @@
     </div>
     <div class="docs-version">{{pkg.version}}</div>
     <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />        
-    <v-orientation-lock></v-orientation-lock>
+    <!-- <v-orientation-lock></v-orientation-lock> -->
   </div>
 </template>
 
@@ -323,7 +323,7 @@ export default {
   data: () => ({
     pkg,
     model: new Model(),
-    env: process.env.NODE_ENV,
+    NODE_ENV: process.env.NODE_ENV,
     markdowns: {
       examples: {
         default: {
