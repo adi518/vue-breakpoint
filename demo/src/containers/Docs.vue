@@ -380,7 +380,7 @@ export default {
   },
   computed: {
     emojiSize() {
-      switch (this.breakpoint) {
+      switch (this.model.breakpoint) {
         case 'small':
           return '5rem'
         case 'medium':
@@ -685,4 +685,5 @@ p {
     transform: rotate3d(1, 0, 0, 0);
   }
 }
+/* Animations end */
 </style>
