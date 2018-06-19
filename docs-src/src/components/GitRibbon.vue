@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  name: 'VGitRibbon',
   props: {
     href: {
       type: String,
