@@ -1,6 +1,6 @@
 <template>
-  <v-fragment :show="show">
-    <v-breakpoint :breakpoints="breakpoints" @change="onChange"></v-breakpoint>
+  <v-fragment v-bind="{ show: computedShow, destroy: $attrs.destroy }">
+    <v-breakpoint @change="onChange"></v-breakpoint>
     <slot></slot>
   </v-fragment>
 </template>
@@ -10,14 +10,10 @@
 // https://github.com/vuejs/vue/issues/7088#issuecomment-364535373
 // https://vuejs.org/v2/guide/render-function.html#Functional-Components
 
-// Components
 import VFragment from './Fragment'
 import VBreakpoint from './Breakpoint'
-
-// Assets
 import breakpoints from '@/assets/js/breakpoints'
 
-// Implementation
 export default {
   name: 'v-show-at',
   config: { breakpoints },
@@ -26,14 +22,25 @@ export default {
     breakpoint: {
       type: String,
       default: ''
+    },
+    forceShow: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
-    show: true,
-    breakpoints: {}
+    show: true
   }),
   created() {
     this.breakpoints = this.$options.config.breakpoints
+  },
+  computed: {
+    computedShow() {
+      if (this.forceShow) {
+        return this.forceShow
+      }
+      return this.show
+    }
   },
   methods: {
     onChange({ breakpoint, noMatch }) {
@@ -42,6 +49,8 @@ export default {
       }
       this.show =
         this.breakpoint === breakpoint || this.$attrs.hasOwnProperty(breakpoint)
+
+      this.$emit('change', { breakpoint, noMatch })
     }
   }
 }

@@ -21,6 +21,7 @@
     "custom-event-polyfill": "^0.3.0",
     "lodash.capitalize": "^4.2.1",
     "lodash.debounce": "^4.0.8",
+    "lodash.merge": "^4.6.1",
     "lodash.reject": "^4.6.0",
     "media-match": "^2.0.3",
     "mobile-orientation": "^2.1.2",

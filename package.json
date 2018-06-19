@@ -1,0 +1,12 @@
+{
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https: //github.com/adi518/vue-breakpoint-component"
+  },
+  "bugs": {
+    "url": "https: //github.com/adi518/vue-breakpoint-component/issues"
+  },
+  "author": "adi518",
+  "license": "MIT"
+}

@@ -1,12 +1,25 @@
+<template>  
+  <div :id="`${$options.name}-${_uid}`">
+    <slot></slot>
+  </div>
+</template>
+
+<script>
 // https://stackoverflow.com/questions/680431/change-textnode-value
 // https://stackoverflow.com/questions/6520192/how-to-get-the-text-node-of-an-element
 
 export default {
-  name: 'v-fragment',
+  name: 'VFragment',
   props: {
-    show: { type: Boolean, default: true }
+    show: {
+      type: Boolean,
+      default: true
+    }
   },
-  data: () => ({ childNodes: [], fragment: document.createDocumentFragment() }),
+  data: () => ({
+    childNodes: [],
+    fragment: document.createDocumentFragment()
+  }),
   watch: {
     show: {
       handler(show) {
@@ -48,13 +61,13 @@ export default {
         childNodes.push({
           id,
           instance: node,
-          display: node.style.display,
+          display: node.style.display
         })
         node.setAttribute('id', id)
       } else {
         childNodes.push({
           instance: node,
-          nodeValue: node.nodeValue,
+          nodeValue: node.nodeValue
         })
       }
       fragment.appendChild(node)
@@ -62,5 +75,8 @@ export default {
     $el.parentNode.insertBefore(fragment, $el)
     $el.parentNode.removeChild($el)
   },
-  template: `<div><slot></slot></div>`
+  beforeDestroy() {
+    // TODO: remove all nodes
+  }
 }
+</script>

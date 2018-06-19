@@ -1,5 +1,7 @@
 // https://github.com/Akryum/v-tooltip/blob/master/src/index.js
 
+import merge from 'lodash.merge'
+
 import VShowAt from './ShowAt'
 import VBreakpoint from './Breakpoint'
 import { Ctor } from './Breakpoint.Ctor'
@@ -12,14 +14,14 @@ export { default as VShowAt } from './ShowAt'
 export { default as VBreakpoint } from './Breakpoint'
 
 export const Install = {
-  install(Vue, config = { breakpoints }) {
-    Object.keys(new Ctor({ config }))
+  install(Vue, config) {
+    Object.keys(new Ctor(merge({}, config, { breakpoints })))
       .forEach((name, Component) => Vue.component(name, Component))
   }
 }
 
-// Auto-install
-let GlobalVue = null
+// Auto-install (Window/Node)
+let GlobalVue
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue
 } else if (typeof global !== 'undefined') {

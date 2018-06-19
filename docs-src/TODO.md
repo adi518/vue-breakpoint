@@ -10,5 +10,5 @@
 - [ ] Add syntax tag to snippets
 - [ ] Fix native Android browser missing fixed anchor
 - [ ] Orientation-Lock is still glitchy (possible fix: scroll-to top and restores)
-- [ ] Add Vue.use pattern
+- [x] Add Vue plugin
 - [ ] Browser support section

@@ -10,22 +10,12 @@
 </template>
 
 <script>
-// TODO: replace PNG with SVG
-// FIXME: Looks shrinked in "Samsung Internet" (native Samsung browser) until user clicks something
+import { MobileOrientation as Orientation } from 'mobile-orientation'
 
-// Abstract
-// import { WComponent } from '@/components/component'
-
-// Resources
-import { MobileOrientation } from 'mobile-orientation'
-
-// Assets
 import token from '@/assets/images/logo-gradient.png'
 
-// Implementation
 export default {
   name: 'VOrientationLock',
-  // extends: WComponent,
   props: {
     token: {
       type: String,
@@ -45,7 +35,7 @@ export default {
     }
   },
   data: () => ({
-    orientation: new MobileOrientation({
+    orientation: new Orientation({
       withTouch: true,
       landscapeMediaQuery: 'screen and (max-width: 840px)'
     })
@@ -57,7 +47,7 @@ export default {
   mounted() {
     this.html = document.querySelector('html')
   },
-  destroyed() {
+  beforeDestroy() {
     this.orientation.destroy()
   },
   watch: {

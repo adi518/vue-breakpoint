@@ -11,6 +11,7 @@
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model"></v-breakpoint>
+        <v-hide-at small><span style="font-size: 2rem">😿</span></v-hide-at>
         <div class="text-center">
           <div class="docs-state">
             ( {{ normalize(model.breakpoint) }} )
@@ -275,45 +276,25 @@
 // https://gist.github.com/oliveratgithub/0bf11a9aff0d6da7b46f1490f86a71eb
 // https://stackoverflow.com/questions/43619644/i-am-getting-an-invalid-host-header-message-when-running-my-react-app-in-a-we
 
-// Meta-data
-// import pkg from '../../package'
+import pkg from '../../../package.json'
 
-// Global CSS
 import 'prismjs/themes/prism-okaidia.css'
 
-// Components
 import VFragment from '@/components/Fragment'
 import VGitRibbon from '@/components/GitRibbon'
 import VOrientationLock from '@/components/OrientationLock'
-import { VBreakpoint, VShowAt, Model } from '@/components/local'
+import { VBreakpoint, VShowAt, VHideAt, Model } from '@/components/local'
 
-// Vendor
-import VMarkdown from 'vue-markdown'
-import VSlider from 'vue-slider-component'
-
-// Resources
 import Prism from 'prismjs'
+import VMarkdown from 'vue-markdown'
 import capitalize from 'lodash.capitalize'
 import { VhChromeFix } from '@/assets/js/VhChromeFix'
 
-const pkg = {
-  version: '0.0.0',
-  repository: {
-    type: 'git',
-    url: 'https://github.com/adi518/vue-breakpoint-component'
-  },
-  bugs: {
-    url: 'https://github.com/adi518/vue-breakpoint-component/issues'
-  },
-  author: 'adi518',
-  license: 'MIT'
-}
-
-// Implementation
 export default {
-  name: 'VDemo',
+  name: 'VDocs',
   components: {
     VShowAt,
+    VHideAt,
     VFragment,
     VMarkdown,
     VGitRibbon,
