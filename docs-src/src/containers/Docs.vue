@@ -11,13 +11,13 @@
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model"></v-breakpoint>
-        <v-hide-at small><span style="font-size: 2rem">😿</span></v-hide-at>
+        <!-- <v-show-at small><span style="font-size: 2rem">😿</span></v-show-at> -->
         <div class="text-center">
           <div class="docs-state">
             ( {{ normalize(model.breakpoint) }} )
           </div>
           <div class="docs-emoji mt-3">
-            <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">{{ model.noMatch ? '😸' : '😸' }}</span>
+            <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
           </div>
         </div>        
         <p class="mt-20">
@@ -412,28 +412,44 @@ export default {
 /* Meta-variables */
 @import '~@/assets/sass/variables.scss';
 
+/* Mixins */
+@mixin docs-clearfix {
+  // https://www.rachelandrew.co.uk/archives/2017/01/24/the-end-of-the-clearfix-hack/
+  &::after,
+  &::before {
+    height: 0;
+    display: block;
+    content: '\0020';
+    overflow: hidden;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+/* Mixins end */
+
 /* Override Bootstrap variables */
 $spacer: 1rem;
 $spacers: ();
 $spacers: map-merge((20: ($spacer * 2)), $spacers);
 
+$code-font-size: 100%;
 $pre-color: $docs-color-aliceblue;
+/* Override Bootstrap variables end */
 
 @import '~@/assets/sass/bootstrap';
-
-/* Reset Bootstrap to User-agent */
-.docs {
-  pre {
-    margin-top: 1rem;
-  }
-}
-/* Reset Bootstrap to User-agent end */
 
 /* Override Prismjs styles */
 .docs-markdown {
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
     background: transparent;
+  }
+
+  pre[class*='language-'] {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 /* Override Prismjs styles end */
@@ -446,10 +462,6 @@ a {
   &:hover {
     color: $docs-color-sandybrown;
   }
-}
-
-p {
-  font-size: 1.1rem;
 }
 /* Abstracts end */
 
@@ -592,13 +604,12 @@ p {
 
 /* Markdown */
 .docs-markdown {
-  font-size: 1.3rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  font-size: 1.1rem;
   background-color: $docs-color-mirage;
 
   p {
-    margin-top: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   pre {
@@ -607,8 +618,11 @@ p {
 }
 
 .docs-markdown--one-liner {
+  p {
+    padding: 1em;
+  }
+
   code {
-    font-size: inherit;
     color: $docs-color-aliceblue;
   }
 }

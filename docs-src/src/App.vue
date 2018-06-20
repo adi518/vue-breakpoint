@@ -21,6 +21,11 @@ html {
 
 body {
   margin: 0;
+  background-color: transparent !important; // Reset Bootstrap Reboot
+}
+
+p {
+  font-size: 1.1rem;
 }
 
 #app {

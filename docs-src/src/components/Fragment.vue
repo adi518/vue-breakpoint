@@ -10,6 +10,7 @@
 
 export default {
   name: 'VFragment',
+  abstract: true,
   props: {
     show: {
       type: Boolean,
@@ -23,7 +24,7 @@ export default {
   watch: {
     show: {
       handler(show) {
-        this.$nextTick(() => {
+        this.$nextTick(() => {          
           const { fragment, childNodes } = this
           childNodes.forEach((node, index) => {
             const element = document.getElementById(node.id)
@@ -57,18 +58,14 @@ export default {
     const { fragment, $el, childNodes } = this
     Array.from($el.childNodes).forEach((node, index) => {
       const id = `${this.$options.name}-${this._uid}-${index}`
+      childNodes.push({
+        id,
+        instance: node,
+        nodeValue: node.nodeValue,
+        display: node.style ? node.style.display : undefined
+      })
       if (node instanceof Element) {
-        childNodes.push({
-          id,
-          instance: node,
-          display: node.style.display
-        })
         node.setAttribute('id', id)
-      } else {
-        childNodes.push({
-          instance: node,
-          nodeValue: node.nodeValue
-        })
       }
       fragment.appendChild(node)
     })
