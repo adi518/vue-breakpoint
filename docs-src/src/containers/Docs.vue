@@ -11,7 +11,9 @@
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model"></v-breakpoint>
-        <!-- <v-show-at small><span style="font-size: 2rem">😿</span></v-show-at> -->
+        <!-- <v-hide-at large>
+          <span style="font-size: 2rem">😿</span>
+        </v-hide-at> -->
         <div class="text-center">
           <div class="docs-state">
             ( {{ normalize(model.breakpoint) }} )
@@ -281,9 +283,9 @@ import pkg from '../../../package.json'
 import 'prismjs/themes/prism-okaidia.css'
 
 import VFragment from '@/components/Fragment'
-import VGitRibbon from '@/components/GitRibbon'
-import VOrientationLock from '@/components/OrientationLock'
-import { VBreakpoint, VShowAt, VHideAt, Model } from '@/components/local'
+import VGitRibbon from '@/components-internal/GitRibbon'
+import VOrientationLock from '@/components-internal/OrientationLock'
+import { VBreakpoint, VShowAt, VHideAt, Model } from '@/export/local'
 
 import Prism from 'prismjs'
 import VMarkdown from 'vue-markdown'

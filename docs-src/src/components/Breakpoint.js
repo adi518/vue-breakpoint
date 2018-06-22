@@ -49,16 +49,19 @@ export default {
       // on page load, while in reality they do.
       this.$emit('input', this.api)
       this.$emit('change', this.api)
+
+      // Emit namespaced event
       if (this.api.breakpoint) {
         this.$emit(this.api.breakpoint)
       }
+
       this.$emit('no-match', this.api.noMatch)
       this.$emit('breakpoint', this.api.breakpoint)
     }
   },
   beforeCreate() {
     if (window.matchMedia) {
-      // Browser Supported ✔
+      // Browser supported ✔
     } else {
       this.log('incompatible browser')
     }

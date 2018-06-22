@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import breakpoints from '@/assets/js/breakpoints'
 
-import { Ctor } from './Breakpoint.Ctor'
+import { Ctor } from '@/components/Breakpoint.Ctor'
 
-export { Ctor } from './Breakpoint.Ctor'
-export { Model } from './Breakpoint.Model'
+export { Ctor } from '@/components/Breakpoint.Ctor'
+export { Model } from '@/components/Breakpoint.Model'
 
 const components = { ...new Ctor(Vue, { breakpoints }) }
 
