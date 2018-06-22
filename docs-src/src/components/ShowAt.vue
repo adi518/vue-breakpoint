@@ -15,7 +15,7 @@ import VBreakpoint from './Breakpoint'
 import breakpoints from '@/assets/js/breakpoints'
 
 export default {
-  name: 'v-show-at',
+  name: 'VShowAt',
   config: { breakpoints },
   components: { VFragment, VBreakpoint },
   props: {

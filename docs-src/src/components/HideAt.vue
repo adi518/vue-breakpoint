@@ -8,7 +8,7 @@
 import VShowAt from './ShowAt'
 
 export default {
-  name: 'v-hide-at',
+  name: 'VHideAt',
   props: { ...VShowAt.props },
   components: { VShowAt },
   data: () => ({
