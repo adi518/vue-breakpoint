@@ -1,5 +1,6 @@
 // https://stackoverflow.com/questions/680431/change-textnode-value
 // https://stackoverflow.com/questions/6520192/how-to-get-the-text-node-of-an-element
+// https://stackoverflow.com/questions/42414627/create-text-node-with-custom-render-function-in-vue-js
 
 export default {
   name: 'VFragment',
