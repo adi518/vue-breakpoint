@@ -11,9 +11,9 @@
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model"></v-breakpoint>
-        <!-- <v-hide-at large>
+        <v-hide-at large>
           <span style="font-size: 2rem">😿</span>
-        </v-hide-at> -->
+        </v-hide-at>
         <div class="text-center">
           <div class="docs-state">
             ( {{ normalize(model.breakpoint) }} )

@@ -45,10 +45,12 @@ export default {
       this.$emit('change', { breakpoint, noMatch })
     }
   },
-  template: `
-    <v-fragment v-bind="{ show: computedShow }">
-      <v-breakpoint @change="onChange"></v-breakpoint>
-      <slot></slot>
-    </v-fragment>
-  `
+  render() {
+    return (
+      <v-fragment v-show={this.computedShow}>
+        <v-breakpoint on-change={this.onChange}></v-breakpoint>
+        {this.$slots.default}
+      </v-fragment>
+    )
+  }
 }

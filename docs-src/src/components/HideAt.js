@@ -9,15 +9,22 @@ export default {
   data: () => ({
     hide: false
   }),
+  computed: {
+    forceShow() {
+      return !this.hide
+    }
+  },
   methods: {
     onChange({ breakpoint }) {
       this.hide =
         breakpoint === this.breakpoint || this.$attrs.hasOwnProperty(breakpoint)
     }
   },
-  template: `
-    <v-show-at v-bind="{ 'force-show': !hide }" @change="onChange">
-      <slot></slot>
-    </v-show-at>
-  `
+  render() {
+    return (
+      <v-show-at force-show={this.forceShow} on-change={this.onChange}>
+        {this.$slots.default}
+      </v-show-at>
+    )
+  }
 }
