@@ -10,7 +10,7 @@ import breakpoints from '@/assets/js/breakpoints'
 export { Ctor } from '@/components/Breakpoint.Ctor'
 export { Model } from '@/components/Breakpoint.Model'
 
-export { default as VShowAt } from '@/componentsShowAt'
+export { default as VShowAt } from '@/components/ShowAt'
 export { default as VBreakpoint } from '@/components/Breakpoint'
 
 export const Install = {

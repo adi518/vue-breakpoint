@@ -8,7 +8,7 @@ const minify = require('rollup-plugin-minify-es')
 const analyzer = require('rollup-plugin-analyzer')
 
 const inputOptions = {
-  input: './docs-src/src/components/export.js',
+  input: './docs-src/src/export/external.js',
   plugins: [
     commonjs(),
     resolve({ extensions: ['.js', '.vue'] }),
@@ -22,7 +22,7 @@ const inputOptions = {
 const outputOptions = {
   name: 'VBreakpoint',
   file: './dist/index.min.js',
-  format: 'umd',
+  format: 'cjs',
   exports: 'named',
   // sourcemap: true
 }
