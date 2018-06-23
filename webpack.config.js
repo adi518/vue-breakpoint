@@ -1,3 +1,5 @@
+// https://github.com/noamkfir/webpack/tree/webpack-4/template
+
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
