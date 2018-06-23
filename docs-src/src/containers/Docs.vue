@@ -365,15 +365,15 @@ export default {
     emojiSize() {
       switch (this.model.breakpoint) {
         case 'small':
-          return '5rem'
-        case 'medium':
-          return '6rem'
-        case 'large':
-          return '7rem'
-        case 'xlarge':
-          return '8rem'
-        default:
           return '4rem'
+        case 'medium':
+          return '5rem'
+        case 'large':
+          return '6rem'
+        case 'xlarge':
+          return '7rem'
+        default:
+          return '3rem' // Bootstrap 4 "xs"
       }
     }
   },
