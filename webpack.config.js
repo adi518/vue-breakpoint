@@ -3,21 +3,16 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-function resolve(dir) {
-  return path.join(__dirname, 'docs-src', dir)
-}
-
 module.exports = {
   entry: './docs-src/src/export/external.js',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
-    // libraryTarget: 'cjs'
+    path: path.resolve(__dirname, 'dist')
   },
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      '@': resolve('src'),
+      '@': path.resolve(__dirname, 'docs-src/src'),
     }
   },
   module: {
