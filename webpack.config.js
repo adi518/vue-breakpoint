@@ -2,6 +2,8 @@
 
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // eslint-disable-line
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 module.exports = {
   entry: './docs-src/src/export/external.js',
@@ -27,14 +29,17 @@ module.exports = {
         options: {
           plugins: [
             '@babel/plugin-transform-modules-commonjs',
-            '@babel/plugin-proposal-object-rest-spread'
+            '@babel/plugin-proposal-object-rest-spread',
+            'babel-plugin-lodash'
           ]
         }
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new LodashModuleReplacementPlugin(),
+    // new BundleAnalyzerPlugin()
   ],
   mode: 'production'
 }

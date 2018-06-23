@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "A Vue.js component for composing CSS breakpoint state",
   "author": "Adi Sahar <adisahar1@hotmail.com>",
-  "private": true,
+  "main": "dist",
   "scripts": {
     "build": "node_modules/.bin/webpack --config webpack.config.js",
     "build-rollup": "node ./rollup.build.js"
@@ -21,12 +21,14 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
     "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.51",
     "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-lodash": "^3.3.4",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
+    "lodash-webpack-plugin": "^0.11.5",
     "rollup": "^0.61.1",
     "rollup-plugin-alias": "^1.4.0",
     "rollup-plugin-analyzer": "^2.0.3",
@@ -37,13 +39,13 @@
     "vue-loader": "^15.2.4",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.12.0",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
     "custom-event-polyfill": "^0.3.0",
     "lodash.capitalize": "^4.2.1",
     "lodash.debounce": "^4.0.8",
-    "lodash.merge": "^4.6.1",
     "media-match": "^2.0.3"
   }
 }

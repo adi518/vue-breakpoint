@@ -1,11 +1,3 @@
-<template>
-  <v-fragment v-bind="{ show: computedShow, destroy: $attrs.destroy }">
-    <v-breakpoint @change="onChange"></v-breakpoint>
-    <slot></slot>
-  </v-fragment>
-</template>
-
-<script>
 // https://github.com/vuejs/vue/issues/7088
 // https://github.com/vuejs/vue/issues/7088#issuecomment-364535373
 // https://vuejs.org/v2/guide/render-function.html#Functional-Components
@@ -52,6 +44,11 @@ export default {
 
       this.$emit('change', { breakpoint, noMatch })
     }
-  }
+  },
+  template: `
+    <v-fragment v-bind="{ show: computedShow }">
+      <v-breakpoint @change="onChange"></v-breakpoint>
+      <slot></slot>
+    </v-fragment>
+  `
 }
-</script>
