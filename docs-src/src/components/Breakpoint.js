@@ -128,8 +128,8 @@ export default {
       )
     },
     log(message) {
-      console.warn(
-        `[${capitalize(this.$options.name)} warn]: ${capitalize(message)}.`
+      console.error(
+        `[${capitalize.words(this.$options.name)} warn]: ${capitalize(message)}.`
       )
     }
   },
