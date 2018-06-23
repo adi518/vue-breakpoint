@@ -7,12 +7,12 @@ module.exports = {
   entry: './docs-src/src/export/external.js',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.join(__dirname, 'dist')
   },
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      '@': path.resolve(__dirname, 'docs-src/src'),
+      '@': path.join(__dirname, 'docs-src/src'),
     }
   },
   module: {
