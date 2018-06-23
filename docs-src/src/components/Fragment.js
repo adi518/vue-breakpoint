@@ -12,8 +12,7 @@ export default {
     }
   },
   data: () => ({
-    childNodes: [],
-    fragment: document.createDocumentFragment()
+    childNodes: []
   }),
   watch: {
     show: {
@@ -46,11 +45,13 @@ export default {
     }
   },
   mounted() {
-    const { $el, fragment, childNodes, id: rootId } = this
+    const { $el, childNodes, id: rootId } = this
 
     // On HMR event, root element is already gone,
     // so no need to re-create the document-fragment.
     if (!document.getElementById(rootId)) return
+
+    const fragment = document.createDocumentFragment()
 
     Array.from($el.childNodes).forEach((node, index) => {
       childNodes.push({
