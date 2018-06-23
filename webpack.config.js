@@ -9,7 +9,8 @@ module.exports = {
   entry: './docs-src/src/export/external.js',
   output: {
     filename: 'index.js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['.js', '.vue'],
