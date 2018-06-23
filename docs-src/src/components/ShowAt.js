@@ -1,9 +1,9 @@
 // https://github.com/vuejs/vue/issues/7088
 // https://github.com/vuejs/vue/issues/7088#issuecomment-364535373
-// https://vuejs.org/v2/guide/render-function.html#Functional-Components
 
 import VFragment from './Fragment'
 import VBreakpoint from './Breakpoint'
+
 import breakpoints from '@/assets/js/breakpoints'
 
 export default {

@@ -1,6 +1,5 @@
 /* eslint-disable space-before-function-paren */
 
-// https://vuejs.org/v2/api/#vm-watch
 // https://github.com/weblinc/media-match
 // https://github.com/apertureless/vue-breakpoints
 // https://www.npmjs.com/package/custom-event-polyfill
@@ -14,15 +13,11 @@
 // https://github.com/chrisvfritz/7-secret-patterns/blob/master/slides-2018-03-03-spotlight-export.pdf
 // https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
 
-// Polyfills (Browser Support: IE9+)
-import 'media-match'
 import 'custom-event-polyfill'
 
-// Resources
 import debounce from 'lodash.debounce'
 import capitalize from 'lodash.capitalize'
 
-// Assets
 import breakpoints from '@/assets/js/breakpoints'
 
 // Implementation
