@@ -4,9 +4,16 @@
   "description": "A Vue.js component for composing CSS breakpoint state",
   "author": "Adi Sahar",
   "main": "dist",
+  "files": ["dist"],
+  "private": true,
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node_modules/.bin/webpack --config webpack.config.js",
-    "build-rollup": "node ./rollup.build.js"
+    "build-rollup": "node ./rollup.build.js",
+    "postbuild": "npm version patch",
+    "prerelease": "npm run build",
+    "release": "npm publish",
+    "postrelease": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
