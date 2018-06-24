@@ -13,12 +13,12 @@
         <v-breakpoint v-model="model"></v-breakpoint>
 
         <!-- DEVELOPMENT -->
-        <template v-if="isDev">
+        <!-- <template v-if="isDev">
           <v-hide-at large>
             <span style="font-size: 2rem">😿</span>
             <span style="font-size: 2rem">😿</span>
           </v-hide-at>
-        </template>
+        </template> -->
         <!-- DEVELOPMENT end -->
         
         <div class="text-center">
@@ -203,7 +203,8 @@
         </div>
 
         <!-- MULTIPLE ROOT ELEMENTS -->
-        <h2 ref="fragment" class="mt-5">Wrapping Multiple Root Elements (Fragment Hack)</h2>
+        <h2 class="mt-5">Experimental Features</h2>
+        <h5 ref="fragment">Wrapping Multiple Root Elements (Fragment Hack)</h5>
         <p class="docs-p">
           As you may know, Vue does not support a stateful
           <code class="docs-code--inline">Fragment</code> component, which allows
@@ -336,8 +337,7 @@ export default {
         },
         configuration: {
           extend: require('@/markdowns/examples/configuration/extend.js'),
-          script: require('@/markdowns/examples/configuration/script.js'),
-          template: require('@/markdowns/examples/configuration/template.js')
+          script: require('@/markdowns/examples/configuration/script.js')
         }
       },
       api: {

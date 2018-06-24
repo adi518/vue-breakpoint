@@ -17,11 +17,9 @@ const config = {
 
 const components = { ...new Ctor(Vue, { config }) }
 
-// If you want to stay consist with imports,
-// use this cherry-export approach instead.
 export const VShowAt = components.VShowAt
+export const VHideAt = components.VHideAt
 export const VBreakpoint = components.VBreakpoint
 
-// And/or have it both ways
-export default components
+export default VBreakpoint
 `

@@ -19,8 +19,6 @@ import capitalize from 'capitalize'
 import debounce from 'lodash.debounce'
 import kebabcase from 'lodash.kebabcase'
 
-import breakpoints from '@/assets/js/breakpoints'
-
 export default {
   name: 'VBreakpoint',
   config: {}, // Foreign key
@@ -77,6 +75,7 @@ export default {
       )
     } else {
       this.$root.$_vBreakpoint = this
+
       window.addEventListener('resize', this.match, false)
       window.dispatchEvent(new window.CustomEvent('resize'))
     }
@@ -108,7 +107,7 @@ export default {
         innerWidth: window.innerWidth,
         innerHeight: window.innerHeight,
         breakpoint: this.breakpoint,
-        noMatch: this.breakpoint === null
+        noMatch: this.noMatch
       }
     },
     queries() {
@@ -117,6 +116,9 @@ export default {
         queries[query] = breakpoint === this.breakpoint
         return queries
       }, {})
+    },
+    noMatch() {
+      return this.breakpoint === null
     }
   },
   methods: {
