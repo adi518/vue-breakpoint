@@ -36,7 +36,7 @@
           Made with ❤️ by <a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
         </p>
       </div>
-      <a class="docs-fixed-anchor docs-c-pointer" @click="scrollTo('docs')" tabindex="">Install, Examples & Documentation</a>
+      <a class="docs-fixed-anchor docs-c-pointer" @click="scrollTo('docs', { block: 'start' })" tabindex="">Install, Examples & Documentation</a>
     </div>
 
     <!-- SECOND PAGE -->
@@ -393,8 +393,11 @@ export default {
     }
   },
   methods: {
-    scrollTo(ref) {
-      this.getElementByRef(ref).scrollIntoView({ behavior: 'smooth' })
+    scrollTo(ref, options = {}) {
+      this.getElementByRef(ref).scrollIntoView({
+        behavior: 'smooth',
+        ...options
+      })
     },
     getElementByRef(ref) {
       let element = this.$refs[ref]
