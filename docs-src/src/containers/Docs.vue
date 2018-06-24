@@ -87,10 +87,16 @@
         <div class="docs-markdown">
           <v-markdown emoji>```{{markdowns.examples.showAt.template}}```</v-markdown>
         </div>
-        <h3 class="mt-4">Multiple Root Elements</h3>
+        <h3 class="mt-4">Multiple Root Elements (Experimental)</h3>
         <p class="docs-p">
-          Notice that you can also show/hide <b>multiple</b> elements!
-          This works thanks to a Fragment-like component hack, described <a class="docs-c-pointer" @click="scrollTo('fragment')" tabindex="">here</a>.
+          Notice that you can also show/hide <b>multiple</b> elements using an experimental
+          Fragment-like component hack, described
+          <a class="docs-c-pointer" @click="scrollTo('fragment')" tabindex="">here</a>.
+        </p>
+        <h5>🚧 Note</h5>
+        <p>
+          To unlock this feature, you will have to <a class="docs-c-pointer" @click="scrollTo('config')" tabindex="">config</a>
+          the component with <code class="docs-code--inline">experimental</code> flag.
         </p>
         <div class="docs-markdown">
           <v-markdown emoji>```{{markdowns.examples.showAt.multiple}}```</v-markdown>
@@ -164,7 +170,7 @@
         </div>
 
         <!-- CONFIGURATION -->
-        <h2 class="docs-h2 mt-4">Configuration</h2>
+        <h2 ref="config" class="docs-h2 mt-5">Configuration</h2>
         <p class="docs-p">
           The default breakpoints are based on <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints">Bootstrap 4 (Stable)</a>
           To customize the component to your specific needs, you can pass a new set of breakpoints
@@ -203,8 +209,8 @@
         </div>
 
         <!-- MULTIPLE ROOT ELEMENTS -->
-        <h2 class="mt-5">Experimental Features</h2>
-        <h5 ref="fragment">Wrapping Multiple Root Elements (Fragment Hack)</h5>
+        <h2 ref="fragment" class="mt-5">Experimental Features</h2>
+        <h5 class="mt-3">Wrapping Multiple Root Elements (Fragment Hack)</h5>
         <p class="docs-p">
           As you may know, Vue does not support a stateful
           <code class="docs-code--inline">Fragment</code> component, which allows
@@ -228,8 +234,7 @@
         <h5>🚧 Note</h5>
         <p class="docs-p">
           Since this is a hack, it is expected to be more of an experimental feature
-          than a fully supported one. That doesn't mean I won't be fixing issues
-          or prevent contributions.
+          than a fully supported one.
         </p>
 
         <!-- SUPPORT -->
@@ -389,8 +394,7 @@ export default {
   },
   methods: {
     scrollTo(ref) {
-      const element = this.getElementByRef(ref)
-      window.scrollTo(0, element.offsetTop)
+      this.getElementByRef(ref).scrollIntoView({ behavior: 'smooth' })
     },
     getElementByRef(ref) {
       let element = this.$refs[ref]
@@ -646,7 +650,7 @@ a {
 }
 /* Markdown end */
 
-/* Utilities */
+/* Utils */
 .docs-c-pointer {
   cursor: pointer;
 }
@@ -673,7 +677,7 @@ a {
     clear: both;
   }
 }
-/* Utilities end */
+/* Utils end */
 
 /* Animations */
 @keyframes nodYes {
