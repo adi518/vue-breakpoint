@@ -37,7 +37,8 @@ export default {
     }
   },
   data: () => ({
-    breakpoint: undefined, mutableBreakpoints: {}
+    breakpoint: undefined,
+    mutable: { breakpoints: {}, debounceTime: undefined }
   }),
   watch: {
     breakpoint(value) {
@@ -64,12 +65,12 @@ export default {
     }
   },
   created() {
-    this.mutableBreakpoints = this.breakpoints || this.$options.config.breakpoints
-    
-    this.mutableDebounceTime = isNumber(this.debounceTime)
+    this.mutable.breakpoints = this.breakpoints || this.$options.config.breakpoints
+
+    this.mutable.debounceTime = isNumber(this.debounceTime)
       ? this.debounceTime : this.$options.config.debounceTime
 
-    this.match = debounce(this.match, this.mutableDebounceTime)
+    this.match = debounce(this.match, this.mutable.debounceTime)
   },
   mounted() {
     // Attach listener to `$root` to avoid
@@ -119,7 +120,7 @@ export default {
       }
     },
     queries() {
-      return Object.keys(this.mutableBreakpoints).reduce((queries, breakpoint) => {
+      return Object.keys(this.mutable.breakpoints).reduce((queries, breakpoint) => {
         const query = `is${capitalize(breakpoint)}`
         queries[query] = breakpoint === this.breakpoint
         return queries
@@ -131,7 +132,7 @@ export default {
   },
   methods: {
     match() {
-      this.breakpoint = Object.entries(this.mutableBreakpoints).reduce(
+      this.breakpoint = Object.entries(this.mutable.breakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint
