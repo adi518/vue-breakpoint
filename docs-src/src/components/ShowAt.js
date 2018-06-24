@@ -6,11 +6,11 @@ import VBreakpoint from './Breakpoint'
 
 export default {
   name: 'VShowAt',
+  config: {}, // Foreign key
   components: {
     VFragment,
     VBreakpoint
   },
-  config: {},
   props: {
     breakpoint: {
       type: String,

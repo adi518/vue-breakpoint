@@ -23,7 +23,7 @@ import breakpoints from '@/assets/js/breakpoints'
 
 export default {
   name: 'VBreakpoint',
-  config: {},
+  config: {}, // Foreign key
   props: {
     value: {
       type: Object
