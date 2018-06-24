@@ -4,12 +4,13 @@
 import VFragment from './Fragment'
 import VBreakpoint from './Breakpoint'
 
-import breakpoints from '@/assets/js/breakpoints'
-
 export default {
   name: 'VShowAt',
-  config: { breakpoints },
-  components: { VFragment, VBreakpoint },
+  components: {
+    VFragment,
+    VBreakpoint
+  },
+  config: {},
   props: {
     breakpoint: {
       type: String,
@@ -24,7 +25,7 @@ export default {
     show: true
   }),
   created() {
-    this.breakpoints = this.$options.config.breakpoints
+    this.experimental = this.$options.config.experimental
   },
   computed: {
     computedShow() {
@@ -46,11 +47,18 @@ export default {
     }
   },
   render() {
+    if (this.experimental) {
+      return (
+        <v-fragment show={this.computedShow}>
+          <v-breakpoint on-change={this.onChange}></v-breakpoint>
+          {this.$slots.default}
+        </v-fragment>
+      )
+    }
     return (
-      <v-fragment v-show={this.computedShow}>
-        <v-breakpoint on-change={this.onChange}></v-breakpoint>
-        {this.$slots.default}
-      </v-fragment>
+      <v-breakpoint on-change={this.onChange}>
+        {this.computedShow ? this.$slots.default : null}
+      </v-breakpoint>
     )
   }
 }

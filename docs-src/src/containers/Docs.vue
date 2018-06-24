@@ -13,6 +13,7 @@
         <v-breakpoint v-model="model"></v-breakpoint>
         <v-hide-at large>
           <span style="font-size: 2rem">😿</span>
+          <span style="font-size: 2rem">😿</span>
         </v-hide-at>
         <div class="text-center">
           <div class="docs-state">
@@ -288,8 +289,8 @@ import VOrientationLock from '@/components-internal/OrientationLock'
 import { VBreakpoint, VShowAt, VHideAt, Model } from '@/export/local'
 
 import Prism from 'prismjs'
+import capitalize from 'capitalize'
 import VMarkdown from 'vue-markdown'
-import capitalize from 'lodash.capitalize'
 import { VhChromeFix } from '@/assets/js/VhChromeFix'
 
 export default {

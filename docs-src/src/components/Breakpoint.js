@@ -15,15 +15,15 @@
 
 import 'custom-event-polyfill'
 
+import capitalize from 'capitalize'
 import debounce from 'lodash.debounce'
-import capitalize from 'lodash.capitalize'
+import kebabcase from 'lodash.kebabcase'
 
 import breakpoints from '@/assets/js/breakpoints'
 
-// Implementation
 export default {
   name: 'VBreakpoint',
-  config: { breakpoints },
+  config: {},
   props: {
     value: {
       type: Object
@@ -66,7 +66,7 @@ export default {
     this.match = debounce(this.match, this.debounceTime)
   },
   mounted() {
-    // We implement singleton pattern to avoid
+    // Attach listener to `$root` to avoid
     // more than one `resize` listener, which
     // can cause massive performance issues.
     if (this.$root.$_vBreakpoint) {
@@ -79,6 +79,12 @@ export default {
       this.$root.$_vBreakpoint = this
       window.addEventListener('resize', this.match, false)
       window.dispatchEvent(new window.CustomEvent('resize'))
+    }
+
+    if (this.$slots.default && this.$slots.default.length) {
+      if (this.$slots.default.length > 1) {
+        this.log('vue components are limited to 1 root element')
+      }
     }
   },
   beforeDestroy() {
@@ -129,13 +135,16 @@ export default {
     },
     log(message) {
       console.error(
-        `[${capitalize.words(this.$options.name)} warn]: ${capitalize(message)}.`
+        `[${capitalize.words(kebabcase(this.$options.name))} warn]: ${capitalize(message)}.`
       )
     }
   },
   render() {
     if (this.$scopedSlots.default) {
       return this.$scopedSlots.default(this.api)
+    }
+    if (this.$slots.default && this.$slots.default.length) {
+      return this.$slots.default[0]
     }
   }
 }

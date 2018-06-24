@@ -21,12 +21,17 @@
     "url": "https://github.com/adi518/vue-breakpoint-component/issues"
   },
   "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.5.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
     "@babel/plugin-transform-modules-commonjs": "^7.0.0-beta.51",
     "babel-loader": "^8.0.0-beta.4",
     "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.12.0",
@@ -48,9 +53,10 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "capitalize": "^1.0.0",
     "custom-event-polyfill": "^0.3.0",
-    "lodash.capitalize": "^4.2.1",
     "lodash.debounce": "^4.0.8",
+    "lodash.kebabcase": "^4.1.1",
     "media-match": "^2.0.3"
   }
 }

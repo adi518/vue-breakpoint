@@ -5,7 +5,9 @@ export default {
   props: {
     breakpoint: VShowAt.props.breakpoint
   },
-  components: { VShowAt },
+  components: {
+    VShowAt
+  },
   data: () => ({
     hide: false
   }),
