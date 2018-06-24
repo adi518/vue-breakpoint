@@ -30,10 +30,13 @@ export default {
       type: Number,
       default: 50,
       description: 'Time to wait before invoking resize handler.'
+    },
+    breakpoints: {
+      type: Object
     }
   },
   data: () => ({
-    breakpoint: undefined, breakpoints: {}
+    breakpoint: undefined
   }),
   watch: {
     breakpoint(value) {
@@ -60,7 +63,7 @@ export default {
     }
   },
   created() {
-    this.breakpoints = this.$options.config.breakpoints
+    this._breakpoints = this.breakpoints || this.$options.config.breakpoints
     this.match = debounce(this.match, this.debounceTime)
   },
   mounted() {
@@ -111,7 +114,7 @@ export default {
       }
     },
     queries() {
-      return Object.keys(this.breakpoints).reduce((queries, breakpoint) => {
+      return Object.keys(this._breakpoints).reduce((queries, breakpoint) => {
         const query = `is${capitalize(breakpoint)}`
         queries[query] = breakpoint === this.breakpoint
         return queries
@@ -123,7 +126,7 @@ export default {
   },
   methods: {
     match() {
-      this.breakpoint = Object.entries(this.breakpoints).reduce(
+      this.breakpoint = Object.entries(this._breakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint

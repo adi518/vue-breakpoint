@@ -25,6 +25,7 @@ export default {
     show: true
   }),
   created() {
+    this.breakpoints = this.$options.config.breakpoints
     this.experimental = this.$options.config.experimental
   },
   computed: {
@@ -50,7 +51,7 @@ export default {
     if (this.experimental) {
       return (
         <v-fragment show={this.computedShow}>
-          <v-breakpoint on-change={this.onChange}></v-breakpoint>
+          <v-breakpoint on-change={this.onChange} breakpoints={this.breakpoints}></v-breakpoint>
           {this.$slots.default}
         </v-fragment>
       )
