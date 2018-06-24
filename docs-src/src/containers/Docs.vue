@@ -65,16 +65,17 @@
         </div>        
         <h4 class="mt-3">Global Install</h4>
         <p class="docs-p">
-          You can also choose to install the component globally. This will install two
-          components <code class="docs-code--inline">v-breakpoint</code> and
-          <code class="docs-code--inline">v-show-at</code>.
+          You can also choose to install the component globally. This will install three
+          components <code class="docs-code--inline">v-breakpoint</code>,
+          <code class="docs-code--inline">v-show-at</code>,
+          <code class="docs-code--inline">v-hide-at</code>.
         </p>
         <div class="docs-markdown">
           <v-markdown emoji>```{{markdowns.examples.default.install}}```</v-markdown>
         </div>
 
         <!-- USAGE (SHOW-AT) -->
-        <h2 class="docs-h2 mt-5">Show-At Usage</h2>
+        <h2 class="docs-h2 mt-5">Show-At/Hide-At Usage</h2>
         <p>
           To use the component in your templates, simply import
           and register itwith your component:
@@ -95,7 +96,7 @@
         </p>
         <h5>🚧 Note</h5>
         <p>
-          To unlock this feature, you will have to <a class="docs-c-pointer" @click="scrollTo('config')" tabindex="">config</a>
+          To unlock this feature, you will have to <a class="docs-c-pointer" @click="scrollTo('config')" tabindex="">configure</a>
           the component with <code class="docs-code--inline">experimental</code> flag.
         </p>
         <div class="docs-markdown">
