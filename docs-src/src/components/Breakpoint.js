@@ -19,9 +19,11 @@ import capitalize from 'capitalize'
 import debounce from 'lodash.debounce'
 import kebabcase from 'lodash.kebabcase'
 
+import breakpoints from '@/assets/js/breakpoints'
+
 export default {
   name: 'VBreakpoint',
-  config: {}, // Foreign key
+  config: { breakpoints }, // Foreign key
   props: {
     value: {
       type: Object
@@ -36,7 +38,7 @@ export default {
     }
   },
   data: () => ({
-    breakpoint: undefined
+    breakpoint: undefined, mutableBreakpoints: {}
   }),
   watch: {
     breakpoint(value) {
@@ -63,7 +65,7 @@ export default {
     }
   },
   created() {
-    this._breakpoints = this.breakpoints || this.$options.config.breakpoints
+    this.mutableBreakpoints = this.breakpoints || this.$options.config.breakpoints
     this.match = debounce(this.match, this.debounceTime)
   },
   mounted() {
@@ -114,7 +116,7 @@ export default {
       }
     },
     queries() {
-      return Object.keys(this._breakpoints).reduce((queries, breakpoint) => {
+      return Object.keys(this.mutableBreakpoints).reduce((queries, breakpoint) => {
         const query = `is${capitalize(breakpoint)}`
         queries[query] = breakpoint === this.breakpoint
         return queries
@@ -126,7 +128,7 @@ export default {
   },
   methods: {
     match() {
-      this.breakpoint = Object.entries(this._breakpoints).reduce(
+      this.breakpoint = Object.entries(this.mutableBreakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint

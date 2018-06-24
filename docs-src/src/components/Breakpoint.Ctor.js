@@ -1,17 +1,19 @@
 // https://github.com/bkzl/vue-fraction-grid/issues/13
 
-import breakpoints from '@/assets/js/breakpoints' // Bootstrap 4 (Stable)
-
 import VShowAt from './ShowAt'
 import VHideAt from './HideAt'
 import VBreakpoint from './Breakpoint'
+
+import merge from 'lodash.merge'
+
+import breakpoints from '@/assets/js/breakpoints' // Bootstrap 4 (Stable)
 
 export class Ctor {
   constructor(Vue, config = {}) {
 
     const defaults = { experimental: false, breakpoints }
-    
-    config = Object.assign(defaults, config)
+
+    config = merge({}, defaults, config)
 
     VShowAt.config = config
     VHideAt.config = config
