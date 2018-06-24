@@ -11,10 +11,16 @@
           A render-less component for<br>composing CSS breakpoint state.
         </p>
         <v-breakpoint v-model="model"></v-breakpoint>
-        <v-hide-at large>
-          <span style="font-size: 2rem">😿</span>
-          <span style="font-size: 2rem">😿</span>
-        </v-hide-at>
+
+        <!-- DEVELOPMENT -->
+        <template v-if="isDev">
+          <v-hide-at large>
+            <span style="font-size: 2rem">😿</span>
+            <span style="font-size: 2rem">😿</span>
+          </v-hide-at>
+        </template>
+        <!-- DEVELOPMENT end -->
+        
         <div class="text-center">
           <div class="docs-state">
             ( {{ normalize(model.breakpoint) }} )
@@ -24,7 +30,7 @@
           </div>
         </div>        
         <p class="mt-20">
-          <a class="docs-github-button github-button" :href="NODE_ENV === 'development' ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          <a class="docs-github-button github-button" :href="isDev ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
         </p>
         <p class="docs-credit mt-3">
           Made with ❤️ by <a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
@@ -376,6 +382,9 @@ export default {
         default:
           return '3rem' // Bootstrap 4 "xs"
       }
+    },
+    isDev() {
+      return this.NODE_ENV === 'development'
     }
   },
   methods: {
