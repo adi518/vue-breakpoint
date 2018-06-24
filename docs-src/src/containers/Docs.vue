@@ -95,7 +95,7 @@
           <a class="docs-c-pointer" @click="scrollTo('fragment')" tabindex="">here</a>.
         </p>
         <h5>🚧 Note</h5>
-        <p>
+        <p class="docs-p">
           To unlock this feature, you will have to <a class="docs-c-pointer" @click="scrollTo('config')" tabindex="">configure</a>
           the component with <code class="docs-code--inline">experimental</code> flag.
         </p>
@@ -238,7 +238,15 @@
           than a fully supported one.
         </p>
 
-        <!-- SUPPORT -->
+        <!-- BROWSER SUPPORT -->
+        <h2 class="mt-5">Browser Support</h2>
+        <p class="docs-p">
+          This component relies on
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">matchMedia API</a>
+          (IE 10+). For older browsers and IE, you will need a <a href="https://github.com/weblinc/media-match" target="_blank">polyfill</a>.
+        </p>
+
+        <!-- LINKS -->
         <h2 class="mt-5">Related Links</h2>
         <ul class="docs-p">          
           <li>
@@ -253,19 +261,19 @@
           <li>
             <a href="https://zellwk.com/blog/responsive-grid-system/" target="_blank">How to build a responsive grid system</a>
           </li>
-        </ul>
+        </ul>        
 
         <!-- SUPPORT -->
         <h2 class="mt-5">Support</h2>
         <p class="docs-p">
           Please open an
-          <a class="docs-contrast-anchor" :href="pkg.bugs.url" target="_blank">issue</a> for support.
+          <a :href="pkg.bugs.url" target="_blank">issue</a> for support.
         </p>
 
         <!-- LICENSE -->
         <h2 class="mt-5">License</h2>
         <p class="docs-p">
-          Copyright (c) 2018 <a class="docs-contrast-anchor" href="https://github.com/adi518" target="_blank">{{pkg.author}}</a> by <a class="docs-contrast-anchor" href="https://opensource.org/licenses/MIT" target="_blank">{{pkg.license}}</a>
+          Copyright (c) 2018 <a href="https://github.com/adi518" target="_blank">{{pkg.author}}</a> by <a href="https://opensource.org/licenses/MIT" target="_blank">{{pkg.license}}</a>
         </p>
 
       </div>
