@@ -17,6 +17,7 @@ import 'custom-event-polyfill'
 
 import capitalize from 'capitalize'
 import debounce from 'lodash.debounce'
+import isNumber from 'lodash.isnumber'
 import kebabcase from 'lodash.kebabcase'
 
 import breakpoints from '@/assets/js/breakpoints'
@@ -28,13 +29,11 @@ export default {
     value: {
       type: Object
     },
-    debounceTime: {
-      type: Number,
-      default: 50,
-      description: 'Time to wait before invoking resize handler.'
-    },
     breakpoints: {
       type: Object
+    },
+    debounceTime: {
+      type: Number
     }
   },
   data: () => ({
@@ -66,7 +65,11 @@ export default {
   },
   created() {
     this.mutableBreakpoints = this.breakpoints || this.$options.config.breakpoints
-    this.match = debounce(this.match, this.debounceTime)
+    
+    this.mutableDebounceTime = isNumber(this.debounceTime)
+      ? this.debounceTime : this.$options.config.debounceTime
+
+    this.match = debounce(this.match, this.mutableDebounceTime)
   },
   mounted() {
     // Attach listener to `$root` to avoid

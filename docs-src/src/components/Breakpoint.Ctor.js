@@ -11,7 +11,11 @@ import breakpoints from '@/assets/js/breakpoints' // Bootstrap 4 (Stable)
 export class Ctor {
   constructor(Vue, config = {}) {
 
-    const defaults = { experimental: false, breakpoints }
+    const defaults = {
+      breakpoints,
+      debounceTime: 100,
+      experimental: false
+    }
 
     config = merge({}, defaults, config)
 
