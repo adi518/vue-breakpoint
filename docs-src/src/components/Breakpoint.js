@@ -81,10 +81,8 @@ export default {
       window.dispatchEvent(new window.CustomEvent('resize'))
     }
 
-    if (this.$slots.default && this.$slots.default.length) {
-      if (this.$slots.default.length > 1) {
-        this.log('vue components are limited to 1 root element')
-      }
+    if (this.$slots.default && this.$slots.default.length > 1) {
+      this.log('vue components are limited to 1 root element')
     }
   },
   beforeDestroy() {
