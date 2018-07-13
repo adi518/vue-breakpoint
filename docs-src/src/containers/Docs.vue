@@ -297,7 +297,9 @@
 // https://stanko.github.io/mobile-chrome-vh-fix/
 // https://github.com/miaolz123/vue-markdown/issues/14
 // https://gist.github.com/roachhd/1f029bd4b50b8a524f3c
+// https://gist.github.com/paulirish/5d52fb081b3570c81e3a
 // https://gist.github.com/oliveratgithub/0bf11a9aff0d6da7b46f1490f86a71eb
+// https://stackoverflow.com/questions/27637184/what-is-dom-reflow/27637245#27637245
 // https://stackoverflow.com/questions/6268508/restart-animation-in-css3-any-better-way-than-removing-the-element
 // https://stackoverflow.com/questions/43619644/i-am-getting-an-invalid-host-header-message-when-running-my-react-app-in-a-we
 
