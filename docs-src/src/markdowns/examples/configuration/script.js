@@ -1,8 +1,6 @@
 module.exports = `js
-import { Model } from 'vue-breakpoint-component'
-
 // Local imports
-import { VShowAt, VHideAt, VBreakpoint } from './VBreakpoint'
+import { VShowAt, VHideAt, VBreakpoint, Model } from './VBreakpoint'
 
 export default {
   components: {

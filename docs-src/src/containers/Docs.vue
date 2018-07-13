@@ -25,7 +25,7 @@
           <div class="docs-state">
             ( {{ normalize(model.breakpoint) }} )
           </div>
-          <div class="docs-emoji mt-3">
+          <div class="docs-emoji mt-3" ref="emoji" @mouseover="animateEmoji">
             <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
           </div>
         </div>        
@@ -53,7 +53,7 @@
         <h2 class="docs-h2 mt-4">Usage</h2>
         <p>
           To use the component in your templates, simply import and
-          register it with your component:
+          register with your component:
         </p>
         <h4 class="mt-3">Script</h4>
         <div class="docs-markdown">
@@ -78,7 +78,7 @@
         <h2 class="docs-h2 mt-5">Show-At/Hide-At Usage</h2>
         <p>
           To use the component in your templates, simply import
-          and register itwith your component:
+          and register with your component:
         </p>
         <h4 class="mt-3">Script</h4>
         <div class="docs-markdown">
@@ -127,7 +127,7 @@
         <!-- API EVENTS -->
         <h2 class="docs-h2 mt-5">API Events</h2>
         <p>
-          The component emits two basic events, <code class="docs-code--inline">input</code>
+          The component emits two core events, <code class="docs-code--inline">input</code>
           and <code class="docs-code--inline">change</code>.
           The <code class="docs-code--inline">input</code> event is required for
           <code class="docs-code--inline">v-model</code> usage, but other than that,
@@ -135,7 +135,7 @@
           Each of these events benefit different composition styles.
         </p>
         <div class="docs-markdown docs-markdown--is-one-liner mt-2">
-          <v-markdown>```{{markdowns.examples.events.basic}}```</v-markdown>
+          <v-markdown>```{{markdowns.examples.events.payload}}```</v-markdown>
         </div>
 
         <!-- API EVENTS PAYLOADS -->
@@ -148,7 +148,7 @@
           <code class="docs-code--inline">(state[Object])</code>. Example:
         </p>
         <div class="docs-markdown mt-2">
-          <v-markdown>```{{markdowns.api.events.basic.payload}}```</v-markdown>
+          <v-markdown>```{{markdowns.api.events.payload}}```</v-markdown>
         </div>
 
         <!-- API EVENT BREAKPOINT -->
@@ -179,7 +179,7 @@
         </p>
         <h5>Note</h5>
         <p class="docs-p">
-          While isn't required, it's a good idea to familiarize yourself with the <code class="docs-code--inline">Vue.extend()</code>
+          While it isn't required, it's a good idea to familiarize yourself with the <code class="docs-code--inline">Vue.extend()</code>
           API. See its documentation <a href="https://vuejs.org/v2/api/#Vue-extend" target="_blank">here</a>.
         </p>
         <h4>Bootstrap 4 Breakpoints</h4>
@@ -195,7 +195,7 @@
         </p>
         <h5>Note</h5>
         <p class="docs-p">
-          For media-queries syntax see
+          For media-query syntax see
           <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">MDN</a>.
         </p>
         <div class="docs-markdown">
@@ -298,6 +298,7 @@
 // https://github.com/miaolz123/vue-markdown/issues/14
 // https://gist.github.com/roachhd/1f029bd4b50b8a524f3c
 // https://gist.github.com/oliveratgithub/0bf11a9aff0d6da7b46f1490f86a71eb
+// https://stackoverflow.com/questions/6268508/restart-animation-in-css3-any-better-way-than-removing-the-element
 // https://stackoverflow.com/questions/43619644/i-am-getting-an-invalid-host-header-message-when-running-my-react-app-in-a-we
 
 import pkg from '../../../package.json'
@@ -361,11 +362,9 @@ export default {
         },
         events: {
           meta: require('@/markdowns/api/events.js'),
-          basic: {
-            payload: require('@/markdowns/api/events.basic.payload.js')
-          },
+          payload: require('@/markdowns/api/events.payload.js'),
           breakpoint: {
-            payload: require('@/markdowns/api/events.breakpoint.payload.js')
+            payload: require('@/markdowns/api/events.payload.breakpoint.js')
           }
         }
       }
@@ -427,6 +426,12 @@ export default {
         return capitalize(state)
       }
       return 'X-Small'
+    },
+    animateEmoji() {
+      const element = this.getElementByRef('emoji')
+      element.style.animation = 'none'
+      void element.offsetHeight // Trigger reflow
+      element.style.animation = null
     }
   }
 }
@@ -560,11 +565,10 @@ a {
 }
 
 .docs-emoji {
-  &:hover {
-    animation: nodYes 2s;
-    animation-fill-mode: forwards;
-    transform-origin: 50% 50% -0.5rem;
-  }
+  animation-duration: 2s;
+  animation-name: docs-nod-yes;
+  animation-fill-mode: forwards;
+  transform-origin: 50% 50% -0.5rem;
 }
 
 .docs-container {
@@ -693,7 +697,7 @@ a {
 /* Utils end */
 
 /* Animations */
-@keyframes nodYes {
+@keyframes docs-nod-yes {
   0% {
     transform: rotate3d(1, 0, 0, -30deg);
   }

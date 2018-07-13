@@ -15,7 +15,7 @@ const config = {
   }
 }
 
-const components = { ...new Ctor(Vue, { config }) }
+const components = { ...new Ctor(Vue, config) }
 
 export const VShowAt = components.VShowAt
 export const VHideAt = components.VHideAt
