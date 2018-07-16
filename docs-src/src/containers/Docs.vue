@@ -5,13 +5,14 @@
     <div class="docs-container docs-container--has-jumbotron docs-100vh js-vh-fix">
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
-        <img class="docs-v-logo" src="../assets/images/logo-gradient.png">
+        <img class="docs-vue-logo" src="../assets/images/logo-gradient.png">
         <h1 class="docs-h1 mt-1">V-Breakpoint</h1>
-        <p class="docs-tagline text-center">
+        <p class="docs-tagline">
           A render-less component for<br>composing CSS breakpoint state.
         </p>
-        <v-breakpoint v-model="model"></v-breakpoint>
 
+        <!-- DEMO -->
+        <v-breakpoint v-model="model"></v-breakpoint>
         <!-- DEVELOPMENT -->
         <!-- <template v-if="isDev">
           <v-hide-at large>
@@ -19,10 +20,9 @@
             <span style="font-size: 2rem">😿</span>
           </v-hide-at>
         </template> -->
-        <!-- DEVELOPMENT end -->
-        
+        <!-- DEVELOPMENT end -->        
         <div class="text-center">
-          <div class="docs-state">
+          <div class="docs-demo">
             ( {{ normalize(model.breakpoint) }} )
           </div>
           <div class="docs-emoji mt-3" ref="emoji" @mouseover="animateEmoji">
@@ -30,13 +30,27 @@
           </div>
         </div>        
         <p class="mt-20">
-          <a class="docs-github-button github-button" :href="isDev ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+          <a class="docs-github-button github-button" :href="isDev ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star adi518/vue-breakpoint-component on GitHub">Star</a>
         </p>
         <p class="docs-credit mt-3">
-          Made with ❤️ by <a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">Adi Sahar</a>
+          Made with ❤️ by
+          <a
+            class="docs-anchor--author"
+            href="https://github.com/adi518"
+            target="_blank"
+          >
+            Adi Sahar
+          </a>
         </p>
       </div>
-      <a class="docs-fixed-anchor docs-c-pointer" @click="scrollTo('docs')" tabindex="">Install, Examples & Documentation</a>
+      <!-- FIXED ANCHOR -->
+      <a
+        class="docs-fixed-anchor docs-c-pointer"
+        @click="scrollTo('docs')"
+        tabindex=""
+      >
+        Install, Examples & Documentation
+      </a>
     </div>
 
     <!-- SECOND PAGE -->
@@ -376,7 +390,7 @@ export default {
     this.vhChromeFix = undefined
   },
   mounted() {
-    Prism.highlightAll()
+    window.setTimeout(Prism.highlightAll)
 
     this.vhChromeFix = new VhChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
   },
@@ -446,37 +460,30 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import '~@/assets/sass/variables.scss';
+$docs-min-width: 320px;
 
-/* Mixins */
-@mixin docs-clearfix {
-  // https://www.rachelandrew.co.uk/archives/2017/01/24/the-end-of-the-clearfix-hack/
-  &::after,
-  &::before {
-    height: 0;
-    display: block;
-    content: '\0020';
-    overflow: hidden;
-  }
+$docs-color-gray: #888888;
+$docs-color-mirage: #18202a;
+$docs-color-radical-red: #f92672;
+$docs-color-ocean-green: #42b883;
+$docs-color-spring-wood: #f8f8f2;
+$docs-color-pickled-bluewood: #35495e;
+$docs-color-aliceblue: aliceblue;
+$docs-color-sandybrown: sandybrown;
+$docs-color-lightslategrey: lightslategrey;
 
-  &::after {
-    clear: both;
-  }
-}
-/* Mixins end */
-
-/* Override Bootstrap variables */
+/* Bootstrap */
 $spacer: 1rem;
 $spacers: ();
 $spacers: map-merge((20: ($spacer * 2)), $spacers);
 
 $code-font-size: 100%;
 $pre-color: $docs-color-aliceblue;
-/* Override Bootstrap variables end */
+/* Bootstrap end */
 
 @import '~@/assets/sass/bootstrap';
 
-/* Override Prismjs styles */
+/* Prismjs */
 .docs-markdown {
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
@@ -488,9 +495,9 @@ $pre-color: $docs-color-aliceblue;
     margin-bottom: 0;
   }
 }
-/* Override Prismjs styles end */
+/* Prismjs end */
 
-/* Abstracts */
+/* Tags */
 a {
   color: $docs-color-aliceblue;
   transition: color 0.5s;
@@ -499,7 +506,7 @@ a {
     color: $docs-color-sandybrown;
   }
 }
-/* Abstracts end */
+/* Tags end */
 
 /* Headings */
 .docs-h1 {
@@ -522,7 +529,7 @@ a {
   min-width: $docs-min-width;
 }
 
-.docs-v-logo {
+.docs-vue-logo {
   width: 4rem;
 
   @include media-breakpoint-down(xs) {
@@ -535,6 +542,7 @@ a {
   margin-top: 0;
   margin-left: 2rem;
   margin-right: 2rem;
+  text-align: center;
   color: $docs-color-lightslategrey;
 
   @include media-breakpoint-down(xs) {
@@ -558,6 +566,7 @@ a {
 }
 
 .docs-fixed-anchor {
+  left: 0;
   width: 100%;
   bottom: 0.8rem;
   font-size: 1.2rem;
@@ -593,7 +602,7 @@ a {
   color: $docs-color-ocean-green;
 }
 
-.docs-state {
+.docs-demo {
   font-size: 1.2rem;
 }
 
@@ -683,7 +692,6 @@ a {
 }
 
 .docs-clearfix {
-  // https://www.rachelandrew.co.uk/archives/2017/01/24/the-end-of-the-clearfix-hack/
   &::after,
   &::before {
     height: 0;
