@@ -460,17 +460,9 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-$docs-min-width: 320px;
+$app-min-width: 320px;
 
-$docs-color-gray: #888888;
-$docs-color-mirage: #18202a;
-$docs-color-radical-red: #f92672;
-$docs-color-ocean-green: #42b883;
-$docs-color-spring-wood: #f8f8f2;
-$docs-color-pickled-bluewood: #35495e;
-$docs-color-aliceblue: aliceblue;
-$docs-color-sandybrown: sandybrown;
-$docs-color-lightslategrey: lightslategrey;
+@import '~@/assets/sass/colors';
 
 /* Bootstrap */
 $spacer: 1rem;
@@ -478,7 +470,7 @@ $spacers: ();
 $spacers: map-merge((20: ($spacer * 2)), $spacers);
 
 $code-font-size: 100%;
-$pre-color: $docs-color-aliceblue;
+$pre-color: $app-color-aliceblue;
 /* Bootstrap end */
 
 @import '~@/assets/sass/bootstrap';
@@ -499,11 +491,11 @@ $pre-color: $docs-color-aliceblue;
 
 /* Tags */
 a {
-  color: $docs-color-aliceblue;
+  color: $app-color-aliceblue;
   transition: color 0.5s;
 
   &:hover {
-    color: $docs-color-sandybrown;
+    color: $app-color-sandybrown;
   }
 }
 /* Tags end */
@@ -512,7 +504,7 @@ a {
 .docs-h1 {
   font-weight: 300;
   font-size: 2.2rem;
-  color: $docs-color-aliceblue;
+  color: $app-color-aliceblue;
 
   @include media-breakpoint-down(xs) {
     font-size: 1.9rem;
@@ -526,7 +518,7 @@ a {
 
 /* Layout */
 .docs {
-  min-width: $docs-min-width;
+  min-width: $app-min-width;
 }
 
 .docs-vue-logo {
@@ -543,7 +535,7 @@ a {
   margin-left: 2rem;
   margin-right: 2rem;
   text-align: center;
-  color: $docs-color-lightslategrey;
+  color: $app-color-lightslategrey;
 
   @include media-breakpoint-down(xs) {
     font-size: 1.2rem;
@@ -554,11 +546,11 @@ a {
   top: 1rem;
   left: 1rem;
   position: absolute;
-  color: lighten($docs-color-pickled-bluewood, 16%);
+  color: lighten($app-color-pickled-bluewood, 16%);
 }
 
 .docs-credit {
-  color: $docs-color-lightslategrey;
+  color: $app-color-lightslategrey;
 
   @include media-breakpoint-down(xs) {
     font-size: 0.9rem;
@@ -572,7 +564,7 @@ a {
   font-size: 1.2rem;
   position: absolute;
   text-align: center;
-  color: $docs-color-aliceblue;
+  color: $app-color-aliceblue;
 }
 
 .docs-emoji {
@@ -584,13 +576,13 @@ a {
 
 .docs-container {
   position: relative;
-  background-color: darken($docs-color-sandybrown, 6.66%);
+  background-color: darken($app-color-sandybrown, 6.66%);
 }
 
 .docs-container--has-jumbotron {
   display: flex;
   align-items: center;
-  background-color: darken($docs-color-pickled-bluewood, 16%);
+  background-color: darken($app-color-pickled-bluewood, 16%);
 }
 
 .docs-jumbotron {
@@ -599,7 +591,7 @@ a {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  color: $docs-color-ocean-green;
+  color: $app-color-ocean-green;
 }
 
 .docs-demo {
@@ -608,14 +600,14 @@ a {
 
 .docs-anchor--author {
   position: relative;
-  color: $docs-color-lightslategrey;
+  color: $app-color-lightslategrey;
 
   &:hover {
     text-decoration: none;
-    color: $docs-color-lightslategrey;
+    color: $app-color-lightslategrey;
 
     &::after {
-      border-bottom-color: $docs-color-aliceblue;
+      border-bottom-color: $app-color-aliceblue;
     }
   }
 
@@ -627,7 +619,7 @@ a {
     bottom: -0.15rem;
     position: absolute;
     display: inline-block;
-    border-bottom: 1px dotted $docs-color-lightslategrey;
+    border-bottom: 1px dotted $app-color-lightslategrey;
   }
 }
 
@@ -635,12 +627,12 @@ a {
   a {
     padding-left: 0.2rem;
     padding-right: 0.2rem;
-    color: $docs-color-aliceblue;
-    background-color: $docs-color-mirage;
+    color: $app-color-aliceblue;
+    background-color: $app-color-mirage;
 
     &:hover {
       text-decoration: none;
-      color: $docs-color-radical-red;
+      color: $app-color-radical-red;
     }
   }
 }
@@ -649,7 +641,7 @@ a {
 /* Markdown */
 .docs-markdown {
   font-size: 1.1rem;
-  background-color: $docs-color-mirage;
+  background-color: $app-color-mirage;
 
   p {
     margin-top: 0;
@@ -667,14 +659,14 @@ a {
   }
 
   code {
-    color: $docs-color-aliceblue;
+    color: $app-color-aliceblue;
   }
 }
 
 .docs-code--inline {
   padding: 0.2rem 0.4rem;
-  color: $docs-color-spring-wood;
-  background-color: $docs-color-gray;
+  color: $app-color-spring-wood;
+  background-color: $app-color-gray;
 }
 /* Markdown end */
 

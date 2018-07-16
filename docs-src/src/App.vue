@@ -12,11 +12,11 @@ export default {
 
 <style lang="scss">
 /* Meta-variables */
-@import '~@/assets/sass/variables.scss';
+@import '~@/assets/sass/colors';
 
 html {
   // Fix draw of User-agent background (white)
-  background-color: $docs-color-mirage;
+  background-color: $app-color-mirage;
 }
 
 body {
