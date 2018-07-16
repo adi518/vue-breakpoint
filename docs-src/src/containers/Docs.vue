@@ -460,9 +460,9 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-$app-min-width: 320px;
-
 @import '~@/assets/sass/colors';
+
+$app-min-width: 320px;
 
 /* Bootstrap */
 $spacer: 1rem;
