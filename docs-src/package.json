@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
     "predeploy": "npm run build",
-    "deploy": "node deploy.js"
+    "deploy": "node build/deploy.js"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",

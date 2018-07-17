@@ -3,6 +3,7 @@
 
     <!-- FIRST PAGE -->
     <div class="docs-container docs-container--has-jumbotron docs-100vh js-vh-fix">
+
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
         <img class="docs-vue-logo" src="../assets/images/logo-gradient.png">
@@ -12,9 +13,9 @@
         </p>
 
         <!-- DEMO -->
-        <v-breakpoint v-model="model"></v-breakpoint>
+        <v-breakpoint v-model="demo.model"></v-breakpoint>
         <!-- DEVELOPMENT -->
-        <!-- <template v-if="isDev">
+        <!-- <template v-if="flags.development">
           <v-hide-at large>
             <span style="font-size: 2rem">😿</span>
             <span style="font-size: 2rem">😿</span>
@@ -23,14 +24,22 @@
         <!-- DEVELOPMENT end -->        
         <div class="text-center">
           <div class="docs-demo">
-            ( {{ normalize(model.breakpoint) }} )
+            ( {{ normalize(demo.model.breakpoint) }} )
           </div>
           <div class="docs-emoji mt-3" ref="emoji" @mouseover="animateEmoji">
             <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
           </div>
         </div>        
         <p class="mt-20">
-          <a class="docs-github-button github-button" :href="isDev ? '' : pkg.repository.url" data-icon="octicon-star" data-show-count="true" aria-label="Star adi518/vue-breakpoint-component on GitHub">Star</a>
+          <a
+            class="docs-github-button github-button"
+            :href="flags.development && pkg.repository.url"
+            data-icon="octicon-star"
+            data-show-count="true"
+            aria-label="Star adi518/vue-breakpoint-component on GitHub"
+          >
+            Star
+          </a>
         </p>
         <p class="docs-credit mt-3">
           Made with ❤️ by
@@ -292,9 +301,16 @@
 
       </div>
     </div>
+
+    <!-- VERSION -->
     <div class="docs-version">{{pkg.version}}</div>
-    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url" />        
-    <!-- <v-orientation-lock></v-orientation-lock> -->
+
+    <!-- GIT RIBBON -->
+    <v-git-ribbon
+      fill-color="lightslategrey"
+      octo-color="#18202a"
+      :href="pkg.repository.url"
+    ></v-git-ribbon>
   </div>
 </template>
 
@@ -343,9 +359,17 @@ export default {
     VOrientationLock
   },
   data: () => ({
+
     pkg,
-    model: new Model(),
-    NODE_ENV: process.env.NODE_ENV,
+
+    demo: {
+      model: new Model()
+    },
+
+    flags: {
+      development: process.env.NODE_ENV === 'development'
+    },
+
     markdowns: {
       examples: {
         default: {
@@ -411,9 +435,6 @@ export default {
         default:
           return '3rem' // Bootstrap 4 "xs"
       }
-    },
-    isDev() {
-      return this.NODE_ENV === 'development'
     }
   },
   methods: {
