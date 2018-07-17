@@ -423,7 +423,7 @@ export default {
   },
   computed: {
     emojiSize() {
-      switch (this.model.breakpoint) {
+      switch (this.demo.model.breakpoint) {
         case 'small':
           return '4rem'
         case 'medium':
