@@ -33,7 +33,7 @@
         <p class="mt-20">
           <a
             class="docs-github-button github-button"
-            :href="flags.development && pkg.repository.url"
+            :href="flags.production && pkg.repository.url"
             data-icon="octicon-star"
             data-show-count="true"
             aria-label="Star adi518/vue-breakpoint-component on GitHub"
@@ -367,6 +367,7 @@ export default {
     },
 
     flags: {
+      production: process.env.NODE_ENV !== 'development',
       development: process.env.NODE_ENV === 'development'
     },
 
