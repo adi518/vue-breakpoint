@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
+    "@babel/helper-module-imports": "^7.0.0-beta.54",
     "@babel/plugin-syntax-jsx": "^7.0.0-beta.54",
     "@babel/preset-env": "^7.0.0-beta.54",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
