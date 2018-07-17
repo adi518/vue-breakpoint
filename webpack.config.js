@@ -28,13 +28,15 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
+          presets: [
+            ['@babel/preset-env', {
+              forceAllTransforms: true,
+            }]
+          ],
           plugins: [
             '@babel/plugin-transform-modules-commonjs',
-            '@babel/plugin-transform-classes',
-            '@babel/plugin-proposal-object-rest-spread',
             'babel-plugin-transform-vue-jsx',
-            'babel-plugin-syntax-jsx',
-            'babel-plugin-lodash',
+            // 'babel-helper-vue-jsx-merge-props'
           ]
         }
       }
