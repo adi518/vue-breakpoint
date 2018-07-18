@@ -1,14 +1,6 @@
-- [x] Detect 1 root element and render without Fragment hack
-- [x] Add HideAt component
-- [ ] Add manifest.json (Android)
-- [x] Export
-- [ ] Tests
-- [ ] CI/CD
-- [x] Bundle
-- [ ] SSR
 - [ ] Add clipboard to snippets
 - [ ] Add syntax tag to snippets
+- [x] Add browser support section
+- [ ] Add manifest.json (Android)
 - [ ] Fix native Android browser missing fixed anchor
-- [ ] Orientation-Lock is still glitchy (possible fix: scroll-to top and restores)
-- [x] Add Vue plugin
-- [x] Browser support section
+- [ ] Fix Orientation-Lock (Still glitchy; Possible fix: scroll to top and let address bar restore)
