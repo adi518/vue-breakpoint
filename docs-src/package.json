@@ -21,6 +21,7 @@
     "mobile-orientation": "^2.1.2",
     "prismjs": "^1.14.0",
     "vue": "^2.5.2",
+    "vue-analytics": "^5.12.2",
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1"
   },
