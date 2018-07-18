@@ -20,7 +20,7 @@ import debounce from 'lodash.debounce'
 import isNumber from 'lodash.isnumber'
 import kebabcase from 'lodash.kebabcase'
 
-import breakpoints from '@/assets/js/breakpoints'
+import breakpoints from '@/assets/javascript/breakpoints'
 
 export default {
   name: 'VBreakpoint',

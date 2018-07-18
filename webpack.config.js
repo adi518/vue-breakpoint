@@ -1,11 +1,13 @@
 // https://github.com/noamkfir/webpack/tree/webpack-4/template
 
+/* Webpack 4 + Babel 7 (Next) bundle configuration boilerplate for Vue components */
+
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // eslint-disable-line
 
 module.exports = {
-  entry: './docs-src/src/export/external.js',
+  entry: './src/index.js',
   output: {
     filename: 'index.js',
     path: path.join(__dirname, 'dist'),
@@ -14,7 +16,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      '@': path.join(__dirname, 'docs-src/src'),
+      '@': path.join(__dirname, 'src')
     }
   },
   module: {
@@ -36,6 +38,26 @@ module.exports = {
             'babel-plugin-transform-vue-jsx'
           ]
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'vue-style-loader',
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [
+                './src/sass',
+                './node_modules'
+              ]
+            }
+          }
+        ]
       }
     ]
   },

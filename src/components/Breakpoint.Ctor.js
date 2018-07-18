@@ -6,11 +6,10 @@ import VBreakpoint from './Breakpoint'
 
 import merge from 'lodash.merge'
 
-import breakpoints from '@/assets/js/breakpoints' // Bootstrap 4 (Stable)
+import breakpoints from '@/assets/javascript/breakpoints' // Bootstrap 4 (Stable)
 
 export class Ctor {
   constructor(Vue, config = {}) {
-
     const defaults = {
       breakpoints,
       debounceTime: 100,

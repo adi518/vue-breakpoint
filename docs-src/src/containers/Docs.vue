@@ -337,22 +337,20 @@ import pkg from '../../../package.json'
 
 import 'prismjs/themes/prism-okaidia.css'
 
-import VFragment from '@/components/Fragment'
-import VGitRibbon from '@/components-internal/GitRibbon'
-import VOrientationLock from '@/components-internal/OrientationLock'
-import { VBreakpoint, VShowAt, VHideAt, Model } from '@/export/local'
+import VGitRibbon from '@/components/GitRibbon'
+import VOrientationLock from '@/components/OrientationLock'
+import { VBreakpoint, VShowAt, VHideAt, Model } from '@/import'
 
 import Prism from 'prismjs'
 import capitalize from 'capitalize'
 import VMarkdown from 'vue-markdown'
-import { VhChromeFix } from '@/assets/js/VhChromeFix'
+import { VhChromeFix } from '@/assets/javascript/VhChromeFix'
 
 export default {
   name: 'VDocs',
   components: {
     VShowAt,
     VHideAt,
-    VFragment,
     VMarkdown,
     VGitRibbon,
     VBreakpoint,
