@@ -2,7 +2,6 @@
 
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // eslint-disable-line
 
 module.exports = {
@@ -34,16 +33,14 @@ module.exports = {
             }]
           ],
           plugins: [
-            'babel-plugin-transform-vue-jsx',
-            // 'babel-helper-vue-jsx-merge-props'
+            'babel-plugin-transform-vue-jsx'
           ]
         }
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new LodashModuleReplacementPlugin()
+    new VueLoaderPlugin()
   ],
   mode: 'production'
 }
