@@ -1,4 +1,4 @@
-- [x] Detect 1 root element and render without Fragment hack
+- [x] Detect 1 root element and render without Fragment hack by default
 - [x] Add HideAt component
 - [x] Add plugin
 - [x] Export
@@ -6,4 +6,3 @@
 - [ ] Tests
 - [ ] CI/CD
 - [ ] SSR Support
-
