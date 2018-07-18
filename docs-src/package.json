@@ -18,20 +18,11 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "capitalize": "^1.0.0",
-    "custom-event-polyfill": "^0.3.0",
-    "lodash.debounce": "^4.0.8",
-    "lodash.isnumber": "^3.0.3",
-    "lodash.kebabcase": "^4.1.1",
-    "lodash.merge": "^4.6.1",
-    "media-match": "^2.0.3",
     "mobile-orientation": "^2.1.2",
     "prismjs": "^1.14.0",
-    "vh-for-mobile": "^1.0.1",
     "vue": "^2.5.2",
     "vue-markdown": "^2.2.4",
-    "vue-router": "^3.0.1",
-    "vue-slider-component": "^2.7.1"
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
