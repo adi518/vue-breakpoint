@@ -28,6 +28,12 @@ export default {
           height: 3rem
         }
       }
+      if (this.model.isXlarge) {
+        return {
+          width: 3rem,
+          height: 3rem
+        }
+      }
     }
   }
 }

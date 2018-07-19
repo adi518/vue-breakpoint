@@ -162,22 +162,21 @@
         </div>
 
         <!-- API EVENTS PAYLOADS -->
-        <h4 class="mt-4">Payloads</h4>
+        <h4 class="mt-4">Payloads <code class="docs-code--inline">(state[Object])</code></h4>
         <h5 class="mt-3">Input and Change Events</h5>
         <p>
           Each of these events has the same payload. Besides breakpoint state,
           they also supply some auxiliary state, like <b>viewport</b>
-          and current <b>inner window dimensions</b> (which are also aliased for convenience).
-          <code class="docs-code--inline">(state[Object])</code>. Example:
+          and current <b>inner window dimensions</b> (which are also aliased for convenience). Example:
         </p>
         <div class="docs-markdown mt-2">
           <v-markdown>```{{markdowns.api.events.payload}}```</v-markdown>
         </div>
 
         <!-- API EVENT BREAKPOINT -->
-        <h5 class="mt-4">Breakpoint Event</h5>
+        <h5 class="mt-4">Breakpoint Event <code class="docs-code--inline">(state[String])</code></h5>
         <p>
-          This event has a fairly simple payload. <code class="docs-code--inline">(state[String])</code>. Example:
+          This event has a fairly simple payload. Example:
         </p>
         <div class="docs-markdown mt-2">
           <v-markdown>```{{markdowns.api.events.breakpoint.payload}}```</v-markdown>
@@ -200,7 +199,7 @@
           To customize the component to your specific needs, you can pass a new set of breakpoints
           by creating a "subclass" of the base constructor. Here's how.
         </p>
-        <h5>Note</h5>
+        <h5>🚧 Note</h5>
         <p class="docs-p">
           While it isn't required, it's a good idea to familiarize yourself with the <code class="docs-code--inline">Vue.extend()</code>
           API. See its documentation <a href="https://vuejs.org/v2/api/#Vue-extend" target="_blank">here</a>.
@@ -216,7 +215,7 @@
           start by creating a new component asset, e.g.: <code class="docs-code--inline">VBreakpoint.js</code>.
           Then, copy the following snippet and adjust configuration to your needs.
         </p>
-        <h5>Note</h5>
+        <h5>🚧 Note</h5>
         <p class="docs-p">
           For media-query syntax see
           <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">MDN</a>.
@@ -243,7 +242,7 @@
           It was introduced to React during a full re-write.
           You can learn about it from
           <a href="https://reactjs.org/docs/fragments.html" target="_blank">React docs</a>.
-          Vue is likely to follow suit in a similar manner. Perhaps with Vue 3.
+          Vue is likely to follow suit in a similar manner (probably with Vue 3).
           This feature request is currently discussed
           <a href="https://github.com/vuejs/vue/issues/7088" target="_blank">here</a>.
           Meanwhile, I decided to hack a Fragment component, which is also
