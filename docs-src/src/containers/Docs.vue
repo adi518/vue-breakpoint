@@ -173,35 +173,30 @@
         <!-- CONFIGURATION -->
         <h2 ref="config" class="docs-h2 mt-5">Configuration</h2>
         <p class="docs-p">
-          The default breakpoints are based on <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints">Bootstrap 4 (Stable)</a>
-          To customize the component to your specific needs, you can pass a new set of breakpoints
-          by creating a "subclass" of the base constructor. Here's how.
-        </p>
-        <h5>🚧 Note</h5>
-        <p class="docs-p">
-          While it isn't required, it's a good idea to familiarize yourself with the <code class="docs-code--inline">Vue.extend()</code>
-          API. See its documentation <a href="https://vuejs.org/v2/api/#Vue-extend" target="_blank">here</a>.
-        </p>
-        <h4>Bootstrap 4 Breakpoints</h4>
-        <div class="docs-markdown" v-html="markdowns.api.props.breakpoints"></div>
-        <h4 class="mt-4">Custom Breakpoints</h4>
-        <p class="docs-p">
-          You can define an <b>infinite</b> amount of breakpoints, it's completely up to you.
-          To create a "subclass" of <code class="docs-code--inline">V-Breakpoint</code>,
-          start by creating a new component asset, e.g.: <code class="docs-code--inline">VBreakpoint.js</code>.
-          Then, copy the following snippet and adjust configuration to your needs.
-        </p>
-        <h5>🚧 Note</h5>
-        <p class="docs-p">
-          For media-query syntax see
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">MDN</a>.
-        </p>
+          The default breakpoints are based on
+          <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints">Bootstrap 4 (Stable)</a>.
+          To customize the component you will have to use the descriptor Constructor.
+          Start off by creating a new component asset, e.g.:
+          <code class="docs-code--inline">VBreakpoint.js</code>.
+          Then, use the following snippet and adjust configuration to your needs.
+        </p>        
         <div class="docs-markdown" v-html="markdowns.examples.configuration.extend"></div>
         <h3 class="mt-4">Usage</h3>
         <p class="docs-p">
           Import <b>locally</b> and use as you would normally.
         </p>
         <div class="docs-markdown" v-html="markdowns.examples.configuration.script"></div>
+        <h4>Default Breakpoints (Bootstrap 4)</h4>
+        <div class="docs-markdown" v-html="markdowns.api.props.breakpoints"></div>
+        <h4 class="mt-4">Custom Breakpoints</h4>
+        <p class="docs-p">
+          You can define an <b>infinite</b> amount of breakpoints.
+          For media-query syntax see
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
+            target="_blank"
+          >MDN</a>.
+        </p>
 
         <!-- MULTIPLE ROOT ELEMENTS -->
         <h2 ref="fragment" class="mt-5">Experimental Features</h2>
@@ -324,7 +319,6 @@ export default {
     VOrientationLock
   },
   data: () => ({
-
     pkg,
 
     demo: {
@@ -518,8 +512,8 @@ html {
 }
 
 a {
-  color: $app-color-aliceblue;
   transition: color 0.5s;
+  color: $app-color-aliceblue;
 
   &:hover {
     color: $app-color-sandybrown;
@@ -537,10 +531,6 @@ p {
   font-weight: 300;
   font-size: 2.2rem;
   color: $app-color-aliceblue;
-
-  @include media-breakpoint-down(xs) {
-    font-size: 1.9rem;
-  }
 }
 
 .docs-h2 {
@@ -548,62 +538,9 @@ p {
 }
 /* Headings end */
 
-/* Layout */
+/* Common Layout */
 .docs {
   min-width: $app-min-width;
-}
-
-.docs-vue-logo {
-  width: 4rem;
-
-  @include media-breakpoint-down(xs) {
-    width: 3.7rem;
-  }
-}
-
-.docs-tagline {
-  font-size: 1.5rem;
-  margin-top: 0;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  text-align: center;
-  color: $app-color-lightslategrey;
-
-  @include media-breakpoint-down(xs) {
-    font-size: 1.2rem;
-  }
-}
-
-.docs-version {
-  top: 1rem;
-  left: 1rem;
-  position: absolute;
-  color: lighten($app-color-pickled-bluewood, 16%);
-}
-
-.docs-credit {
-  color: $app-color-lightslategrey;
-
-  @include media-breakpoint-down(xs) {
-    font-size: 0.9rem;
-  }
-}
-
-.docs-fixed-anchor {
-  left: 0;
-  width: 100%;
-  bottom: 0.8rem;
-  font-size: 1.2rem;
-  position: absolute;
-  text-align: center;
-  color: $app-color-aliceblue;
-}
-
-.docs-emoji {
-  animation-duration: 2s;
-  animation-name: docs-nod-yes;
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50% -0.5rem;
 }
 
 .docs-container {
@@ -624,6 +561,46 @@ p {
   flex-direction: column;
   justify-content: center;
   color: $app-color-ocean-green;
+}
+
+.docs-version {
+  top: 1rem;
+  left: 1rem;
+  position: absolute;
+  color: lighten($app-color-pickled-bluewood, 16%);
+}
+
+.docs-tagline {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: center;
+  color: $app-color-lightslategrey;
+}
+
+.docs-fixed-anchor {
+  left: 0;
+  width: 100%;
+  bottom: 0.8rem;
+  font-size: 1.2rem;
+  position: absolute;
+  text-align: center;
+  color: $app-color-aliceblue;
+}
+
+.docs-credit {
+  color: $app-color-lightslategrey;
+}
+/* Common Layout end */
+
+/* Layout */
+.docs-vue-logo {
+  width: 4rem;
+
+  @include media-breakpoint-down(xs) {
+    width: 3.7rem;
+  }
 }
 
 .docs-demo {
@@ -667,6 +644,13 @@ p {
       color: $app-color-radical-red;
     }
   }
+}
+
+.docs-emoji {
+  animation-duration: 2s;
+  animation-name: docs-nod-yes;
+  animation-fill-mode: forwards;
+  transform-origin: 50% 50% -0.5rem;
 }
 /* Layout end */
 

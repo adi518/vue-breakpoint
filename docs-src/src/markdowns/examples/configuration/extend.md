@@ -6,6 +6,8 @@ import Vue from 'vue'
 import { Ctor } from 'vue-breakpoint-component'
 
 const config = {
+  debounceTime: 50,
+  experimental: false,
   breakpoints: {
     small: '(min-width: 576px)',
     medium: '(min-width: 768px)',
