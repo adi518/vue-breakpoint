@@ -1,4 +1,4 @@
-module.exports = `html
+```html
 <template>
   <v-breakpoint @small="onSmall"></v-breakpoint>
   <v-breakpoint @medium="onMedium"></v-breakpoint>
@@ -7,4 +7,4 @@ module.exports = `html
   <v-breakpoint @no-match="onNoMatch"></v-breakpoint> // Bootstrap 4 "xs"
   ...
 </template>
-`
+```

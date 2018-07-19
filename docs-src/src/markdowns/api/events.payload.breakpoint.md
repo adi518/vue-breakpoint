@@ -1,3 +1,3 @@
-module.exports = `js
+```js
 'small' | 'medium' | 'large' | 'xlarge' ...
-`
+```

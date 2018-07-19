@@ -68,9 +68,9 @@
 
         <!-- INSTALL -->
         <h2 class="docs-h2 mt-3 mb-3">Install</h2>
-        <div class="docs-markdown docs-markdown--one-liner docs-clearfix mt-2">
-          <v-markdown>```$ npm install --save vue-breakpoint-component```</v-markdown>
-        </div>
+        <div
+          class="docs-markdown docs-clearfix mt-2"
+          v-html="markdowns.install"></div>
 
         <!-- USAGE -->
         <h2 class="docs-h2 mt-4">Usage</h2>
@@ -79,13 +79,9 @@
           register with your component:
         </p>
         <h4 class="mt-3">Script</h4>
-        <div class="docs-markdown">
-          <v-markdown>```{{markdowns.examples.default.script}}```</v-markdown>
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.default.script"></div>
         <h4 class="mt-3">Template</h4>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.default.template}}```</v-markdown>
-        </div>        
+        <div class="docs-markdown" v-html="markdowns.examples.default.template"></div>        
         <h4 class="mt-3">Global Install</h4>
         <p class="docs-p">
           You can also choose to install the component globally. This will install three
@@ -93,9 +89,7 @@
           <code class="docs-code--inline">v-show-at</code>,
           <code class="docs-code--inline">v-hide-at</code>.
         </p>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.default.install}}```</v-markdown>
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.default.install"></div>
 
         <!-- USAGE (SHOW-AT) -->
         <h2 class="docs-h2 mt-5">Show-At/Hide-At Usage</h2>
@@ -104,13 +98,9 @@
           and register with your component:
         </p>
         <h4 class="mt-3">Script</h4>
-        <div class="docs-markdown">
-          <v-markdown>```{{markdowns.examples.showAt.script}}```</v-markdown>
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.showAt.script"></div>
         <h4 class="mt-3">Template</h4>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.showAt.template}}```</v-markdown>
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.showAt.template"></div>
         <h3 class="mt-4">Multiple Root Elements (Experimental)</h3>
         <p class="docs-p">
           Notice that you can also show/hide <b>multiple</b> elements using an experimental
@@ -122,9 +112,7 @@
           To unlock this feature, you will have to <a class="docs-c-pointer" @click="scrollTo('config')" tabindex="">configure</a>
           the component with <code class="docs-code--inline">experimental</code> flag.
         </p>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.showAt.multiple}}```</v-markdown>
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.showAt.multiple"></div>
 
         <!-- V-MODEL -->
         <h2 class="docs-h2 mt-5">V-Model</h2>
@@ -133,19 +121,13 @@
           using a <code class="docs-code--inline">v-model</code>.
         </p>
         <h4>Script</h4>
-        <div class="docs-markdown">
-          <v-markdown>```{{markdowns.examples.vModel.script}}```</v-markdown>        
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.vModel.script"></div>
         <h4 class="mt-3">Template</h4>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.vModel.template}}```</v-markdown>        
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.vModel.template"></div>
 
         <!-- API PROPS -->
         <h2 class="docs-h2 mt-5">API Props</h2>
-        <div class="docs-markdown">
-          <v-markdown>```{{markdowns.api.props.meta}}```</v-markdown>
-        </div>
+        <div class="docs-markdown" v-html="markdowns.api.props.meta"></div>
 
         <!-- API EVENTS -->
         <h2 class="docs-h2 mt-5">API Events</h2>
@@ -157,9 +139,9 @@
           it's fairly similar to <code class="docs-code--inline">change</code> event.
           Each of these events benefit different composition styles.
         </p>
-        <div class="docs-markdown docs-markdown--is-one-liner mt-2">
-          <v-markdown>```{{markdowns.examples.events.payload}}```</v-markdown>
-        </div>
+        <div
+          class="docs-markdown docs-markdown--is-one-liner mt-2"
+          v-html="markdowns.examples.events.payload"></div>
 
         <!-- API EVENTS PAYLOADS -->
         <h4 class="mt-4">Payloads <code class="docs-code--inline">(state[Object])</code></h4>
@@ -169,28 +151,24 @@
           they also supply some auxiliary state, like <b>viewport</b>
           and current <b>inner window dimensions</b> (which are also aliased for convenience). Example:
         </p>
-        <div class="docs-markdown mt-2">
-          <v-markdown>```{{markdowns.api.events.payload}}```</v-markdown>
-        </div>
+        <div class="docs-markdown mt-2" v-html="markdowns.api.events.payload"></div>
 
         <!-- API EVENT BREAKPOINT -->
         <h5 class="mt-4">Breakpoint Event <code class="docs-code--inline">(state[String])</code></h5>
         <p>
           This event has a fairly simple payload. Example:
         </p>
-        <div class="docs-markdown mt-2">
-          <v-markdown>```{{markdowns.api.events.breakpoint.payload}}```</v-markdown>
-        </div>
+        <div class="docs-markdown mt-2" v-html="markdowns.api.events.breakpoint.payload"></div>
 
         <!-- API EVENT BREAKPOINT-NAMESPACE EVENT -->
         <h5 class="mt-4">Breakpoint-Namespace Event</h5>
         <p>
           Besides those events, the component also emits a breakpoint-namespace event
           per breakpoint defined. Thus, you can do something like:
-        </p>        
-        <div class="docs-markdown docs-markdown--is-one-liner mt-2">
-          <v-markdown>```{{markdowns.examples.events.breakpoint}}```</v-markdown>
-        </div>
+        </p>
+        <div
+          class="docs-markdown docs-markdown--is-one-liner mt-2"
+          v-html="markdowns.examples.events.breakpoint"></div>
 
         <!-- CONFIGURATION -->
         <h2 ref="config" class="docs-h2 mt-5">Configuration</h2>
@@ -205,9 +183,7 @@
           API. See its documentation <a href="https://vuejs.org/v2/api/#Vue-extend" target="_blank">here</a>.
         </p>
         <h4>Bootstrap 4 Breakpoints</h4>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.api.props.breakpoints}}```</v-markdown>        
-        </div>
+        <div class="docs-markdown" v-html="markdowns.api.props.breakpoints"></div>
         <h4 class="mt-4">Custom Breakpoints</h4>
         <p class="docs-p">
           You can define an <b>infinite</b> amount of breakpoints, it's completely up to you.
@@ -220,16 +196,12 @@
           For media-query syntax see
           <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">MDN</a>.
         </p>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.configuration.extend}}```</v-markdown>        
-        </div>        
+        <div class="docs-markdown" v-html="markdowns.examples.configuration.extend"></div>
         <h3 class="mt-4">Usage</h3>
         <p class="docs-p">
           Import <b>locally</b> and use as you would normally.
         </p>
-        <div class="docs-markdown">
-          <v-markdown emoji>```{{markdowns.examples.configuration.script}}```</v-markdown>        
-        </div>
+        <div class="docs-markdown" v-html="markdowns.examples.configuration.script"></div>
 
         <!-- MULTIPLE ROOT ELEMENTS -->
         <h2 ref="fragment" class="mt-5">Experimental Features</h2>
@@ -334,15 +306,12 @@
 
 import pkg from '../../../package.json'
 
-import 'prismjs/themes/prism-okaidia.css'
-
 import VGitRibbon from '@/components/GitRibbon'
 import VOrientationLock from '@/components/OrientationLock'
 import { VBreakpoint, VShowAt, VHideAt, Model } from '@/import'
 
 import Prism from 'prismjs'
 import capitalize from 'capitalize'
-import VMarkdown from 'vue-markdown'
 import { VhChromeFix } from '@/assets/javascript/VhChromeFix'
 
 export default {
@@ -350,7 +319,6 @@ export default {
   components: {
     VShowAt,
     VHideAt,
-    VMarkdown,
     VGitRibbon,
     VBreakpoint,
     VOrientationLock
@@ -369,40 +337,41 @@ export default {
     },
 
     markdowns: {
+      install: require('@/markdowns/install.md'),
       examples: {
         default: {
-          script: require('@/markdowns/examples/default/script.js'),
-          install: require('@/markdowns/examples/default/install.js'),
-          template: require('@/markdowns/examples/default/template.js')
+          script: require('@/markdowns/examples/default/script.md'),
+          install: require('@/markdowns/examples/default/install.md'),
+          template: require('@/markdowns/examples/default/template.md')
         },
         showAt: {
-          script: require('@/markdowns/examples/show-at/script.js'),
-          template: require('@/markdowns/examples/show-at/template.js'),
-          multiple: require('@/markdowns/examples/show-at/multiple.template.js')
+          script: require('@/markdowns/examples/show-at/script.md'),
+          template: require('@/markdowns/examples/show-at/template.md'),
+          multiple: require('@/markdowns/examples/show-at/multiple.template.md')
         },
         vModel: {
-          script: require('@/markdowns/examples/v-model/script.js'),
-          template: require('@/markdowns/examples/v-model/template.js')
+          script: require('@/markdowns/examples/v-model/script.md'),
+          template: require('@/markdowns/examples/v-model/template.md')
         },
         events: {
-          basic: require('@/markdowns/examples/events/basic.js'),
-          breakpoint: require('@/markdowns/examples/events/breakpoint.js')
+          basic: require('@/markdowns/examples/events/basic.md'),
+          breakpoint: require('@/markdowns/examples/events/breakpoint.md')
         },
         configuration: {
-          extend: require('@/markdowns/examples/configuration/extend.js'),
-          script: require('@/markdowns/examples/configuration/script.js')
+          extend: require('@/markdowns/examples/configuration/extend.md'),
+          script: require('@/markdowns/examples/configuration/script.md')
         }
       },
       api: {
         props: {
-          meta: require('@/markdowns/api/props.js'),
-          breakpoints: require('@/markdowns/api/props.breakpoints.js')
+          meta: require('@/markdowns/api/props.md'),
+          breakpoints: require('@/markdowns/api/props.breakpoints.md')
         },
         events: {
-          meta: require('@/markdowns/api/events.js'),
-          payload: require('@/markdowns/api/events.payload.js'),
+          meta: require('@/markdowns/api/events.md'),
+          payload: require('@/markdowns/api/events.payload.md'),
           breakpoint: {
-            payload: require('@/markdowns/api/events.payload.breakpoint.js')
+            payload: require('@/markdowns/api/events.payload.breakpoint.md')
           }
         }
       }
@@ -479,7 +448,7 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import '~@/assets/sass/colors';
+@import '~@/sass/colors';
 
 $app-min-width: 320px;
 
@@ -488,27 +457,66 @@ $spacer: 1rem;
 $spacers: ();
 $spacers: map-merge((20: ($spacer * 2)), $spacers);
 
-$code-font-size: 100%;
+$body-bg: $app-color-mirage;
+$body-color: $app-color-white;
 $pre-color: $app-color-aliceblue;
+$link-color: rgba($app-color-white, 0.5);
+
+// $code-font-size: 100%;
+
+// Required
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+// Optional
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/images';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities';
+
+pre,
+code,
+kbd,
+samp {
+  font-size: 1.1rem;
+}
 /* Bootstrap end */
 
-@import '~@/assets/sass/bootstrap';
-
 /* Prismjs */
-.docs-markdown {
-  :not(pre) > code[class*='language-'],
-  pre[class*='language-'] {
-    background: transparent;
-  }
+@import 'prismjs/themes/prism-okaidia.css';
 
+.docs {
   pre[class*='language-'] {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    background: $app-color-mirage;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    background: none;
   }
 }
 /* Prismjs end */
 
 /* Tags */
+html {
+  @include media-breakpoint-down(xs) {
+    font-size: 90%;
+  }
+}
+
 a {
   color: $app-color-aliceblue;
   transition: color 0.5s;
@@ -516,6 +524,11 @@ a {
   &:hover {
     color: $app-color-sandybrown;
   }
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 /* Tags end */
 
@@ -659,27 +672,7 @@ a {
 
 /* Markdown */
 .docs-markdown {
-  font-size: 1.1rem;
-  background-color: $app-color-mirage;
-
-  p {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  pre {
-    white-space: pre-wrap;
-  }
-}
-
-.docs-markdown--one-liner {
-  p {
-    padding: 1em;
-  }
-
-  code {
-    color: $app-color-aliceblue;
-  }
+  margin-bottom: 2rem;
 }
 
 .docs-code--inline {

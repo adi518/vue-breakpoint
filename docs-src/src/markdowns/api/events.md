@@ -1,4 +1,4 @@
-module.exports = `md
+```md
 @INPUT
 * Trigger: Breakpoint match
 * Payload: State[Object]
@@ -10,4 +10,4 @@ module.exports = `md
 @<BREAKPOINT-NAMEPSPACE> = breakpoint[String] // "small"
 // E.g.:
 // @small, @medium, @large...
-`
+```

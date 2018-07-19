@@ -1,4 +1,4 @@
-module.exports = `js
+```js
 // Local imports
 import { VShowAt, VHideAt, VBreakpoint, Model } from './VBreakpoint'
 
@@ -12,4 +12,4 @@ export default {
     model: new Model()
   })
 }
-`
+```

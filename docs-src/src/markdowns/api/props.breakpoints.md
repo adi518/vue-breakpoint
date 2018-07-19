@@ -1,4 +1,4 @@
-module.exports = `js
+```js
 // Extra small devices (portrait phones, less than 576px)
 // No media query for "xs" since this is the default in Bootstrap
 
@@ -13,4 +13,4 @@ module.exports = `js
 
 // Extra large devices (large desktops, 1200px and up)
 // @media (min-width: 1200px) { ... }
-`
+```

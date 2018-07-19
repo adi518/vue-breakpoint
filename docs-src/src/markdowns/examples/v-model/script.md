@@ -1,4 +1,4 @@
-module.exports = `js
+```js
 import { VBreakpoint, Model } from 'vue-breakpoint-component'
 
 export default {
@@ -37,4 +37,4 @@ export default {
     }
   }
 }
-`
+```

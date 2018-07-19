@@ -1,4 +1,4 @@
-module.exports = `js
+```js
 // <project-root>/src/components/VBreakpoint.js
 
 import Vue from 'vue'
@@ -22,4 +22,4 @@ export const VHideAt = components.VHideAt
 export const VBreakpoint = components.VBreakpoint
 
 export default VBreakpoint
-`
+```

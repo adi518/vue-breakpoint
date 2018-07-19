@@ -1,4 +1,4 @@
-module.exports = `html
+```html
 <v-breakpoint>
   <div slot-scope="api">
     <span v-if="api.isSmall"  style="font-size: 2rem">   😸  </span>
@@ -8,4 +8,4 @@ module.exports = `html
     <span v-if="api.noMatch"  style="font-size: 10rem">  😸  </span>
   </div>
 </v-breakpoint>
-`
+```

@@ -1,4 +1,4 @@
-module.exports = `js
+```js
 {
   breakpoint: "small"
   isSmall: true
@@ -14,4 +14,4 @@ module.exports = `js
   viewportHeight: 1200
   viewportWidth: 1920
 }
-`
+```

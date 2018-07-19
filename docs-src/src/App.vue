@@ -11,8 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-/* Meta-variables */
-@import '~@/assets/sass/colors';
+@import '~@/sass/colors';
 
 html {
   // Fix draw of User-agent background (white)
@@ -21,15 +20,10 @@ html {
 
 body {
   margin: 0;
-  background-color: transparent !important; // Reset Bootstrap Reboot
-}
-
-p {
-  font-size: 1.1rem;
 }
 
 #app {
-  color: darken(#35495e, 16%);
+  color: darken($app-color-pickled-bluewood, 16%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
