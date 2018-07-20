@@ -144,8 +144,8 @@
           v-html="markdowns.examples.events.payload"></div>
 
         <!-- API EVENTS PAYLOADS -->
-        <h4 class="mt-4">Payloads <code class="docs-code--inline">(state[Object])</code></h4>
-        <h5 class="mt-3">Input and Change Events</h5>
+        <h4 class="mt-4">Payloads</h4>
+        <h5 class="mt-3">Input and Change Events <code class="docs-code--inline">(state[Object])</code></h5>
         <p>
           Each of these events has the same payload. Besides breakpoint state,
           they also supply some auxiliary state, like <b>viewport</b>
@@ -507,7 +507,7 @@ samp {
 /* Tags */
 html {
   @include media-breakpoint-down(xs) {
-    font-size: 90%;
+    font-size: 80%;
   }
 }
 
