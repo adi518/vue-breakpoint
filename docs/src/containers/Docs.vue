@@ -14,6 +14,7 @@
 
         <!-- DEMO -->
         <v-breakpoint v-model="demo.model"></v-breakpoint>
+        
         <!-- DEVELOPMENT -->
         <!-- <template v-if="flags.development">
           <v-hide-at large>
@@ -21,7 +22,8 @@
             <span style="font-size: 2rem">😿</span>
           </v-hide-at>
         </template> -->
-        <!-- DEVELOPMENT end -->        
+        <!-- DEVELOPMENT end -->
+
         <div class="text-center">
           <div class="docs-demo">
             ( {{ normalize(demo.model.breakpoint) }} )
@@ -441,12 +443,6 @@ p {
       background-color: $app-color-gray;
     }
   }
-}
-
-.docs-code--inline {
-  padding: 0.2rem 0.4rem;
-  color: $app-color-spring-wood;
-  background-color: $app-color-gray;
 }
 /* Markdown end */
 
