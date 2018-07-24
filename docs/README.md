@@ -1,4 +1,4 @@
-# demo
+# vue-breakpoint-component-docs
 
 > A Vue.js project
 

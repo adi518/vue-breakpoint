@@ -7,7 +7,7 @@
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
         <img class="docs-vue-logo" src="../assets/images/logo-gradient.png">
-        <h1 class="docs-h1 mt-1">V-Breakpoint</h1>
+        <h1 class="docs-h1 mt-1">Vue-Breakpoint</h1>
         <p class="docs-tagline">
           A render-less component for<br>composing CSS breakpoint state.
         </p>
@@ -37,9 +37,7 @@
             data-icon="octicon-star"
             data-show-count="true"
             aria-label="Star adi518/vue-breakpoint-component on GitHub"
-          >
-            Star
-          </a>
+          >Star</a>
         </p>
         <p class="docs-credit mt-3">
           Made with ❤️ by
@@ -47,9 +45,7 @@
             class="docs-anchor--author"
             href="https://github.com/adi518"
             target="_blank"
-          >
-            Adi Sahar
-          </a>
+          >Adi Sahar</a>
         </p>
       </div>
       <!-- FIXED ANCHOR -->
@@ -57,219 +53,18 @@
         class="docs-fixed-anchor docs-c-pointer"
         @click="scrollTo('docs')"
         tabindex=""
-      >
-        Install, Examples & Documentation
-      </a>
+      >Install, Examples & Documentation</a>
     </div>
 
     <!-- SECOND PAGE -->
     <div ref="docs" class="docs-container docs-min-100vh pb-5 vh-for-mobile">
-      <div class="container docs-clearfix">
-
-        <!-- INSTALL -->
-        <h2 class="docs-h2 mt-3 mb-3">Install</h2>
-        <div
-          class="docs-markdown docs-clearfix mt-2"
-          v-html="markdowns.install"></div>
-
-        <!-- USAGE -->
-        <h2 class="docs-h2 mt-4">Usage</h2>
-        <p>
-          To use the component in your templates, simply import and
-          register with your component:
-        </p>
-        <h4 class="mt-3">Script</h4>
-        <div class="docs-markdown" v-html="markdowns.examples.default.script"></div>
-        <h4 class="mt-3">Template</h4>
-        <div class="docs-markdown" v-html="markdowns.examples.default.template"></div>        
-        <h4 class="mt-3">Global Install</h4>
-        <p class="docs-p">
-          You can also choose to install the component globally. This will install three
-          components <code class="docs-code--inline">v-breakpoint</code>,
-          <code class="docs-code--inline">v-show-at</code>,
-          <code class="docs-code--inline">v-hide-at</code>.
-        </p>
-        <div class="docs-markdown" v-html="markdowns.examples.default.install"></div>
-
-        <!-- USAGE (SHOW-AT) -->
-        <h2 class="docs-h2 mt-5">Show-At/Hide-At Usage</h2>
-        <p>
-          To use the component in your templates, simply import
-          and register with your component:
-        </p>
-        <h4 class="mt-3">Script</h4>
-        <div class="docs-markdown" v-html="markdowns.examples.showAt.script"></div>
-        <h4 class="mt-3">Template</h4>
-        <div class="docs-markdown" v-html="markdowns.examples.showAt.template"></div>
-        <h3 class="mt-4">Multiple Root Elements (Experimental)</h3>
-        <p class="docs-p">
-          Notice that you can also show/hide <b>multiple</b> elements using an experimental
-          Fragment-like component hack, described
-          <a class="docs-c-pointer" @click="scrollTo('fragment')" tabindex="">here</a>.
-        </p>
-        <h5>🚧 Note</h5>
-        <p class="docs-p">
-          To unlock this feature, you will have to <a class="docs-c-pointer" @click="scrollTo('config')" tabindex="">configure</a>
-          the component with <code class="docs-code--inline">experimental</code> flag.
-        </p>
-        <div class="docs-markdown" v-html="markdowns.examples.showAt.multiple"></div>
-
-        <!-- V-MODEL -->
-        <h2 class="docs-h2 mt-5">V-Model</h2>
-        <p>
-          You can also take leverage of the breakpoint state without composing inside it,
-          using a <code class="docs-code--inline">v-model</code>.
-        </p>
-        <h4>Script</h4>
-        <div class="docs-markdown" v-html="markdowns.examples.vModel.script"></div>
-        <h4 class="mt-3">Template</h4>
-        <div class="docs-markdown" v-html="markdowns.examples.vModel.template"></div>
-
-        <!-- API PROPS -->
-        <h2 class="docs-h2 mt-5">API Props</h2>
-        <div class="docs-markdown" v-html="markdowns.api.props.meta"></div>
-
-        <!-- API EVENTS -->
-        <h2 class="docs-h2 mt-5">API Events</h2>
-        <p>
-          The component emits two core events, <code class="docs-code--inline">input</code>
-          and <code class="docs-code--inline">change</code>.
-          The <code class="docs-code--inline">input</code> event is required for
-          <code class="docs-code--inline">v-model</code> usage, but other than that,
-          it's fairly similar to <code class="docs-code--inline">change</code> event.
-          Each of these events benefit different composition styles.
-        </p>
-        <div
-          class="docs-markdown docs-markdown--is-one-liner mt-2"
-          v-html="markdowns.examples.events.payload"></div>
-
-        <!-- API EVENTS PAYLOADS -->
-        <h4 class="mt-4">Payloads</h4>
-        <h5 class="mt-3">Input and Change Events <code class="docs-code--inline">(state[Object])</code></h5>
-        <p>
-          Each of these events has the same payload. Besides breakpoint state,
-          they also supply some auxiliary state, like <b>viewport</b>
-          and current <b>inner window dimensions</b> (which are also aliased for convenience). Example:
-        </p>
-        <div class="docs-markdown mt-2" v-html="markdowns.api.events.payload"></div>
-
-        <!-- API EVENT BREAKPOINT -->
-        <h5 class="mt-4">Breakpoint Event <code class="docs-code--inline">(state[String])</code></h5>
-        <p>
-          This event has a fairly simple payload. Example:
-        </p>
-        <div class="docs-markdown mt-2" v-html="markdowns.api.events.breakpoint.payload"></div>
-
-        <!-- API EVENT BREAKPOINT-NAMESPACE EVENT -->
-        <h5 class="mt-4">Breakpoint-Namespace Event</h5>
-        <p>
-          Besides those events, the component also emits a breakpoint-namespace event
-          per breakpoint defined. Thus, you can do something like:
-        </p>
-        <div
-          class="docs-markdown docs-markdown--is-one-liner mt-2"
-          v-html="markdowns.examples.events.breakpoint"></div>
-
-        <!-- CONFIGURATION -->
-        <h2 ref="config" class="docs-h2 mt-5">Configuration</h2>
-        <p class="docs-p">
-          The default breakpoints are based on
-          <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints">Bootstrap 4 (Stable)</a>.
-          To customize the component you will have to use the descriptor Constructor.
-          Start off by creating a new component asset, e.g.:
-          <code class="docs-code--inline">VBreakpoint.js</code>.
-          Then, use the following snippet and adjust configuration to your needs.
-        </p>        
-        <div class="docs-markdown" v-html="markdowns.examples.configuration.extend"></div>
-        <h3 class="mt-4">Usage</h3>
-        <p class="docs-p">
-          Import <b>locally</b> and use as you would normally.
-        </p>
-        <div class="docs-markdown" v-html="markdowns.examples.configuration.script"></div>
-        <h4>Default Breakpoints (Bootstrap 4)</h4>
-        <div class="docs-markdown" v-html="markdowns.api.props.breakpoints"></div>
-        <h4 class="mt-4">Custom Breakpoints</h4>
-        <p class="docs-p">
-          You can define an <b>infinite</b> amount of breakpoints.
-          For media-query syntax see
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
-            target="_blank"
-          >MDN</a>.
-        </p>
-
-        <!-- MULTIPLE ROOT ELEMENTS -->
-        <h2 ref="fragment" class="mt-5">Experimental Features</h2>
-        <h5 class="mt-3">Wrapping Multiple Root Elements (Fragment Hack)</h5>
-        <p class="docs-p">
-          As you may know, Vue does not support a stateful
-          <code class="docs-code--inline">Fragment</code> component, which allows
-          you to render a component with multiple root elements, overruling the
-          "single root element" principle dictated at the outset of component-based architecture.
-          It was introduced to React during a full re-write.
-          You can learn about it from
-          <a href="https://reactjs.org/docs/fragments.html" target="_blank">React docs</a>.
-          Vue is likely to follow suit in a similar manner (probably with Vue 3).
-          This feature request is currently discussed
-          <a href="https://github.com/vuejs/vue/issues/7088" target="_blank">here</a>.
-          Meanwhile, I decided to hack a Fragment component, which is also
-          incorporated into this component, thanks to Github user
-          <a href="https://github.com/y-nk" target="_blank">y-nk</a>.
-          I elaborated his
-          <a href="https://github.com/y-nk/vue-fragments" target="_blank">solution</a>
-          so it can also show/hide content
-          (using directives like <code class="docs-code--inline">v-show</code>
-          or <code class="docs-code--inline">v-if</code> won't work here).          
-        </p>
-        <h5>🚧 Note</h5>
-        <p class="docs-p">
-          Since this is a hack, it is expected to be more of an experimental feature
-          than a fully supported one.
-        </p>
-
-        <!-- BROWSER SUPPORT -->
-        <h2 class="mt-5">Browser Support</h2>
-        <p class="docs-p">
-          This component relies on
-          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia">matchMedia API</a>
-          (IE 10+). For older browsers and IE, you will need a <a href="https://github.com/weblinc/media-match" target="_blank">polyfill</a>.
-        </p>
-
-        <!-- LINKS -->
-        <h2 class="mt-5">Related Links</h2>
-        <ul class="docs-p">          
-          <li>
-            <a href="http://dpi.lv/" target="_blank">dpi.lv</a>
-          </li>
-          <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries" target="_blank">Using media queries</a>
-          </li>
-          <li>
-            <a href="https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints" target="_blank">Bootstrap 4 responsive breakpoints</a>
-          </li>
-          <li>
-            <a href="https://zellwk.com/blog/responsive-grid-system/" target="_blank">How to build a responsive grid system</a>
-          </li>
-        </ul>        
-
-        <!-- SUPPORT -->
-        <h2 class="mt-5">Support</h2>
-        <p class="docs-p">
-          Please open an
-          <a :href="pkg.bugs.url" target="_blank">issue</a> for support.
-        </p>
-
-        <!-- LICENSE -->
-        <h2 class="mt-5">License</h2>
-        <p class="docs-p">
-          Copyright (c) 2018 <a href="https://github.com/adi518" target="_blank">{{pkg.author}}</a> by <a href="https://opensource.org/licenses/MIT" target="_blank">{{pkg.license}}</a>
-        </p>
-
+      <div class="container docs-clearfix" :class="demo.model.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
+        <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
     </div>
 
     <!-- VERSION -->
-    <div class="docs-version">{{pkg.version}}</div>
+    <div class="docs-version">{{ pkg.version }}</div>
 
     <!-- GIT RIBBON -->
     <v-git-ribbon
@@ -309,6 +104,8 @@ import Prism from 'prismjs'
 import capitalize from 'capitalize'
 import { VhChromeFix } from '@/assets/javascript/VhChromeFix'
 
+import readme from '@repo/README.md'
+
 export default {
   name: 'VDocs',
   components: {
@@ -331,44 +128,7 @@ export default {
     },
 
     markdowns: {
-      install: require('@/markdowns/install.md'),
-      examples: {
-        default: {
-          script: require('@/markdowns/examples/default/script.md'),
-          install: require('@/markdowns/examples/default/install.md'),
-          template: require('@/markdowns/examples/default/template.md')
-        },
-        showAt: {
-          script: require('@/markdowns/examples/show-at/script.md'),
-          template: require('@/markdowns/examples/show-at/template.md'),
-          multiple: require('@/markdowns/examples/show-at/multiple.template.md')
-        },
-        vModel: {
-          script: require('@/markdowns/examples/v-model/script.md'),
-          template: require('@/markdowns/examples/v-model/template.md')
-        },
-        events: {
-          basic: require('@/markdowns/examples/events/basic.md'),
-          breakpoint: require('@/markdowns/examples/events/breakpoint.md')
-        },
-        configuration: {
-          extend: require('@/markdowns/examples/configuration/extend.md'),
-          script: require('@/markdowns/examples/configuration/script.md')
-        }
-      },
-      api: {
-        props: {
-          meta: require('@/markdowns/api/props.md'),
-          breakpoints: require('@/markdowns/api/props.breakpoints.md')
-        },
-        events: {
-          meta: require('@/markdowns/api/events.md'),
-          payload: require('@/markdowns/api/events.payload.md'),
-          breakpoint: {
-            payload: require('@/markdowns/api/events.payload.breakpoint.md')
-          }
-        }
-      }
+      readme
     }
   }),
   created() {
@@ -394,7 +154,7 @@ export default {
         case 'xlarge':
           return '7rem'
         default:
-          return '3rem' // Bootstrap 4 "xs"
+          return '3rem' // Aka Bootstrap 4 "xs"
       }
     }
   },
@@ -491,6 +251,7 @@ samp {
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
+    margin-bottom: 1.5rem;
     background: $app-color-mirage;
   }
 
@@ -632,7 +393,24 @@ p {
   }
 }
 
-.docs-p {
+.docs-emoji {
+  animation-duration: 2s;
+  animation-name: docs-nod-yes;
+  animation-fill-mode: forwards;
+  transform-origin: 50% 50% -0.5rem;
+}
+/* Layout end */
+
+/* Markdown */
+.docs-markdown {
+  h2 {
+    font-size: 1.5rem; // h4
+    margin-top: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem; // h5
+  }
+
   a {
     padding-left: 0.2rem;
     padding-right: 0.2rem;
@@ -644,19 +422,20 @@ p {
       color: $app-color-radical-red;
     }
   }
-}
 
-.docs-emoji {
-  animation-duration: 2s;
-  animation-name: docs-nod-yes;
-  animation-fill-mode: forwards;
-  transform-origin: 50% 50% -0.5rem;
-}
-/* Layout end */
-
-/* Markdown */
-.docs-markdown {
-  margin-bottom: 2rem;
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    code {
+      padding: 0.2rem 0.4rem;
+      color: $app-color-spring-wood;
+      background-color: $app-color-gray;
+    }
+  }
 }
 
 .docs-code--inline {
