@@ -216,8 +216,6 @@ $body-color: $app-color-white;
 $pre-color: $app-color-aliceblue;
 $link-color: rgba($app-color-white, 0.5);
 
-// $code-font-size: 100%;
-
 // Required
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
