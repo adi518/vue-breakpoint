@@ -407,8 +407,13 @@ p {
     font-size: 1.5rem; // h4
     margin-top: 1.5rem;
   }
+
   h3 {
     font-size: 1.25rem; // h5
+  }
+
+  h4 {
+    font-size: 1.15rem;
   }
 
   a {
