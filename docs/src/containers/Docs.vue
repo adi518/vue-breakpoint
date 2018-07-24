@@ -6,8 +6,8 @@
 
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
-        <img class="docs-vue-logo" src="../assets/images/logo-gradient.png">
-        <h1 class="docs-h1 mt-1">Vue-Breakpoint</h1>
+        <img class="docs-vue-logo mb-1" src="../assets/images/logo-gradient.png">
+        <h1 class="docs-h1">Vue-Breakpoint</h1>
         <p class="docs-tagline">
           A render-less component for<br>composing CSS breakpoint state.
         </p>
@@ -24,24 +24,22 @@
         </template> -->
         <!-- DEVELOPMENT end -->
 
-        <div class="text-center">
-          <div class="docs-demo">
-            ( {{ normalize(demo.model.breakpoint) }} )
-          </div>
-          <div class="docs-emoji mt-3" ref="emoji" @mouseover="animateEmoji">
-            <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
-          </div>
-        </div>        
-        <p class="mt-20">
+        <div class="docs-state text-center mb-3">
+          ( {{ normalize(demo.model.breakpoint) }} )
+        </div>
+        <div class="docs-emoji mb-20" ref="emoji" @mouseover="animateEmoji">
+          <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
+        </div>
+        <div class="mb-20">
           <a
-            class="docs-github-button github-button"
+            class="github-button"
             :href="flags.production && pkg.repository.url"
             data-icon="octicon-star"
             data-show-count="true"
             aria-label="Star adi518/vue-breakpoint-component on GitHub"
           >Star</a>
-        </p>
-        <p class="docs-credit mt-3">
+        </div>
+        <p class="docs-credit">
           Made with ❤️ by
           <a
             class="docs-anchor--author"
@@ -366,7 +364,7 @@ p {
   }
 }
 
-.docs-demo {
+.docs-state {
   font-size: 1.2rem;
 }
 
