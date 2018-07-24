@@ -1,6 +1,6 @@
-- [x] Detect 1 root element and render without Fragment hack by default
+- [x] Detect 1 root element and render without fragment hack by default
 - [x] Add HideAt component
-- [x] Add plugin
+- [x] plugin
 - [x] Export
 - [x] Bundle
 - [ ] Tests

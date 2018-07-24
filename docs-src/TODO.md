@@ -1,6 +1,0 @@
-- [ ] Add clipboard to snippets
-- [ ] Add syntax tag to snippets
-- [x] Add browser support section
-- [ ] Add manifest.json (Android)
-- [ ] Fix native Android browser missing fixed anchor
-- [ ] Fix Orientation-Lock (Still glitchy; Possible fix: scroll to top and let address bar restore)
