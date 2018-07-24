@@ -1,3 +1,0 @@
-```js
-'small' | 'medium' | 'large' | 'xlarge' ...
-```
