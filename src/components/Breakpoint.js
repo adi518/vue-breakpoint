@@ -45,16 +45,16 @@ export default {
       // Vue Devtools has a bug where events
       // will not show up if they are fired
       // on page load, while in reality they do.
-      this.$emit('input', this.api)
-      this.$emit('change', this.api)
+      this.$emit('input', this.scope)
+      this.$emit('change', this.scope)
 
       // Emit namespaced event
-      if (this.api.breakpoint) {
-        this.$emit(this.api.breakpoint)
+      if (this.scope.breakpoint) {
+        this.$emit(this.scope.breakpoint)
       }
 
-      this.$emit('no-match', this.api.noMatch)
-      this.$emit('breakpoint', this.api.breakpoint)
+      this.$emit('no-match', this.scope.noMatch)
+      this.$emit('breakpoint', this.scope.breakpoint)
     }
   },
   beforeCreate() {
@@ -104,9 +104,9 @@ export default {
     window.removeEventListener('resize', this.match)
   },
   computed: {
-    api() {
+    scope() {
       return {
-        ...this.queries,
+        ...this.flags,
         vw: window.screen.width,
         vh: window.screen.height,
         viewportWidth: window.screen.width,
@@ -119,15 +119,18 @@ export default {
         noMatch: this.noMatch
       }
     },
-    queries() {
-      return Object.keys(this.mutable.breakpoints).reduce((queries, breakpoint) => {
-        const query = `is${capitalize(breakpoint)}`
-        queries[query] = breakpoint === this.breakpoint
-        return queries
+    flags() {
+      return Object.keys(this.mutable.breakpoints).reduce((flags, breakpoint) => {
+        const flag = `is${capitalize(breakpoint)}`
+        flags[flag] = breakpoint === this.breakpoint
+        return flags
       }, {})
     },
     noMatch() {
       return this.breakpoint === null
+    },
+    namespace() {
+      return capitalize.words(kebabcase(this.$options.name))
     }
   },
   methods: {
@@ -143,14 +146,14 @@ export default {
       )
     },
     log(message) {
-      console.error(
-        `[${capitalize.words(kebabcase(this.$options.name))} warn]: ${capitalize(message)}.`
-      )
+      const namespace = this.namespace
+      const capitalized = capitalize(message)
+      console.error(`[${namespace} warn]: ${capitalized}.`)
     }
   },
   render() {
     if (this.$scopedSlots.default) {
-      return this.$scopedSlots.default(this.api)
+      return this.$scopedSlots.default(this.scope)
     }
     if (this.$slots.default && this.$slots.default.length) {
       return this.$slots.default[0]

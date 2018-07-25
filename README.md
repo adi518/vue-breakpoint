@@ -171,11 +171,11 @@ This event has a fairly simple payload. Example:
 Besides those events, the component also emits a breakpoint-namespace event per breakpoint defined. Thus, you can do something like:
 
 ```html
-<v-breakpoint @small="onSmall"></v-breakpoint>
-<v-breakpoint @medium="onMedium"></v-breakpoint>
-<v-breakpoint @large="onLarge"></v-breakpoint>
-<v-breakpoint @xlarge="onXlarge"></v-breakpoint>
-<v-breakpoint @no-match="onNoMatch"></v-breakpoint> <!-- Aka Bootstrap 4 "xs" -->
+<v-breakpoint @small="handleSmall"></v-breakpoint>
+<v-breakpoint @medium="handleMedium"></v-breakpoint>
+<v-breakpoint @large="handleLarge"></v-breakpoint>
+<v-breakpoint @xlarge="handleXlarge"></v-breakpoint>
+<v-breakpoint @no-match="handleNoMatch"></v-breakpoint> <!-- Aka Bootstrap 4 "xs" -->
 ```
 
 ## Configuration

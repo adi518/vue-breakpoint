@@ -65,8 +65,7 @@ export default {
       <v-breakpoint
         on-change={this.onChange}
         breakpoints={this.breakpoints}
-        debounce-time={this.debounceTime}
-      >
+        debounce-time={this.debounceTime}>
         {this.computedShow ? this.$slots.default : null}
       </v-breakpoint>
     )
