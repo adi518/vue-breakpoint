@@ -1,6 +1,6 @@
 {
   "name": "vue-breakpoint-component",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "description": "A Vue.js component for composing CSS breakpoint state",
   "author": "Adi Sahar",
   "main": "dist",
