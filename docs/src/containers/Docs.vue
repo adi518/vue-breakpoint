@@ -31,6 +31,7 @@
           <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
         </div>
         <div class="mb-20">
+          <!-- Do not remove global class `github-button`! -->
           <a
             class="github-button"
             :href="flags.production && pkg.repository.url"
@@ -40,14 +41,14 @@
           >Star</a>
         </div>
         <p class="docs-credit">
-          Made with ❤️ by
-          <a
+          Made with <v-octicon icon-name="heart" style="fill: red; width: 0.9rem; height: auto"></v-octicon> by <a
             class="docs-anchor--author"
             href="https://github.com/adi518"
             target="_blank"
-          >Adi Sahar</a>
+          >@adi518</a>
         </p>
       </div>
+
       <!-- FIXED ANCHOR -->
       <a
         class="docs-fixed-anchor docs-c-pointer"
@@ -96,6 +97,8 @@
 
 import pkg from '../../../package.json'
 
+import VOcticon from 'vue-octicons'
+
 import VGitRibbon from '@/components/GitRibbon'
 import VOrientationLock from '@/components/OrientationLock'
 import { VBreakpoint, VShowAt, VHideAt, Model } from '@/import'
@@ -111,6 +114,7 @@ export default {
   components: {
     VShowAt,
     VHideAt,
+    VOcticon,
     VGitRibbon,
     VBreakpoint,
     VOrientationLock

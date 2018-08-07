@@ -122,7 +122,7 @@ export default {
 
 ### Template
 ```html
-<v-breakpoint v-model="model">
+<v-breakpoint v-model="model"></v-breakpoint>
 <div :style="style"></div>
 ```
 
@@ -257,7 +257,7 @@ As you may know, Vue does not support a stateful `Fragment` component, which all
 Since this is a hack, it is likely not to be extended into a fully supported feature. Feel free to contribute back though.
 
 ## Browser Support
-This component relies on [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) API (IE 10+). For older browsers and IE, you will need a [polyfill](https://github.com/weblinc/media-match).
+This component relies on [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) API (IE 10+). For older browsers and IE, you will need a polyfill. There's [@paulirish](https://github.com/paulirish/matchMedia.js/) and [@weblinc](https://github.com/weblinc/media-match). Weblinc's seems more maintained.
 
 ## Related Links
 * [dpi.lv](http://dpi.lv/)
