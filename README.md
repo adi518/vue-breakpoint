@@ -229,21 +229,23 @@ export default {
 ```
 
 ### Default Breakpoints (Bootstrap 4)
-```js
-// Extra small devices (portrait phones, less than 576px)
-// No media query for "xs" since this is the default in Bootstrap
+```css
+/**
+* Extra small devices (portrait phones, less than 576px)
+* No media query for "xs" since this is the default in Bootstrap.
+*/
 
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) { ... }
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { /* ... */ }
 
-// Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) { ... }
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { /* ... */ }
 
-// Large devices (desktops, 992px and up)
-// @media (min-width: 992px) { ... }
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { /* ... */ }
 
-// Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) { ... }
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { /* ... */ }
 ```
 
 ### Custom Breakpoints
@@ -257,7 +259,7 @@ As you may know, Vue does not support a stateful `Fragment` component, which all
 Since this is a hack, it is likely not to be extended into a fully supported feature. Feel free to contribute back though.
 
 ## Browser Support
-This component relies on [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) API (IE 10+). For older browsers and IE, you will need a polyfill. There's [@paulirish](https://github.com/paulirish/matchMedia.js/) and [@weblinc](https://github.com/weblinc/media-match). Weblinc's seems more maintained.
+This component relies on [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) API (IE 10+). For older browsers and IE, you will need a polyfill. There's [@paulirish](https://github.com/paulirish/matchMedia.js/) and [@weblinc](https://github.com/weblinc/media-match). The latter seems more maintained.
 
 ## Related Links
 * [dpi.lv](http://dpi.lv/)
