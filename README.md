@@ -63,7 +63,7 @@ export default {
 ```
 
 ## Multiple Root Elements (Experimental)
-Notice that you can also show/hide multiple elements using an experimental Fragment-like component hack, described [here](#experimental-features).
+Notice you can also show/hide multiple elements using an experimental Fragment-like component hack, described [here](#experimental-features).
 
 ### 🚧 Note
 To unlock this feature, you will have to [configure](#configuration) the component with the `experimental` flag.
