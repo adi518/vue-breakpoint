@@ -42,7 +42,7 @@ Vue.use(VBreakpoint)
 ```
 
 ## Show-At/Hide-At Usage
-To use the component in your templates, simply import and register with your component.
+To use the component in your templates, simply cherry-import and register with your component.
 
 ### Script
 ```js
@@ -76,7 +76,7 @@ To unlock this feature, you will have to [configure](#configuration) the compone
 ```
 
 ## V-Model
-You can also take leverage of the breakpoint state without composing inside it, using a `v-model`.
+You can also leverage the breakpoint state without composing inside it, using a `v-model`.
 
 ### Script
 ```js
