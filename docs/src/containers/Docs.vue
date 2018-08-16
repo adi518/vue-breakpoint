@@ -2,7 +2,10 @@
   <div class="docs">
 
     <!-- FIRST PAGE -->
-    <div class="docs-container docs-container--has-jumbotron docs-100vh js-vh-fix">
+    <div
+      class="docs-container docs-container--has-jumbotron js-vh-fix"
+      :style="{ height: `${demo.model.innerHeight}px` }"
+    >
 
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
@@ -30,7 +33,7 @@
         <div class="docs-emoji mb-20" ref="emoji" @mouseover="animateEmoji">
           <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
         </div>
-        <div class="mb-20">
+        <div class="mb-5">
           <!-- Do not remove global class `github-button`! -->
           <a
             class="github-button"
@@ -40,12 +43,12 @@
             aria-label="Star adi518/vue-breakpoint-component on GitHub"
           >Star</a>
         </div>
-        <p class="docs-credit">
-          Made with <v-octicon icon-name="heart" style="fill: red; width: 0.9rem; height: auto"></v-octicon> by <a
+        <p class="docs-credit mb-0">
+          ~&nbsp;Made with <v-octicon icon-name="heart" style="fill: red; width: 0.9rem; height: auto"></v-octicon> by <a
             class="docs-anchor--author"
             href="https://github.com/adi518"
             target="_blank"
-          >@adi518</a>
+          >@adi518</a>&nbsp;~
         </p>
       </div>
 
@@ -141,10 +144,10 @@ export default {
   mounted() {
     window.setTimeout(Prism.highlightAll)
 
-    this.vhChromeFix = new VhChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
+    // this.vhChromeFix = new VhChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
   },
   destroyed() {
-    this.vhChromeFix.destroy()
+    // this.vhChromeFix.destroy()
   },
   computed: {
     emojiSize() {

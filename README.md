@@ -78,6 +78,12 @@ To unlock this feature, you will have to [configure](#configuration) the compone
 ## V-Model
 You can also leverage the breakpoint state without composing inside it, using a `v-model`.
 
+### Template
+```html
+<v-breakpoint v-model="model"></v-breakpoint>
+<div :style="style"></div>
+```
+
 ### Script
 ```js
 import { VBreakpoint, Model } from 'vue-breakpoint-component'
@@ -97,19 +103,19 @@ export default {
           height: '1rem'
         }
       }
-      if (this.model.isMedium) {
+      else if (this.model.isMedium) {
         return {
           width: '2rem',
           height: '2rem'
         }
       }
-      if (this.model.isLarge) {
+      else if (this.model.isLarge) {
         return {
           width: '3rem',
           height: '3rem'
         }
       }
-      if (this.model.isXlarge) {
+      else if (this.model.isXlarge) {
         return {
           width: '3rem',
           height: '3rem'
@@ -118,12 +124,6 @@ export default {
     }
   }
 }
-```
-
-### Template
-```html
-<v-breakpoint v-model="model"></v-breakpoint>
-<div :style="style"></div>
 ```
 
 ## API Props
@@ -139,7 +139,7 @@ debounceTime: {
 The component emits two core events, `input` and `change`. The `input` event is required for `v-model` usage, but other than that, it's fairly similar to `change` event. Each of these events benefit different composition styles.
 
 ### Payloads
-#### Input and Change Events `(state[Object])`
+#### Input and Change Events `[Object]`
 Each of these events has the same payload. Besides breakpoint state, they also supply some auxiliary state, like **viewport** and current **inner window dimensions** (which are also aliased for convenience). Example:
 
 ```js
@@ -160,9 +160,7 @@ Each of these events has the same payload. Besides breakpoint state, they also s
 }
 ```
 
-### Breakpoint Event `(state[String])`
-This event has a fairly simple payload. Example:
-
+### Breakpoint Event `[String]`
 ```js
 'small' | 'medium' | 'large' | 'xlarge' // Etc'
 ```
