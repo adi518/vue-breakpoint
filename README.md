@@ -183,8 +183,9 @@ The default breakpoints are based on [Bootstrap 4 (Stable)](https://getbootstrap
 // <project-root>/src/components/VBreakpoint.js
 
 import Vue from 'vue'
-
 import { Ctor } from 'vue-breakpoint-component'
+
+export { Model } from 'vue-breakpoint-component'
 
 const config = {
   debounceTime: 50,

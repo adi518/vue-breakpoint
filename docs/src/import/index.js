@@ -1,8 +1,7 @@
 import Vue from 'vue'
+import { Ctor } from 'vue-breakpoint-component'
 
-import { Ctor, Model } from '../../../dist'
-
-export { Model } from '../../../dist'
+export { Model } from 'vue-breakpoint-component'
 
 const components = { ...new Ctor(Vue) }
 
