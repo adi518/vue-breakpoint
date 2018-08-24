@@ -1,1 +1,1 @@
-export class Model { constructor() { return {} } }
+export class Model { }

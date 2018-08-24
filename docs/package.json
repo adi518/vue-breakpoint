@@ -17,6 +17,7 @@
     "deploy": "node build/deploy.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
     "mobile-orientation": "^2.1.2",
     "prismjs": "^1.14.0",

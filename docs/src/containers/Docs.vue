@@ -44,7 +44,7 @@
           >Star</a>
         </div>
         <p class="docs-credit mb-0">
-          ~&nbsp;Made with <v-octicon icon-name="heart" style="fill: red; width: 0.9rem; height: auto"></v-octicon> by <a
+          ~&nbsp;Made with <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon> by <a
             class="docs-anchor--author"
             href="https://github.com/adi518"
             target="_blank"
