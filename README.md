@@ -144,21 +144,23 @@ Each of these events has the same payload. Besides breakpoint state, they also s
 
 ```js
 {
-  breakpoint: "small"
-  isSmall: true
-  isMedium: false
-  isLarge: false
-  noMatch: false
-  iw: 623
-  ih: 1077
-  innerWidth: 623
-  innerHeight: 1077
-  vw: 1920
-  vh: 1200
-  viewportHeight: 1200
-  viewportHeightPx: '1200px',
+  breakpoint: 'small',
+  isSmall: true,
+  isMedium: false,
+  isLarge: false,
+  noMatch: false,
+  iw: 623,
+  ih: 1077,
+  innerWidth: 623,
+  innerHeight: 1077,
+  innerWidthPx: '623px',
+  innerHeightPx: '1077px',
+  vw: 1920,
+  vh: 1200,
   viewportWidth: 1920,
-  viewportWidthPx: '1920px'
+  viewportHeight: 1200,
+  viewportWidthPx: '1920px',
+  viewportHeightPx: '1200px'
 }
 ```
 
