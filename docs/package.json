@@ -11,8 +11,8 @@
     "lint": "vue-cli-service lint",
     "predeploy": "npm version patch --no-git-tag-version && npm run build",
     "predeploy-initial": "npm version 1.0.0 --allow-same-version --no-git-tag-version && npm run build",
-    "deploy": "node gh-pages",
-    "deploy-initial": "node gh-pages",
+    "deploy": "node node_modules/gh-pages",
+    "deploy-initial": "node node_modules/gh-pages",
     "postdeploy": "node ./post-deploy",
     "postdeploy-initial": "node ./post-deploy"
   },
