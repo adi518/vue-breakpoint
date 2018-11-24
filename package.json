@@ -14,7 +14,6 @@
     "predocs": "npm install && npm link && npm run link",
     "docs": "npm run serve --prefix ./docs",
     "deploy": "cd ./docs && npm run deploy",
-    "postinstall": "cd ./docs && npm install",
     "prerelease": "npm run build && npm version patch",
     "prerelease-minor": "npm run build && npm version minor",
     "prerelease-major": "npm run build && npm version major",
