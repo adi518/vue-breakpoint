@@ -3,8 +3,8 @@
 // https://stackoverflow.com/questions/42414627/create-text-node-with-custom-render-function-in-vue-js
 
 export default {
-  name: 'VFragment',
-  abstract: true, // TODO: find out if we actually benefit from this
+  name: 'Fragment',
+  abstract: true, // Undocumented key; TODO: find out if we actually benefit from this
   props: {
     show: {
       type: Boolean,
@@ -19,7 +19,7 @@ export default {
       handler(show) {
         this.$nextTick(() => {
           this.childNodes.forEach(node => {
-            const isElement = node.instance instanceof Element
+            const isElement = node.instance instanceof window.Element
             if (show) {
               if (isElement) {
                 // Restore element last display value
@@ -45,11 +45,11 @@ export default {
     }
   },
   mounted() {
-    const { $el, childNodes, id: rootId } = this
+    const { $el, childNodes, _uid: rootId } = this
 
     // On HMR event, root element is already gone,
     // so no need to re-create the document-fragment.
-    if (!document.getElementById(rootId)) return
+    if (!document.getElementById(rootId)) { return }
 
     const fragment = document.createDocumentFragment()
 
@@ -70,10 +70,5 @@ export default {
   beforeDestroy() {
     this.childNodes.forEach(node => node.instance.remove())
   },
-  computed: {
-    id() {
-      return `${this.$options.name}-${this._uid}`
-    }
-  },
-  template: `<div :id="id"><slot></slot></div>`
+  template: `<div :id="_uid"><slot></slot></div>`
 }

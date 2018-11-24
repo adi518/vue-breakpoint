@@ -22,6 +22,8 @@ export class Ctor {
     VHideAt.config = config
     VBreakpoint.config = config
 
-    return { VShowAt, VHideAt, VBreakpoint }
+    this.VShowAt = VShowAt
+    this.VHideAt = VHideAt
+    this.VBreakpoint = VBreakpoint
   }
 }

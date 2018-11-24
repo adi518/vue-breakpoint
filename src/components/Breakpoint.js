@@ -40,28 +40,11 @@ export default {
     breakpoint: undefined,
     mutable: { breakpoints: {}, debounceTime: undefined }
   }),
-  watch: {
-    breakpoint(value) {
-      // Vue Devtools has a bug where events
-      // will not show up if they are fired
-      // on page load, while in reality they do.
-      this.$emit('input', this.scope)
-      this.$emit('change', this.scope)
-
-      // Emit namespaced event
-      if (this.scope.breakpoint) {
-        this.$emit(this.scope.breakpoint)
-      }
-
-      this.$emit('no-match', this.scope.noMatch)
-      this.$emit('breakpoint', this.scope.breakpoint)
-    }
-  },
   beforeCreate() {
     if (window.matchMedia) {
-      // Browser supported ✔
+      // Browser is supported. ✔
     } else {
-      this.log('incompatible browser')
+      this.log('unsupported browser')
     }
   },
   created() {
@@ -107,20 +90,12 @@ export default {
     scope() {
       return {
         ...this.flags,
-        vw: window.screen.width,
-        vh: window.screen.height,
-        viewportWidth: window.screen.width,
-        viewportHeight: window.screen.height,
-        iw: window.innerWidth,
-        ih: window.innerHeight,
-        innerWidth: window.innerWidth,
-        innerHeight: window.innerHeight,
         breakpoint: this.breakpoint,
         noMatch: this.noMatch
       }
     },
     flags() {
-      return Object.keys(this.mutable.breakpoints).reduce((flags, breakpoint) => {
+      return Object.keys(this.computedBreakpoints).reduce((flags, breakpoint) => {
         const flag = `is${capitalize(breakpoint)}`
         flags[flag] = breakpoint === this.breakpoint
         return flags
@@ -129,13 +104,17 @@ export default {
     noMatch() {
       return this.breakpoint === null
     },
+    computedBreakpoints() {
+      return this.mutable.breakpoints
+    },
     namespace() {
       return capitalize.words(kebabcase(this.$options.name))
     }
   },
   methods: {
     match() {
-      this.breakpoint = Object.entries(this.mutable.breakpoints).reduce(
+      const curr = this.breakpoint
+      const breakpoint = Object.entries(this.computedBreakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint
@@ -144,6 +123,38 @@ export default {
         },
         null
       )
+      if (curr === breakpoint) {
+        // Do not update breakpoint.
+      } else {
+        this.breakpoint = breakpoint
+        // Vue Devtools has a bug where events
+        // will not show up if they are fired
+        // on page load, while in reality they do.
+        this.$emit('change', this.scope)
+
+        // Emit namespaced event
+        if (this.scope.breakpoint) {
+          this.$emit(this.scope.breakpoint)
+        }
+
+        this.$emit('no-match', this.scope.noMatch)
+        this.$emit('breakpoint', this.scope.breakpoint)
+      }
+
+      // Emit with window attributes
+      this.$emit('input', { ...this.scope, ...this.getWindowAttrs() })
+    },
+    getWindowAttrs() {
+      return {
+        vw: window.screen.width,
+        vh: window.screen.height,
+        viewportWidth: window.screen.width,
+        viewportHeight: window.screen.height,
+        iw: window.innerWidth,
+        ih: window.innerHeight,
+        innerWidth: window.innerWidth,
+        innerHeight: window.innerHeight
+      }
     },
     log(message) {
       const namespace = this.namespace

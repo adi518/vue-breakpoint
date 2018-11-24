@@ -9,23 +9,14 @@
 
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
-        <img class="docs-vue-logo mb-1" src="../assets/images/logo-gradient.png">
-        <h1 class="docs-h1">Vue-Breakpoint</h1>
+        <img class="docs-vue-logo mb-1" :src="assets.logo">
+        <h1 class="docs-h1">Vue Breakpoint</h1>
         <p class="docs-tagline">
-          A render-less component for<br>composing CSS breakpoint state.
+          {{ pkg.description }}
         </p>
 
         <!-- DEMO -->
         <v-breakpoint v-model="demo.model"></v-breakpoint>
-        
-        <!-- DEVELOPMENT -->
-        <!-- <template v-if="flags.development">
-          <v-hide-at large>
-            <span style="font-size: 2rem">😿</span>
-            <span style="font-size: 2rem">😿</span>
-          </v-hide-at>
-        </template> -->
-        <!-- DEVELOPMENT end -->
 
         <div class="docs-state text-center mb-3">
           ( {{ normalize(demo.model.breakpoint) }} )
@@ -100,33 +91,35 @@
 
 import pkg from '../../../package.json'
 
-import VOcticon from 'vue-octicons'
+import logo from '@/assets/logo-gradient.png'
 
+import VOcticon from 'vue-octicons'
 import VGitRibbon from '@/components/GitRibbon'
-import VOrientationLock from '@/components/OrientationLock'
-import { VBreakpoint, VShowAt, VHideAt, Model } from '@/import'
+import { VBreakpoint, VShowAt, VHideAt, Model } from '@/components/Breakpoint'
 
 import Prism from 'prismjs'
 import capitalize from 'capitalize'
-import { VhChromeFix } from '@/assets/javascript/VhChromeFix'
 
-import readme from '@repo/README.md'
+import readme from '../../README.md'
 
 export default {
   name: 'VDocs',
   components: {
-    VShowAt,
-    VHideAt,
+    VShowAt, // eslint-disable-line
+    VHideAt, // eslint-disable-line
     VOcticon,
     VGitRibbon,
-    VBreakpoint,
-    VOrientationLock
+    VBreakpoint
   },
   data: () => ({
     pkg,
 
     demo: {
       model: new Model()
+    },
+
+    assets: {
+      logo
     },
 
     flags: {
@@ -138,16 +131,8 @@ export default {
       readme
     }
   }),
-  created() {
-    this.vhChromeFix = undefined
-  },
   mounted() {
     window.setTimeout(Prism.highlightAll)
-
-    // this.vhChromeFix = new VhChromeFix([{ selector: '.js-vh-fix', vh: 100 }])
-  },
-  destroyed() {
-    // this.vhChromeFix.destroy()
   },
   computed: {
     emojiSize() {
@@ -163,6 +148,9 @@ export default {
         default:
           return '3rem' // Aka Bootstrap 4 "xs"
       }
+    },
+    emojiElement() {
+      return this.getElementByRef('emoji')
     }
   },
   methods: {
@@ -193,10 +181,12 @@ export default {
       return 'X-Small'
     },
     animateEmoji() {
-      const element = this.getElementByRef('emoji')
-      element.style.animation = 'none'
-      void element.offsetHeight // Trigger reflow
-      element.style.animation = null
+      window.requestAnimationFrame(() => {
+        const element = this.emojiElement
+        element.style.animation = 'none'
+        void element.offsetHeight // Trigger reflow
+        element.style.animation = null
+      })
     }
   }
 }
@@ -214,112 +204,35 @@ export default {
 $app-min-width: 320px;
 
 /* Bootstrap */
-$spacer: 1rem;
-$spacers: ();
-$spacers: map-merge((20: ($spacer * 2)), $spacers);
-
-$body-bg: $app-color-mirage;
-$body-color: $app-color-white;
-$pre-color: $app-color-aliceblue;
-$link-color: rgba($app-color-white, 0.5);
-
-// Required
+// Bootstrap (required)
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
-
-// Optional
-@import '~bootstrap/scss/reboot';
-@import '~bootstrap/scss/type';
-@import '~bootstrap/scss/images';
-@import '~bootstrap/scss/button-group';
-@import '~bootstrap/scss/buttons';
-@import '~bootstrap/scss/grid';
-@import '~bootstrap/scss/utilities';
-
-pre,
-code,
-kbd,
-samp {
-  font-size: 1.1rem;
-}
 /* Bootstrap end */
-
-/* Prismjs */
-@import 'prismjs/themes/prism-okaidia.css';
-
-.docs {
-  pre[class*='language-'] {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  :not(pre) > code[class*='language-'],
-  pre[class*='language-'] {
-    margin-bottom: 1.5rem;
-    background: $app-color-mirage;
-  }
-
-  .token.operator,
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .style .token.string {
-    background: none;
-  }
-}
-/* Prismjs end */
-
-/* Tags */
-html {
-  @include media-breakpoint-down(xs) {
-    font-size: 80%;
-  }
-}
-
-a {
-  transition: color 0.5s;
-  color: $app-color-aliceblue;
-
-  &:hover {
-    color: $app-color-sandybrown;
-  }
-}
-
-p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-/* Tags end */
-
 /* Headings */
 .docs-h1 {
   font-weight: 300;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
   color: $app-color-aliceblue;
 }
-
 .docs-h2 {
   font-weight: 400;
 }
 /* Headings end */
-
 /* Common Layout */
 .docs {
   min-width: $app-min-width;
 }
-
 .docs-container {
   position: relative;
   background-color: darken($app-color-sandybrown, 6.66%);
 }
-
 .docs-container--has-jumbotron {
   display: flex;
   align-items: center;
   background-color: darken($app-color-pickled-bluewood, 16%);
 }
-
 .docs-jumbotron {
   width: 100%;
   display: flex;
@@ -328,14 +241,12 @@ p {
   justify-content: center;
   color: $app-color-ocean-green;
 }
-
 .docs-version {
   top: 1rem;
   left: 1rem;
   position: absolute;
   color: lighten($app-color-pickled-bluewood, 16%);
 }
-
 .docs-tagline {
   font-size: 1.5rem;
   margin-top: 0;
@@ -344,7 +255,6 @@ p {
   text-align: center;
   color: $app-color-lightslategrey;
 }
-
 .docs-fixed-anchor {
   left: 0;
   width: 100%;
@@ -354,38 +264,30 @@ p {
   text-align: center;
   color: $app-color-aliceblue;
 }
-
 .docs-credit {
   color: $app-color-lightslategrey;
 }
 /* Common Layout end */
-
 /* Layout */
 .docs-vue-logo {
   width: 4rem;
-
   @include media-breakpoint-down(xs) {
     width: 3.7rem;
   }
 }
-
 .docs-state {
   font-size: 1.2rem;
 }
-
 .docs-anchor--author {
   position: relative;
   color: $app-color-lightslategrey;
-
   &:hover {
     text-decoration: none;
     color: $app-color-lightslategrey;
-
     &::after {
       border-bottom-color: $app-color-aliceblue;
     }
   }
-
   &::after {
     left: 0;
     content: '';
@@ -397,7 +299,6 @@ p {
     border-bottom: 1px dotted $app-color-lightslategrey;
   }
 }
-
 .docs-emoji {
   animation-duration: 2s;
   animation-name: docs-nod-yes;
@@ -405,63 +306,16 @@ p {
   transform-origin: 50% 50% -0.5rem;
 }
 /* Layout end */
-
-/* Markdown */
-.docs-markdown {
-  h2 {
-    font-size: 1.5rem; // h4
-    margin-top: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.25rem; // h5
-  }
-
-  h4 {
-    font-size: 1.15rem;
-  }
-
-  a {
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    color: $app-color-aliceblue;
-    background-color: $app-color-mirage;
-
-    &:hover {
-      text-decoration: none;
-      color: $app-color-radical-red;
-    }
-  }
-
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    code {
-      padding: 0.2rem 0.4rem;
-      color: $app-color-spring-wood;
-      background-color: $app-color-gray;
-    }
-  }
-}
-/* Markdown end */
-
 /* Utils */
 .docs-c-pointer {
   cursor: pointer;
 }
-
 .docs-100vh {
   height: 100vh;
 }
-
 .docs-min-100vh {
   min-height: 100vh;
 }
-
 .docs-clearfix {
   &::after,
   &::before {
@@ -470,13 +324,11 @@ p {
     content: '\0020';
     overflow: hidden;
   }
-
   &::after {
     clear: both;
   }
 }
 /* Utils end */
-
 /* Animations */
 @keyframes docs-nod-yes {
   0% {

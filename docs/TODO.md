@@ -1,7 +1,0 @@
-- [ ] Add clipboard to snippets
-- [ ] Add language tag to snippets
-- [ ] Add manifest.json (Android)
-- [ ] Fix native Android browser missing fixed anchor
-- [ ] Fix glitchy orientation-lock component (possible fix: scroll to top and let address bar restore)
-- [ ] Add development section
-- [x] Add browser support section

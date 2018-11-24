@@ -1,14 +1,14 @@
 // https://github.com/vuejs/vue/issues/7088
 // https://github.com/vuejs/vue/issues/7088#issuecomment-364535373
 
-import VFragment from './Fragment'
+import Fragment from './Fragment'
 import VBreakpoint from './Breakpoint'
 
 export default {
   name: 'VShowAt',
   config: {}, // Foreign key
   components: {
-    VFragment,
+    Fragment,
     VBreakpoint
   },
   props: {
@@ -51,14 +51,14 @@ export default {
   render() {
     if (this.experimental) {
       return (
-        <v-fragment show={this.computedShow}>
+        <fragment show={this.computedShow}>
           <v-breakpoint
             on-change={this.onChange}
             breakpoints={this.breakpoints}
             debounce-time={this.debounceTime}>
           </v-breakpoint>
           {this.$slots.default}
-        </v-fragment>
+        </fragment>
       )
     }
     return (
