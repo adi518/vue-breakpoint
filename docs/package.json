@@ -26,7 +26,6 @@
     "prismjs": "^1.15.0",
     "vue": "^2.5.17",
     "vue-analytics": "^5.16.0",
-    "vue-breakpoint-component": "^1.1.0",
     "vue-flatten-routes": "^1.1.0",
     "vue-octicons": "^0.1.9",
     "vue-router": "^3.0.1"

@@ -112,7 +112,7 @@ export default {
     }
   },
   methods: {
-    match() {
+    async match() {
       const curr = this.breakpoint
       const breakpoint = Object.entries(this.computedBreakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
@@ -141,24 +141,29 @@ export default {
         this.$emit('breakpoint', this.scope.breakpoint)
       }
 
-      // Emit with window attributes
-      this.$emit('input', { ...this.scope, ...this.getWindowAttrs() })
+      // Emit with window attributes (avoids layout-thrashing);
+      // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+      this.$emit('input', { ...this.scope, ...await this.getWindowAttrs() })
     },
     getWindowAttrs() {
-      return {
-        vw: window.screen.width,
-        vh: window.screen.height,
-        viewportWidth: window.screen.width,
-        viewportHeight: window.screen.height,
-        iw: window.innerWidth,
-        ih: window.innerHeight,
-        innerWidth: window.innerWidth,
-        innerHeight: window.innerHeight,
-        innerWidthPx: `${window.innerWidth}px`,
-        innerHeightPx: `${window.innerHeight}px`,
-        viewportWidthPx: `${window.screen.width}px`,
-        viewportHeightPx: `${window.screen.height}px`
-      }
+      return new Promise(resolve => {
+        window.requestAnimationFrame(() => {
+          resolve({
+            vw: window.screen.width,
+            vh: window.screen.height,
+            viewportWidth: window.screen.width,
+            viewportHeight: window.screen.height,
+            iw: window.innerWidth,
+            ih: window.innerHeight,
+            innerWidth: window.innerWidth,
+            innerHeight: window.innerHeight,
+            innerWidthPx: `${window.innerWidth}px`,
+            innerHeightPx: `${window.innerHeight}px`,
+            viewportWidthPx: `${window.screen.width}px`,
+            viewportHeightPx: `${window.screen.height}px`
+          })
+        })
+      })
     },
     log(message) {
       const namespace = this.namespace
