@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/sass/colors';
+@import '~@/styles/colors';
 
 /* Bootstrap */
 $spacer: 1rem;
@@ -90,7 +90,7 @@ p {
 /* Tags end */
 
 /* Prismjs */
-// @import 'prismjs/themes/prism-okaidia.css';
+@import '~prismjs/themes/prism-okaidia.css';
 .docs {
   pre[class*='language-'] {
     margin-top: 0;
@@ -155,5 +155,74 @@ h6 {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+</style>
+
+<style lang="stylus">
+// https://github.com/vuejs/vuepress/blob/fd46a26d3a884b62092581451028121fd0daf654/lib/default-theme/styles/code.styl
+for lang in js ts html md vue css sass scss less stylus go java c sh yaml {
+  pre{'[class~="language-' + lang + '"]'} {
+    &:before {
+      content: '' + lang;
+    }
+  }
+}
+
+pre[class*=language-] {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    z-index: 3;
+    top: 0.8rem;
+    right: 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+pre[class~='language-bash'] {
+  &:before {
+    content: 'bash';
+  }
+}
+
+pre[class~='language-javascript'] {
+  &:before {
+    content: 'js';
+  }
+}
+
+pre[class~='language-typescript'] {
+  &:before {
+    content: 'ts';
+  }
+}
+
+pre[class~='language-markup'] {
+  &:before {
+    content: 'html';
+  }
+}
+
+pre[class~='language-markdown'] {
+  &:before {
+    content: 'md';
+  }
+}
+
+pre[class~='language-json']:before {
+  content: 'json';
+}
+
+pre[class~='language-ruby']:before {
+  content: 'rb';
+}
+
+pre[class~='language-python']:before {
+  content: 'py';
+}
+
+pre[class~='language-bash']:before {
+  content: 'sh';
 }
 </style>

@@ -4,7 +4,7 @@
     <!-- FIRST PAGE -->
     <div
       class="docs-container docs-container--has-jumbotron js-vh-fix"
-      :style="{ height: `${demo.model.innerHeight}px` }"
+      :style="{ height: demo.model.innerHeightPx }"
     >
 
       <!-- JUMBOTRON -->
@@ -100,7 +100,7 @@ import { VBreakpoint, VShowAt, VHideAt, Model } from '@/components/Breakpoint'
 import Prism from 'prismjs'
 import capitalize from 'capitalize'
 
-import readme from '../../README.md'
+import readme from '../../../README.md'
 
 export default {
   name: 'VDocs',
@@ -199,7 +199,7 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import '~@/sass/colors';
+@import '~@/styles/colors';
 
 $app-min-width: 320px;
 

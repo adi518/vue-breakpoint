@@ -36,12 +36,13 @@
     "@vue/cli-plugin-eslint": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
     "babel-eslint": "^10.0.1",
-    "css-loader": "^1.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "html-loader": "^0.5.5",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {

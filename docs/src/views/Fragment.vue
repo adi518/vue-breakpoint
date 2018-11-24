@@ -120,7 +120,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/sass/colors';
+@import '~@/styles/colors';
 
 .docs-fragment {
   color: $app-color-aliceblue;

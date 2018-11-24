@@ -156,7 +156,9 @@ Each of these events has the same payload. Besides breakpoint state, they also s
   vw: 1920
   vh: 1200
   viewportHeight: 1200
-  viewportWidth: 1920
+  viewportHeightPx: '1200px',
+  viewportWidth: 1920,
+  viewportWidthPx: '1920px'
 }
 ```
 

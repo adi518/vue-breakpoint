@@ -153,7 +153,11 @@ export default {
         iw: window.innerWidth,
         ih: window.innerHeight,
         innerWidth: window.innerWidth,
-        innerHeight: window.innerHeight
+        innerHeight: window.innerHeight,
+        innerWidthPx: `${window.innerWidth}px`,
+        innerHeightPx: `${window.innerHeight}px`,
+        viewportWidthPx: `${window.screen.width}px`,
+        viewportHeightPx: `${window.screen.height}px`
       }
     },
     log(message) {
