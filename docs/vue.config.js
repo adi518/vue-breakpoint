@@ -6,9 +6,6 @@ if (isProduction) {
 }
 
 config.chainWebpack = config => {
-  if (isProduction) {
-    config.output.publicPath('./')
-  }
   config.module
     .rule('markdown')
     .test(/\.md$/)
