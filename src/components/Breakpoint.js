@@ -40,6 +40,8 @@ export default {
     }
   },
   data: () => ({
+    // We need a reactive property `scope` for
+    // provide/inject to function correctly.
     isRoot: false,
     scope: {},
     windowAttrs: {},
