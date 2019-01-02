@@ -25,6 +25,9 @@ import breakpoints from '@/assets/javascript/breakpoints'
 export default {
   name: 'VBreakpoint',
   config: { breakpoints }, // Foreign key
+  provide() {
+    return { breakpoint: this }
+  },
   props: {
     value: {
       type: Object
@@ -37,6 +40,9 @@ export default {
     }
   },
   data: () => ({
+    isRoot: false,
+    scope: {},
+    windowAttrs: {},
     breakpoint: undefined,
     mutable: { breakpoints: {}, debounceTime: undefined }
   }),
@@ -62,10 +68,11 @@ export default {
     if (this.$root.$_vBreakpoint) {
       this.breakpoint = this.$root.$_vBreakpoint.breakpoint
       this.$watch(
-        '$root.$_vBreakpoint.breakpoint',
-        breakpoint => (this.breakpoint = breakpoint)
+        '$root.$_vBreakpoint.scope',
+        scope => (this.scope = scope)
       )
     } else {
+      this.isRoot = true
       this.$root.$_vBreakpoint = this
 
       window.addEventListener('resize', this.match, false)
@@ -87,11 +94,12 @@ export default {
     window.removeEventListener('resize', this.match)
   },
   computed: {
-    scope() {
+    computedScope() {
       return {
         ...this.flags,
-        breakpoint: this.breakpoint,
-        noMatch: this.noMatch
+        ...this.windowAttrs,
+        noMatch: this.noMatch,
+        breakpoint: this.breakpoint
       }
     },
     flags() {
@@ -130,20 +138,24 @@ export default {
         // Vue Devtools has a bug where events
         // will not show up if they are fired
         // on page load, while in reality they do.
-        this.$emit('change', this.scope)
+        this.$emit('change', this.computedScope)
 
         // Emit namespaced event
-        if (this.scope.breakpoint) {
-          this.$emit(this.scope.breakpoint)
+        if (this.computedScope.breakpoint) {
+          this.$emit(this.computedScope.breakpoint)
         }
 
-        this.$emit('no-match', this.scope.noMatch)
-        this.$emit('breakpoint', this.scope.breakpoint)
+        this.$emit('no-match', this.computedScope.noMatch)
+        this.$emit('breakpoint', this.computedScope.breakpoint)
       }
 
       // Emit with window attributes (avoids layout-thrashing);
       // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
-      this.$emit('input', { ...this.scope, ...await this.getWindowAttrs() })
+      const windowAttrs = await this.getWindowAttrs()
+      this.windowAttrs = windowAttrs
+      this.scope = this.computedScope
+
+      this.$emit('input', this.computedScope)
     },
     getWindowAttrs() {
       return new Promise(resolve => {
@@ -166,17 +178,17 @@ export default {
       })
     },
     log(message) {
-      const namespace = this.namespace
+      const { namespace } = this
       const capitalized = capitalize(message)
       console.error(`[${namespace} warn]: ${capitalized}.`)
     }
   },
-  render() {
+  render(h) {
     if (this.$scopedSlots.default) {
-      return this.$scopedSlots.default(this.scope)
+      return this.$scopedSlots.default(this.computedScope)
     }
     if (this.$slots.default && this.$slots.default.length) {
-      return this.$slots.default[0]
+      return h(this.$slots.default[0])
     }
   }
 }

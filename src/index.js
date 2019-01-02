@@ -10,11 +10,21 @@ export { Model } from '@/components/Breakpoint.Model'
 export { default as VShowAt } from '@/components/ShowAt'
 export { default as VHideAt } from '@/components/HideAt'
 export { default as VBreakpoint } from '@/components/Breakpoint'
+export { default as VWithBreakpoint } from '@/components/WithBreakpoint'
 
 export const Install = {
   install(Vue, config) {
     const components = new Ctor(Vue, config)
     Object.keys(components).forEach((name, Component) => Vue.component(name, Component))
+  }
+}
+
+export const Mixin = {
+  inject: {
+    $vBreakpoint: {
+      from: 'breakpoint',
+      default: undefined
+    }
   }
 }
 

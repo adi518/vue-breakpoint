@@ -1,26 +1,32 @@
 <template>
   <div class="docs">
-
+    <dev>
+      <!-- Provide/Inject example -->
+      <!-- <v-with-breakpoint>
+        <div
+          slot-scope="scope"
+          style="position: fixed; top: 3rem; left: 1rem; right: 1rem; z-index: 1; color: red"
+        >{{ scope }}</div>
+      </v-with-breakpoint> -->
+      <div
+        style="position: absolute; top: 1rem; left: 50%; transform: translate(-50%); z-index: 1; color: #527292"
+      > DEBUG: &lt;Inner Width: {{ $vBreakpoint.scope.innerWidthPx }}&gt;</div>
+    </dev>
     <!-- FIRST PAGE -->
     <div
       class="docs-container docs-container--has-jumbotron js-vh-fix"
       :style="{ height: demo.model.innerHeightPx }"
     >
-
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
         <img class="docs-vue-logo mb-1" :src="assets.logo">
         <h1 class="docs-h1">Vue Breakpoint</h1>
-        <p class="docs-tagline">
-          {{ pkg.description }}
-        </p>
+        <p class="docs-tagline">{{ pkg.description }}</p>
 
         <!-- DEMO -->
         <v-breakpoint v-model="demo.model"></v-breakpoint>
 
-        <div class="docs-state text-center mb-3">
-          ( {{ normalize(demo.model.breakpoint) }} )
-        </div>
+        <div class="docs-state text-center mb-3">( {{ normalize(demo.model.breakpoint) }} )</div>
         <div class="docs-emoji mb-20" ref="emoji" @mouseover="animateEmoji">
           <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
         </div>
@@ -35,11 +41,9 @@
           >Star</a>
         </div>
         <p class="docs-credit mb-0">
-          ~&nbsp;Made with <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon> by <a
-            class="docs-anchor--author"
-            href="https://github.com/adi518"
-            target="_blank"
-          >@adi518</a>&nbsp;~
+          ~&nbsp;Made with
+          <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>by
+          <a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">@adi518</a>&nbsp;~
         </p>
       </div>
 
@@ -47,7 +51,7 @@
       <a
         class="docs-fixed-anchor docs-c-pointer"
         @click="scrollTo('docs')"
-        tabindex=""
+        tabindex
       >Install, Examples & Documentation</a>
     </div>
 
@@ -62,11 +66,7 @@
     <div class="docs-version">{{ pkg.version }}</div>
 
     <!-- GIT RIBBON -->
-    <v-git-ribbon
-      fill-color="lightslategrey"
-      octo-color="#18202a"
-      :href="pkg.repository.url"
-    ></v-git-ribbon>
+    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url"></v-git-ribbon>
   </div>
 </template>
 
@@ -93,9 +93,10 @@ import pkg from '../../../package.json'
 
 import logo from '@/assets/logo-gradient.png'
 
+import Dev from '@/components/Dev'
 import VOcticon from 'vue-octicons'
 import VGitRibbon from '@/components/GitRibbon'
-import { VBreakpoint, VShowAt, VHideAt, Model } from '@/components/Breakpoint'
+import { VBreakpoint, VShowAt, VHideAt, Model, VWithBreakpoint } from '@/components/Breakpoint'
 
 import Prism from 'prismjs'
 import capitalize from 'capitalize'
@@ -105,11 +106,13 @@ import readme from '../../../README.md'
 export default {
   name: 'VDocs',
   components: {
-    VShowAt, // eslint-disable-line
-    VHideAt, // eslint-disable-line
+    Dev,
+    VShowAt, // eslint-disable-line vue/no-unused-components
+    VHideAt, // eslint-disable-line vue/no-unused-components
     VOcticon,
     VGitRibbon,
-    VBreakpoint
+    VBreakpoint,
+    VWithBreakpoint
   },
   data: () => ({
     pkg,
@@ -199,15 +202,15 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import '~@/styles/colors';
+@import "~@/styles/colors";
 
 $app-min-width: 320px;
 
 /* Bootstrap */
 // Bootstrap (required)
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
 /* Bootstrap end */
 /* Headings */
 .docs-h1 {
@@ -290,7 +293,7 @@ $app-min-width: 320px;
   }
   &::after {
     left: 0;
-    content: '';
+    content: "";
     width: 100%;
     height: 1px;
     bottom: -0.15rem;
@@ -321,7 +324,7 @@ $app-min-width: 320px;
   &::before {
     height: 0;
     display: block;
-    content: '\0020';
+    content: "\0020";
     overflow: hidden;
   }
   &::after {

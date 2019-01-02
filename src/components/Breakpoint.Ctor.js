@@ -3,6 +3,7 @@
 import VShowAt from './ShowAt'
 import VHideAt from './HideAt'
 import VBreakpoint from './Breakpoint'
+import VWithBreakpoint from './WithBreakpoint'
 
 import merge from 'lodash.merge'
 
@@ -25,5 +26,6 @@ export class Ctor {
     this.VShowAt = VShowAt
     this.VHideAt = VHideAt
     this.VBreakpoint = VBreakpoint
+    this.VWithBreakpoint = VWithBreakpoint
   }
 }
