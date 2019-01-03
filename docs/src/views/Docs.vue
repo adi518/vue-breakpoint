@@ -41,9 +41,7 @@
           >Star</a>
         </div>
         <p class="docs-credit mb-0">
-          ~&nbsp;Made with
-          <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>by
-          <a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">@adi518</a>&nbsp;~
+          ~&nbsp;Made with&nbsp;<v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>&nbsp;by&nbsp;<a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">@adi518</a>&nbsp;~
         </p>
       </div>
 
