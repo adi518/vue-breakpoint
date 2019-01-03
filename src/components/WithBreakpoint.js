@@ -1,13 +1,17 @@
 export default {
+  functional: true,
   inject: {
-    instance: {
+    breakpoint: {
       from: 'breakpoint',
       default: undefined
     }
   },
-  render() {
-    if (this.$scopedSlots.default) {
-      return this.$scopedSlots.default(this.instance.state)
+  render(h, { data, injections }) {
+    if (!injections.breakpoint) {
+      return void console.error(`[V-With-Breakpoint warn]: No provider found!`)
+    }
+    if (data.scopedSlots.default) {
+      return data.scopedSlots.default(injections.breakpoint.scope)
     }
   }
 }

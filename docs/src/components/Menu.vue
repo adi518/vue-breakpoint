@@ -7,7 +7,12 @@
       @touchstart.passive="toggle"
       @click.stop.prevent="toggle"
     ></div>
-    <ul ref="menu" :class="['menu', { 'is-open': classes['is-open'] }]" :style="menuStyle" @touchstart.passive="() => {}">    
+    <ul
+      ref="menu"
+      :class="['menu', { 'is-open': classes['is-open'] }]"
+      :style="menuStyle"
+      @touchstart.passive="() => {}"
+    >
       <li
         v-for="(route, index) in computedRoutes"
         :key="index"
@@ -63,6 +68,11 @@ export default {
       type: Object,
       default: () => ({
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      })
+    },
+    menuHoverStyle: {
+      default: () => ({
+        backgroundColor: 'rgba(0, 0, 0, 0.75)'
       })
     }
   },

@@ -2,15 +2,15 @@
   <div class="docs">
     <dev>
       <!-- Provide/Inject example -->
-      <!-- <v-with-breakpoint>
+      <v-with-breakpoint>
         <div
           slot-scope="scope"
-          style="position: fixed; top: 3rem; left: 1rem; right: 1rem; z-index: 1; color: red"
-        >{{ scope }}</div>
-      </v-with-breakpoint> -->
+          style="position: absolute; top: 1rem; left: 50%; transform: translate(-50%); z-index: 1; color: #527292"
+        >DEBUG: &lt;Inner Width: {{ scope.innerWidthPx }}&gt;</div>
+      </v-with-breakpoint>
       <div
-        style="position: absolute; top: 1rem; left: 50%; transform: translate(-50%); z-index: 1; color: #527292"
-      > DEBUG: &lt;Inner Width: {{ $vBreakpoint.scope.innerWidthPx }}&gt;</div>
+        style="position: absolute; top: 3rem; left: 50%; transform: translate(-50%); z-index: 1; color: #527292"
+      >DEBUG: &lt;Inner Width: {{ $vBreakpoint.scope.innerWidthPx }}&gt;</div>
     </dev>
     <!-- FIRST PAGE -->
     <div
@@ -202,15 +202,15 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import "~@/styles/colors";
+@import '~@/styles/colors';
 
 $app-min-width: 320px;
 
 /* Bootstrap */
 // Bootstrap (required)
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 /* Bootstrap end */
 /* Headings */
 .docs-h1 {
@@ -293,7 +293,7 @@ $app-min-width: 320px;
   }
   &::after {
     left: 0;
-    content: "";
+    content: '';
     width: 100%;
     height: 1px;
     bottom: -0.15rem;
@@ -324,7 +324,7 @@ $app-min-width: 320px;
   &::before {
     height: 0;
     display: block;
-    content: "\0020";
+    content: '\0020';
     overflow: hidden;
   }
   &::after {
