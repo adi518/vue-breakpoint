@@ -50,10 +50,7 @@ export default {
     // can cause massive performance issues.
     if (this.$root.$_vBreakpoint) {
       this.breakpoint = this.$root.$_vBreakpoint.breakpoint
-      this.$watch(
-        '$root.$_vBreakpoint.scope',
-        scope => (this.scope = scope)
-      )
+      this.$watch('$root.$_vBreakpoint.scope', scope => (this.scope = scope))
     } else {
       this.isRoot = true
       this.$root.$_vBreakpoint = this
