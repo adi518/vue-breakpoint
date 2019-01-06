@@ -3,7 +3,7 @@
 // https://stackoverflow.com/questions/42414627/create-text-node-with-custom-render-function-in-vue-js
 
 export default {
-  name: 'Fragment',
+  name: 'fragment',
   abstract: true, // Undocumented key; TODO: find out if we actually benefit from this
   props: {
     show: {

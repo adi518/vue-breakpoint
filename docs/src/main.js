@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import VueAnalytics from 'vue-analytics'
 import { VBreakpoint } from '@/components/Breakpoint'
-import { Mixin as VBreakpointMixin } from 'vue-breakpoint-component'
+// import { Mixin } from 'vue-breakpoint-component'
 
 Vue.config.productionTip = false
 
@@ -13,7 +13,7 @@ Vue.use(VueAnalytics, {
   router
 })
 
-Vue.mixin(VBreakpointMixin)
+// Vue.use(Mixin)
 
 new Vue({
   router,

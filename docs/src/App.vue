@@ -115,7 +115,7 @@ p {
 .docs-markdown {
   h2 {
     font-size: 1.5rem; // h4
-    margin-top: 1.5rem;
+    margin-top: 4rem;
   }
   h3 {
     font-size: 1.25rem; // h5

@@ -1,10 +1,9 @@
 import VShowAt from './ShowAt'
+import { breakpointProp } from './mixins'
 
 export default {
-  name: 'VHideAt',
-  props: {
-    breakpoint: VShowAt.props.breakpoint
-  },
+  name: 'v-hide-at',
+  mixins: [breakpointProp],
   components: {
     VShowAt
   },

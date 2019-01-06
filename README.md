@@ -126,6 +126,33 @@ export default {
 }
 ```
 
+## Provide/Inject
+You can also leverage the breakpoint state using the provide/inject pattern, using the <a href="https://vuejs.org/v2/guide/render-function.html#Functional-Components">functional</a> component `<v-with-breakpoint>`. This component does not accept any props, it only exposes a scoped-slot, simliar to the `<v-breakpoint>` component. However, being functional it is more performant than the standard component and therefore, it's encouraged to use `<v-breakpoint>` only where `v-model` is a must.
+
+### Script
+```js
+// main.js
+import Vue from 'vue'
+import App from './App.vue'
+import { VBreakpoint as BreakpointProvider } from 'vue-breakpoint-component'
+
+new Vue({
+  render: h => h(BreakpointProvider, [App])
+}).$mount('#app')
+```
+Then, anywhere in your app, use the injector component:
+### Template
+```html
+<template>
+  <v-with-breakpoint>
+    <span slot-scope="scope" v-if="scope.isSmall">  😸  </span>
+  </v-with-breakpoint>
+</template>
+```
+
+## Global Mixin
+
+
 ## API Props
 ```js
 debounceTime: {
@@ -186,10 +213,7 @@ The default breakpoints are based on [Bootstrap 4 (Stable)](https://getbootstrap
 ```js
 // <project-root>/src/components/VBreakpoint.js
 
-import Vue from 'vue'
 import { Ctor } from 'vue-breakpoint-component'
-
-export { Model } from 'vue-breakpoint-component'
 
 const config = {
   debounceTime: 50,
@@ -203,13 +227,11 @@ const config = {
   }
 }
 
-const components = { ...new Ctor(Vue, config) }
-
-export const VShowAt = components.VShowAt
-export const VHideAt = components.VHideAt
-export const VBreakpoint = components.VBreakpoint
+const { VShowAt, VHideAt, VBreakpoint } = new Ctor({ experimental: true })
 
 export default VBreakpoint
+
+export { VShowAt, VHideAt, VBreakpoint }
 ```
 
 ### Usage
@@ -217,13 +239,16 @@ Import **locally** and use as you would normally.
 
 ```js
 // Local imports
-import { VShowAt, VHideAt, VBreakpoint, Model } from './VBreakpoint'
+
+import { Model, VWithBreakpoint } from 'vue-breakpoint-component'
+import { VShowAt, VHideAt, VBreakpoint } from './VBreakpoint'
 
 export default {
   components: {
     VShowAt,
     VHideAt,
-    VBreakpoint
+    VBreakpoint,
+    VWithBreakpoint
   },
   data: () => ({
     model: new Model()

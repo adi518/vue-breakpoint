@@ -68,7 +68,6 @@
     "custom-event-polyfill": "^0.3.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isnumber": "^3.0.3",
-    "lodash.kebabcase": "^4.1.1",
     "lodash.merge": "^4.6.1"
   }
 }

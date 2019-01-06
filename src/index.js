@@ -1,34 +1,39 @@
 // https://github.com/Akryum/v-tooltip/blob/master/src/index.js
 
-import VBreakpoint from '@/components/Breakpoint'
+import { extend } from '@/extend'
+import Breakpoint from '@/Breakpoint'
 
-import { Ctor } from '@/components/Breakpoint.Ctor'
+export default Breakpoint
 
-export { Ctor } from '@/components/Breakpoint.Ctor'
-export { Model } from '@/components/Breakpoint.Model'
-
-export { default as VShowAt } from '@/components/ShowAt'
-export { default as VHideAt } from '@/components/HideAt'
-export { default as VBreakpoint } from '@/components/Breakpoint'
-export { default as VWithBreakpoint } from '@/components/WithBreakpoint'
+export { extend } from '@/extend'
+export { default as VShowAt } from '@/ShowAt'
+export { default as VHideAt } from '@/HideAt'
+export { default as VBreakpoint } from '@/Breakpoint'
+export { default as VWithBreakpoint } from '@/WithBreakpoint'
 
 export const Install = {
   install(Vue, config) {
-    const components = new Ctor(Vue, config)
+    const components = extend(config)
     Object.keys(components).forEach((name, Component) => Vue.component(name, Component))
   }
 }
 
 export const Mixin = {
-  inject: {
-    $vBreakpoint: {
-      from: 'breakpoint',
-      default: undefined
-    }
+  install(Vue) {
+    Vue.mixin({
+      inject: {
+        $vBreakpoint: {
+          from: 'breakpoint',
+          default: undefined
+        }
+      }
+    })
   }
 }
 
-// Auto-install (Window/Node)
+export class Model { }
+
+// Auto-install (Browser/Node)
 let GlobalVue
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue
@@ -38,5 +43,3 @@ if (typeof window !== 'undefined') {
 if (GlobalVue) {
   GlobalVue.use(Install)
 }
-
-export default VBreakpoint

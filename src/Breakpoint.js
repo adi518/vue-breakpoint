@@ -1,38 +1,18 @@
-/* eslint-disable space-before-function-paren */
-
-// https://github.com/weblinc/media-match
-// https://github.com/apertureless/vue-breakpoints
-// https://www.npmjs.com/package/custom-event-polyfill
-// https://adamwathan.me/renderless-components-in-vuejs/
-// https://forum.vuejs.org/t/v-if-removing-event-listeners/24735/2
-// https://vuejs.org/v2/style-guide/#Private-property-names-essential
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-// https://gist.github.com/adi518/a2c1555009cb6f90b4dd41fd48962853/edit
-// https://medium.com/@uiuxlab/the-most-used-responsive-breakpoints-in-2017-of-mine-9588e9bd3a8a
-// https://forum.vuejs.org/t/vue-component-as-singleton-never-to-be-destroyed-and-mounted-again/25010
-// https://github.com/chrisvfritz/7-secret-patterns/blob/master/slides-2018-03-03-spotlight-export.pdf
-// https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
-
 import 'custom-event-polyfill'
 
 import capitalize from 'capitalize'
 import debounce from 'lodash.debounce'
 import isNumber from 'lodash.isnumber'
-import kebabcase from 'lodash.kebabcase'
-
-import breakpoints from '@/assets/javascript/breakpoints'
+import breakpoints from './breakpoints'
 
 export default {
-  name: 'VBreakpoint',
+  name: 'v-breakpoint',
   config: { breakpoints }, // Foreign key
   provide() {
     return { breakpoint: this }
   },
   props: {
     value: {
-      type: Object
-    },
-    breakpoints: {
       type: Object
     },
     debounceTime: {
@@ -42,21 +22,22 @@ export default {
   data: () => ({
     // We need a reactive property `scope` for
     // provide/inject to function correctly.
-    isRoot: false,
     scope: {},
+    isRoot: false,
     windowAttrs: {},
+    breakpoints: {},
     breakpoint: undefined,
-    mutable: { breakpoints: {}, debounceTime: undefined }
+    mutable: { debounceTime: undefined }
   }),
   beforeCreate() {
     if (window.matchMedia) {
-      // Browser is supported. ✔
+      // Browser has support for `matchMedia` API. ✔
     } else {
       this.log('unsupported browser')
     }
   },
   created() {
-    this.mutable.breakpoints = this.breakpoints || this.$options.config.breakpoints
+    this.breakpoints = this.$options.config.breakpoints
 
     this.mutable.debounceTime = isNumber(this.debounceTime)
       ? this.debounceTime : this.$options.config.debounceTime
@@ -86,78 +67,68 @@ export default {
     }
   },
   beforeDestroy() {
-    if (this.$root.$_vBreakpoint) {
-      if (this.$root.$_vBreakpoint._uid === this._uid) {
-        delete this.$root.$_vBreakpoint
-      }
+    if (this.isRoot) {
+      delete this.$root.$_vBreakpoint
+      window.removeEventListener('resize', this.match)
     }
   },
-  destroyed() {
-    window.removeEventListener('resize', this.match)
-  },
   computed: {
-    computedScope() {
-      return {
-        ...this.flags,
-        ...this.windowAttrs,
-        noMatch: this.noMatch,
-        breakpoint: this.breakpoint
-      }
-    },
     flags() {
-      return Object.keys(this.computedBreakpoints).reduce((flags, breakpoint) => {
+      const flags = {}
+      for (const breakpoint in this.breakpoints) {
         const flag = `is${capitalize(breakpoint)}`
         flags[flag] = breakpoint === this.breakpoint
-        return flags
-      }, {})
+      }
+      return flags
     },
     noMatch() {
-      return this.breakpoint === null
-    },
-    computedBreakpoints() {
-      return this.mutable.breakpoints
+      return this.breakpoint === 'no-match'
     },
     namespace() {
-      return capitalize.words(kebabcase(this.$options.name))
+      return capitalize.words(this.$options.name)
     }
   },
   methods: {
+    getScope() {
+      const { flags, windowAttrs, noMatch, breakpoint } = this
+      return Object.assign({}, flags, windowAttrs, noMatch, breakpoint)
+    },
     async match() {
-      const curr = this.breakpoint
-      const breakpoint = Object.entries(this.computedBreakpoints).reduce(
+      let { breakpoint: curr, breakpoints } = this
+      breakpoints = Object.entries(breakpoints)
+      const breakpoint = breakpoints.reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint
           }
           return noMatch
         },
-        null
+        'no-match'
       )
       if (curr === breakpoint) {
         // Do not update breakpoint.
       } else {
+        // Emit with window attributes (avoids layout-thrashing);
+        // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+        this.windowAttrs = await this.getWindowAttrs()
+        this.scope = this.getScope()
+
         this.breakpoint = breakpoint
         // Vue Devtools has a bug where events
         // will not show up if they are fired
         // on page load, while in reality they do.
-        this.$emit('change', this.computedScope)
+        this.$emit('change', this.scope)
 
         // Emit namespaced event
-        if (this.computedScope.breakpoint) {
-          this.$emit(this.computedScope.breakpoint)
+        if (this.scope.breakpoint) {
+          this.$emit(this.scope.breakpoint)
         }
 
-        this.$emit('no-match', this.computedScope.noMatch)
-        this.$emit('breakpoint', this.computedScope.breakpoint)
+        this.$emit('no-match', this.scope.noMatch)
+        this.$emit('breakpoint', this.scope.breakpoint)
       }
 
-      // Emit with window attributes (avoids layout-thrashing);
-      // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
-      const windowAttrs = await this.getWindowAttrs()
-      this.windowAttrs = windowAttrs
-      this.scope = this.computedScope
-
-      this.$emit('input', this.computedScope)
+      this.$emit('input', this.scope)
     },
     getWindowAttrs() {
       return new Promise(resolve => {

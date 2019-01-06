@@ -3,19 +3,17 @@
 
 import Fragment from './Fragment'
 import VBreakpoint from './Breakpoint'
+import { breakpointProp } from './mixins'
 
 export default {
-  name: 'VShowAt',
+  name: 'v-show-at',
   config: {}, // Foreign key
+  mixins: [breakpointProp],
   components: {
     Fragment,
     VBreakpoint
   },
   props: {
-    breakpoint: {
-      type: String,
-      default: ''
-    },
     forceShow: {
       type: Boolean,
       default: false

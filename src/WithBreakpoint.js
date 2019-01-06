@@ -1,4 +1,5 @@
 export default {
+  name: 'v-with-breakpoint',
   functional: true,
   inject: {
     breakpoint: {
@@ -8,7 +9,7 @@ export default {
   },
   render(h, { data, injections }) {
     if (!injections.breakpoint) {
-      return void console.error(`[V-With-Breakpoint warn]: No provider found!`)
+      return void console.error(`[V-With-Breakpoint warn]: No Breakpoint provider found!`)
     }
     if (data.scopedSlots.default) {
       return data.scopedSlots.default(injections.breakpoint.scope)

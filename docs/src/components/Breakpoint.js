@@ -1,13 +1,7 @@
-import Vue from 'vue'
-import { Ctor } from 'vue-breakpoint-component'
+import { extend } from 'vue-breakpoint-component'
 
-export { Model } from 'vue-breakpoint-component'
-
-const components = { ...new Ctor(Vue, { experimental: true }) }
-
-export const VShowAt = components.VShowAt
-export const VHideAt = components.VHideAt
-export const VBreakpoint = components.VBreakpoint
-export const VWithBreakpoint = components.VWithBreakpoint
+const { VShowAt, VHideAt, VBreakpoint } = extend({ experimental: true })
 
 export default VBreakpoint
+
+export { VShowAt, VHideAt, VBreakpoint }

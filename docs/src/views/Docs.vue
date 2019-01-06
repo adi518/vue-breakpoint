@@ -1,30 +1,29 @@
 <template>
   <div class="docs">
+    <!-- DEV -->
     <dev>
-      <!-- Provide/Inject example -->
-      <v-with-breakpoint>
-        <div
-          slot-scope="scope"
-          style="position: absolute; top: 1rem; left: 50%; transform: translate(-50%); z-index: 1; color: #527292"
-        >DEBUG: &lt;Inner Width: {{ scope.innerWidthPx }}&gt;</div>
-      </v-with-breakpoint>
-      <div
-        style="position: absolute; top: 3rem; left: 50%; transform: translate(-50%); z-index: 1; color: #527292"
-      >DEBUG: &lt;Inner Width: {{ $vBreakpoint.scope.innerWidthPx }}&gt;</div>
+      <div class="dev-stats">
+        <v-with-breakpoint>
+          <div slot-scope="scope">component inject: { iw: {{ scope.innerWidthPx }} }</div>
+        </v-with-breakpoint>
+        <div>stateful: { iw: {{ demo.model.innerWidthPx }} }</div>
+        <!-- <div>global mixin: { iw: {{ $vBreakpoint.scope.innerWidthPx }} }</div> -->
+      </div>
     </dev>
     <!-- FIRST PAGE -->
     <div
-      class="docs-container docs-container--has-jumbotron js-vh-fix"
       :style="{ height: demo.model.innerHeightPx }"
+      class="docs-container docs-container--has-jumbotron js-vh-fix"
     >
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
-        <img class="docs-vue-logo mb-1" :src="assets.logo">
+        <img class="docs-vue-logo mb-2" :src="assets.logo">
         <h1 class="docs-h1">Vue Breakpoint</h1>
         <p class="docs-tagline">{{ pkg.description }}</p>
 
         <!-- DEMO -->
         <v-breakpoint v-model="demo.model"></v-breakpoint>
+        <!-- <v-breakpoint></v-breakpoint> -->
 
         <div class="docs-state text-center mb-3">( {{ normalize(demo.model.breakpoint) }} )</div>
         <div class="docs-emoji mb-20" ref="emoji" @mouseover="animateEmoji">
@@ -41,7 +40,13 @@
           >Star</a>
         </div>
         <p class="docs-credit mb-0">
-          ~&nbsp;Made with&nbsp;<v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>&nbsp;by&nbsp;<a class="docs-anchor--author" href="https://github.com/adi518" target="_blank">@adi518</a>&nbsp;~
+          ~&nbsp;Made with&nbsp;
+          <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>&nbsp;by&nbsp;
+          <a
+            class="docs-anchor--author"
+            href="https://github.com/adi518"
+            target="_blank"
+          >@adi518</a>&nbsp;~
         </p>
       </div>
 
@@ -94,7 +99,8 @@ import logo from '@/assets/logo-gradient.png'
 import Dev from '@/components/Dev'
 import VOcticon from 'vue-octicons'
 import VGitRibbon from '@/components/GitRibbon'
-import { VBreakpoint, VShowAt, VHideAt, Model, VWithBreakpoint } from '@/components/Breakpoint'
+import { Model, VWithBreakpoint } from 'vue-breakpoint-component'
+import { VBreakpoint, VShowAt, VHideAt } from '@/components/Breakpoint'
 
 import Prism from 'prismjs'
 import capitalize from 'capitalize'
@@ -200,15 +206,15 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import '~@/styles/colors';
+@import "~@/styles/colors";
 
 $app-min-width: 320px;
 
 /* Bootstrap */
 // Bootstrap (required)
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
 /* Bootstrap end */
 /* Headings */
 .docs-h1 {
@@ -291,7 +297,7 @@ $app-min-width: 320px;
   }
   &::after {
     left: 0;
-    content: '';
+    content: "";
     width: 100%;
     height: 1px;
     bottom: -0.15rem;
@@ -305,6 +311,14 @@ $app-min-width: 320px;
   animation-name: docs-nod-yes;
   animation-fill-mode: forwards;
   transform-origin: 50% 50% -0.5rem;
+}
+.dev-stats {
+  top: 3rem;
+  left: 1rem;
+  z-index: 1;
+  color: #527292;
+  position: absolute;
+  text-transform: uppercase;
 }
 /* Layout end */
 /* Utils */
@@ -322,7 +336,7 @@ $app-min-width: 320px;
   &::before {
     height: 0;
     display: block;
-    content: '\0020';
+    content: "\0020";
     overflow: hidden;
   }
   &::after {
