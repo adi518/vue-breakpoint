@@ -23,9 +23,8 @@ export default {
     show: true
   }),
   created() {
-    this.breakpoints = this.$options.config.breakpoints
-    this.debounceTime = this.$options.config.debounceTime
-    this.experimental = this.$options.config.experimental
+    const props = ['breakpoints', 'debounceTime', 'experimental']
+    props.forEach(prop => (this[prop] = this.$options.config[prop]))
   },
   computed: {
     computedShow() {
