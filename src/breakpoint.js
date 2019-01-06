@@ -149,8 +149,8 @@ export default {
     },
     log(message) {
       const { namespace } = this
-      const capitalized = capitalize(message)
-      console.error(`[${namespace} warn]: ${capitalized}.`)
+      message = capitalize(message)
+      console.error(`[${namespace} warn]: ${message}.`)
     }
   },
   render(h) {
