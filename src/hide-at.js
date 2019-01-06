@@ -1,4 +1,4 @@
-import VShowAt from './ShowAt'
+import VShowAt from './show-at'
 import { breakpointProp } from './mixins'
 
 export default {

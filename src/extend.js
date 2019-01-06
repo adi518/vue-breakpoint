@@ -1,8 +1,8 @@
 // https://github.com/bkzl/vue-fraction-grid/issues/13
 
-import ShowAt from './ShowAt'
-import HideAt from './HideAt'
-import Breakpoint from './Breakpoint'
+import ShowAt from './show-at'
+import HideAt from './hide-at'
+import Breakpoint from './breakpoint'
 import merge from 'lodash.merge'
 import breakpoints from './breakpoints' // Bootstrap 4 (Stable)
 

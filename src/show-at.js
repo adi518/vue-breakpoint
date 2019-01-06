@@ -1,8 +1,8 @@
 // https://github.com/vuejs/vue/issues/7088
 // https://github.com/vuejs/vue/issues/7088#issuecomment-364535373
 
-import Fragment from './Fragment'
-import VBreakpoint from './Breakpoint'
+import Fragment from './fragment'
+import VBreakpoint from './breakpoint'
 import { breakpointProp } from './mixins'
 
 export default {
