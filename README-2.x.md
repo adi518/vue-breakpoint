@@ -191,12 +191,12 @@ Each of these events has the same payload. Besides breakpoint state, they also s
 }
 ```
 
-### Breakpoint Event `[String]`
+#### Breakpoint Event `[String]`
 ```js
 'small' | 'medium' | 'large' | 'xlarge' // Etc'
 ```
 
-### Breakpoint-Namespace Event
+#### Breakpoint-Namespace Event
 Besides those events, the component also emits a breakpoint-namespace event per breakpoint defined. Thus, you can do something like:
 
 ```html
