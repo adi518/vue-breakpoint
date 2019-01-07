@@ -8,9 +8,6 @@ import breakpoints from './breakpoints'
 export default {
   name: 'v-breakpoint',
   config: { breakpoints }, // Foreign key
-  provide() {
-    return { breakpoint: this }
-  },
   props: {
     value: {
       type: Object
@@ -29,6 +26,9 @@ export default {
     breakpoint: undefined,
     mutable: { debounceTime: undefined }
   }),
+  provide() {
+    return { breakpoint: this }
+  },
   beforeCreate() {
     if (window.matchMedia) {
       // Browser has support for `matchMedia` API. ✔
