@@ -1,6 +1,6 @@
-import { extend } from 'vue-breakpoint-component'
+import { Ctor } from 'vue-breakpoint-component'
 
-const { VShowAt, VHideAt, VBreakpoint } = extend({ experimental: true })
+const { VShowAt, VHideAt, VBreakpoint } = Ctor({ experimental: true })
 
 export default VBreakpoint
 

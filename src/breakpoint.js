@@ -7,7 +7,7 @@ import breakpoints from './breakpoints'
 
 export default {
   name: 'v-breakpoint',
-  config: { breakpoints }, // Foreign key
+  config: { debounceTime: 100, breakpoints }, // Foreign key
   props: {
     value: {
       type: Object
@@ -40,7 +40,8 @@ export default {
     this.breakpoints = this.$options.config.breakpoints
 
     this.mutable.debounceTime = isNumber(this.debounceTime)
-      ? this.debounceTime : this.$options.config.debounceTime
+      ? this.debounceTime
+      : this.$options.config.debounceTime
 
     this.match = debounce(this.match, this.mutable.debounceTime)
   },
@@ -88,7 +89,7 @@ export default {
   methods: {
     getScope() {
       const { flags, windowAttrs, noMatch, breakpoint } = this
-      return Object.assign({}, flags, windowAttrs, noMatch, breakpoint)
+      return Object.assign({}, flags, windowAttrs, { noMatch, breakpoint })
     },
     async match() {
       let { breakpoint: curr, breakpoints } = this
@@ -105,12 +106,12 @@ export default {
       if (curr === breakpoint) {
         // Do not update breakpoint.
       } else {
+        this.breakpoint = breakpoint
         // Emit with window attributes (avoids layout-thrashing);
         // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
         this.windowAttrs = await this.getWindowAttrs()
-        this.scope = this.getScope()
 
-        this.breakpoint = breakpoint
+        this.scope = this.getScope()
         // Vue Devtools has a bug where events
         // will not show up if they are fired
         // on page load, while in reality they do.

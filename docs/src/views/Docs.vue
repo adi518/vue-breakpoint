@@ -3,9 +3,9 @@
     <!-- DEV -->
     <dev>
       <div class="dev-stats">
-        <v-with-breakpoint>
+        <!-- <v-with-breakpoint>
           <div slot-scope="scope">component inject: { iw: {{ scope.innerWidthPx }} }</div>
-        </v-with-breakpoint>
+        </v-with-breakpoint> -->
         <div>stateful: { iw: {{ demo.model.innerWidthPx }} }</div>
         <!-- <div>global mixin: { iw: {{ $vBreakpoint.scope.innerWidthPx }} }</div> -->
       </div>
@@ -116,7 +116,7 @@ export default {
     VOcticon,
     VGitRibbon,
     VBreakpoint,
-    VWithBreakpoint
+    VWithBreakpoint // eslint-disable-line vue/no-unused-components
   },
   data: () => ({
     pkg,

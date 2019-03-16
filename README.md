@@ -36,7 +36,7 @@ You can also choose to install the component globally. This will install three c
 ```js
 import Vue from 'vue'
 
-import { Install as VBreakpoint } from 'vue-breakpoint-component'
+import { Plugin as VBreakpoint } from 'vue-breakpoint-component'
 
 Vue.use(VBreakpoint)
 ```
@@ -126,8 +126,8 @@ export default {
 }
 ```
 
-## Provide/Inject
-You can also leverage the breakpoint state using the provide/inject pattern, using the <a href="https://vuejs.org/v2/guide/render-function.html#Functional-Components">functional</a> component `<v-with-breakpoint>`. This component does not accept any props, it only exposes a scoped-slot, simliar to the `<v-breakpoint>` component. However, being functional it is more performant than the standard component and therefore, it's encouraged to use `<v-breakpoint>` only where `v-model` is a must.
+<!-- ## Provide/Inject
+You can also leverage the breakpoint state using the provide/inject pattern, using the <a href="https://vuejs.org/v2/guide/render-function.html#Functional-Components">functional</a> component `<v-with-breakpoint>`. This component does not accept any props, it only exposes a scoped-slot, simliar to the `<v-breakpoint>` component. However, being functional it is more performant than the standard component and therefore, it's encouraged to use `<v-breakpoint>` only where `v-model` is a must. -->
 
 ### Script
 ```js
@@ -157,7 +157,6 @@ Then, anywhere in your app, use the injector component:
 ```js
 debounceTime: {
   type: Number,
-  default: 50,
   description: 'Time to wait before invoking resize handler.'
 }
 ```
@@ -208,26 +207,27 @@ Besides those events, the component also emits a breakpoint-namespace event per 
 ```
 
 ## Configuration
-The default breakpoints are based on [Bootstrap 4 (Stable)](https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints). To customize the component you will have to use the descriptor Constructor. Start off by creating a new component asset, e.g.: `VBreakpoint.js`. Then, use the following snippet and adjust configuration to your needs.
+The default breakpoints are based on [Bootstrap 4 (Stable)](https://getbootstrap.com/docs/4.1/layout/overview/#responsive-breakpoints). To customize the component you will have to use the extend helper. Start off by creating a new component asset, e.g.: `VBreakpoint.js`. Then, use the following snippet and adjust configuration to your needs.
 
 ```js
 // <project-root>/src/components/VBreakpoint.js
 
-import { Ctor } from 'vue-breakpoint-component'
+import { extend } from 'vue-breakpoint-component'
 
-const config = {
-  debounceTime: 50,
-  experimental: false,
+// Default configuration:
+const config = {  
   breakpoints: {
     small: '(min-width: 576px)',
     medium: '(min-width: 768px)',
     large: '(min-width: 992px)',
     xlarge: '(min-width: 1200px)'
     ...
-  }
+  },
+  debounceTime: 100,
+  experimental: false
 }
 
-const { VShowAt, VHideAt, VBreakpoint } = new Ctor({ experimental: true })
+const { VShowAt, VHideAt, VBreakpoint } = extend(config)
 
 export default VBreakpoint
 

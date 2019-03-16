@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueAnalytics from 'vue-analytics'
-import { VBreakpoint } from '@/components/Breakpoint'
+import { VBreakpoint } from '@/components/Breakpoint' // eslint-disable-line no-unused-vars
 // import { Mixin } from 'vue-breakpoint-component'
 
 Vue.config.productionTip = false
@@ -17,5 +17,6 @@ Vue.use(VueAnalytics, {
 
 new Vue({
   router,
-  render: h => h(VBreakpoint, [App])
+  render: h => h(App)
+  // render: h => h(VBreakpoint, [App])
 }).$mount('#app')
