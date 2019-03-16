@@ -127,7 +127,7 @@ export default {
 ```
 
 <!-- ## Provide/Inject
-You can also leverage the breakpoint state using the provide/inject pattern, using the <a href="https://vuejs.org/v2/guide/render-function.html#Functional-Components">functional</a> component `<v-with-breakpoint>`. This component does not accept any props, it only exposes a scoped-slot, simliar to the `<v-breakpoint>` component. However, being functional it is more performant than the standard component and therefore, it's encouraged to use `<v-breakpoint>` only where `v-model` is a must. -->
+You can also leverage the breakpoint state using the provide/inject pattern, using the <a href="https://vuejs.org/v2/guide/render-function.html#Functional-Components">functional</a> component `<v-with-breakpoint>`. This component does not accept any props, it only exposes a scoped-slot, simliar to the `<v-breakpoint>` component. However, being functional it is more performant than the standard component and therefore, it's encouraged to use `<v-breakpoint>` only where `v-model` is a must.
 
 ### Script
 ```js
@@ -150,8 +150,7 @@ Then, anywhere in your app, use the injector component:
 </template>
 ```
 
-## Global Mixin
-
+## Global Mixin -->
 
 ## API Props
 ```js
@@ -240,15 +239,14 @@ Import **locally** and use as you would normally.
 ```js
 // Local imports
 
-import { Model, VWithBreakpoint } from 'vue-breakpoint-component'
+import { Model } from 'vue-breakpoint-component'
 import { VShowAt, VHideAt, VBreakpoint } from './VBreakpoint'
 
 export default {
   components: {
     VShowAt,
     VHideAt,
-    VBreakpoint,
-    VWithBreakpoint
+    VBreakpoint
   },
   data: () => ({
     model: new Model()
