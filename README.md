@@ -152,7 +152,7 @@ Then, anywhere in your app, use the injector component:
 
 ## Global Mixin -->
 
-## API Props
+## Props
 ```js
 debounceTime: {
   type: Number,
@@ -160,7 +160,7 @@ debounceTime: {
 }
 ```
 
-## API Events
+## Events
 The component emits two core events, `input` and `change`. The `input` event is required for `v-model` usage, but other than that, it's fairly similar to `change` event. Each of these events benefit different composition styles.
 
 ### Payloads
