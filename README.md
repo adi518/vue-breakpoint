@@ -220,7 +220,6 @@ const config = {
     medium: '(min-width: 768px)',
     large: '(min-width: 992px)',
     xlarge: '(min-width: 1200px)'
-    ...
   },
   debounceTime: 100,
   experimental: false
