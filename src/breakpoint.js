@@ -1,6 +1,4 @@
-import 'custom-event-polyfill'
-
-import capitalize from 'capitalize'
+import capitalize from 'lodash.capitalize'
 import debounce from 'lodash.debounce'
 import isNumber from 'lodash.isnumber'
 import breakpoints from './breakpoints'
@@ -24,7 +22,7 @@ export default {
     windowAttrs: {},
     breakpoints: {},
     breakpoint: undefined,
-    mutable: { debounceTime: undefined }
+    namespace: 'V-Breakpoint'
   }),
   provide() {
     return { breakpoint: this }
@@ -39,11 +37,11 @@ export default {
   created() {
     this.breakpoints = this.$options.config.breakpoints
 
-    this.mutable.debounceTime = isNumber(this.debounceTime)
+    const debounceTime = isNumber(this.debounceTime)
       ? this.debounceTime
       : this.$options.config.debounceTime
 
-    this.match = debounce(this.match, this.mutable.debounceTime)
+    this.match = debounce(this.match, debounceTime)
   },
   mounted() {
     // Attach listener to `$root` to avoid
@@ -55,9 +53,9 @@ export default {
     } else {
       this.isRoot = true
       this.$root.$_vBreakpoint = this
-
       window.addEventListener('resize', this.match, false)
-      window.dispatchEvent(new window.CustomEvent('resize'))
+      // Fire initial "resize" event
+      this.match()
     }
 
     if (this.$slots.default && this.$slots.default.length > 1) {
@@ -81,9 +79,6 @@ export default {
     },
     noMatch() {
       return this.breakpoint === 'no-match'
-    },
-    namespace() {
-      return capitalize.words(this.$options.name)
     }
   },
   methods: {
@@ -107,26 +102,28 @@ export default {
         // Do not update breakpoint.
       } else {
         this.breakpoint = breakpoint
-        // Emit with window attributes (avoids layout-thrashing);
-        // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
-        this.windowAttrs = await this.getWindowAttrs()
-
-        this.scope = this.getScope()
-        // Vue Devtools has a bug where events
-        // will not show up if they are fired
-        // on page load, while in reality they do.
-        this.$emit('change', this.scope)
 
         // Emit namespaced event
-        if (this.scope.breakpoint) {
-          this.$emit(this.scope.breakpoint)
-        }
+        this.$emit(breakpoint)
 
-        this.$emit('no-match', this.scope.noMatch)
-        this.$emit('breakpoint', this.scope.breakpoint)
+        // Emit `breakpoint` event
+        this.$emit('breakpoint', breakpoint)
       }
 
-      this.$emit('input', this.scope)
+      // Update window attributes (avoids layout-thrashing);
+      // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+      this.windowAttrs = await this.getWindowAttrs()
+
+      // Get updated scope and update
+      // its root instance property.
+      const scope = this.getScope()
+      this.scope = scope
+
+      // Vue Devtools has a bug where events
+      // will not show up if they are fired
+      // on page load, while in reality they do.
+      this.$emit('change', scope)
+      this.$emit('input', scope)
     },
     getWindowAttrs() {
       return new Promise(resolve => {
@@ -149,9 +146,8 @@ export default {
       })
     },
     log(message) {
-      const { namespace } = this
       message = capitalize(message)
-      console.error(`[${namespace} warn]: ${message}.`)
+      console.error(`[${this.namespace} warn]: ${message}.`)
     }
   },
   render(h) {

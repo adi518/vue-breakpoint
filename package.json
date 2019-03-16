@@ -64,10 +64,14 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
-    "capitalize": "^1.0.0",
-    "custom-event-polyfill": "^0.3.0",
+    "lodash.capitalize": "^4.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.isnumber": "^3.0.3",
     "lodash.merge": "^4.6.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
