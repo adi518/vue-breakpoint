@@ -98,16 +98,12 @@ export default {
         },
         'no-match'
       )
-      if (curr === breakpoint) {
+      const unchanged = curr === breakpoint
+      const changed = unchanged === false
+      if (unchanged) {
         // Do not update breakpoint.
       } else {
         this.breakpoint = breakpoint
-
-        // Emit namespaced event
-        this.$emit(breakpoint)
-
-        // Emit `breakpoint` event
-        this.$emit('breakpoint', breakpoint)
       }
 
       // Update window attributes (avoids layout-thrashing);
@@ -122,7 +118,11 @@ export default {
       // Vue Devtools has a bug where events
       // will not show up if they are fired
       // on page load, while in reality they do.
-      this.$emit('change', scope)
+      if (changed) {
+        this.$emit(breakpoint)
+        this.$emit('change', scope)
+        this.$emit('breakpoint', breakpoint)
+      }
       this.$emit('input', scope)
     },
     getWindowAttrs() {
