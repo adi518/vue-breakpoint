@@ -43,6 +43,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "fibers": "^4.0.2",
     "html-loader": "^0.5.5",
+    "markdown-loader": "^5.1.0",
     "node-sass": "^4.13.0",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
@@ -59,7 +60,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

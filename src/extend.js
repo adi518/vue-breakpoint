@@ -14,7 +14,7 @@ export function extend(config) {
   }
 
   config = merge({}, defaults, config)
-  const mergeConfig = component => merge(component, config)
+  const mergeConfig = component => merge(component, { config })
 
   return {
     VShowAt: mergeConfig(ShowAt),

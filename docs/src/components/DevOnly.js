@@ -1,5 +1,5 @@
 export default {
-  name: 'Dev',
+  name: 'DevOnly',
   functional: true,
   render(h, { children }) {
     if (process.env.NODE_ENV === 'development') {

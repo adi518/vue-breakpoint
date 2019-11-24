@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extend returns an extended object 1`] = `
+Object {
+  "VBreakpoint": Object {
+    "beforeCreate": [Function],
+    "beforeDestroy": [Function],
+    "computed": Object {
+      "flags": [Function],
+      "noMatch": [Function],
+    },
+    "config": Object {
+      "breakpoints": Object {
+        "large": "(min-width: 892px)",
+        "medium": "(min-width: 668px)",
+        "small": "(min-width: 476px)",
+        "xlarge": "(min-width: 1100px)",
+      },
+      "debounceTime": 100,
+      "experimental": false,
+    },
+    "created": [Function],
+    "data": [Function],
+    "methods": Object {
+      "getBreakpoint": [Function],
+      "getScope": [Function],
+      "getWindowAttrs": [Function],
+      "log": [Function],
+      "match": [Function],
+    },
+    "mounted": [Function],
+    "name": "v-breakpoint",
+    "props": Object {
+      "debounceTime": Object {
+        "type": [Function],
+      },
+      "value": Object {
+        "type": [Function],
+      },
+    },
+    "provide": [Function],
+    "render": [Function],
+  },
+  "VHideAt": Object {
+    "components": Object {
+      "VShowAt": Object {
+        "components": Object {
+          "Fragment": Object {
+            "abstract": true,
+            "beforeDestroy": [Function],
+            "data": [Function],
+            "mounted": [Function],
+            "name": "fragment",
+            "props": Object {
+              "show": Object {
+                "default": true,
+                "type": [Function],
+              },
+            },
+            "template": <div :id="_uid">
+  <slot></slot>
+</div>,
+            "watch": Object {
+              "show": Object {
+                "handler": [Function],
+                "immediate": true,
+              },
+            },
+          },
+          "VBreakpoint": Object {
+            "beforeCreate": [Function],
+            "beforeDestroy": [Function],
+            "computed": Object {
+              "flags": [Function],
+              "noMatch": [Function],
+            },
+            "config": Object {
+              "breakpoints": Object {
+                "large": "(min-width: 892px)",
+                "medium": "(min-width: 668px)",
+                "small": "(min-width: 476px)",
+                "xlarge": "(min-width: 1100px)",
+              },
+              "debounceTime": 100,
+              "experimental": false,
+            },
+            "created": [Function],
+            "data": [Function],
+            "methods": Object {
+              "getBreakpoint": [Function],
+              "getScope": [Function],
+              "getWindowAttrs": [Function],
+              "log": [Function],
+              "match": [Function],
+            },
+            "mounted": [Function],
+            "name": "v-breakpoint",
+            "props": Object {
+              "debounceTime": Object {
+                "type": [Function],
+              },
+              "value": Object {
+                "type": [Function],
+              },
+            },
+            "provide": [Function],
+            "render": [Function],
+          },
+        },
+        "computed": Object {
+          "computedShow": [Function],
+        },
+        "config": Object {
+          "breakpoints": Object {
+            "large": "(min-width: 892px)",
+            "medium": "(min-width: 668px)",
+            "small": "(min-width: 476px)",
+            "xlarge": "(min-width: 1100px)",
+          },
+          "debounceTime": 100,
+          "experimental": false,
+        },
+        "created": [Function],
+        "data": [Function],
+        "methods": Object {
+          "onChange": [Function],
+        },
+        "mixins": Array [
+          Object {
+            "props": Object {
+              "breakpoint": Object {
+                "default": "",
+                "type": [Function],
+              },
+            },
+          },
+        ],
+        "name": "v-show-at",
+        "props": Object {
+          "forceShow": Object {
+            "default": false,
+            "type": [Function],
+          },
+        },
+        "render": [Function],
+      },
+    },
+    "computed": Object {
+      "forceShow": [Function],
+    },
+    "config": Object {
+      "breakpoints": Object {
+        "large": "(min-width: 892px)",
+        "medium": "(min-width: 668px)",
+        "small": "(min-width: 476px)",
+        "xlarge": "(min-width: 1100px)",
+      },
+      "debounceTime": 100,
+      "experimental": false,
+    },
+    "data": [Function],
+    "methods": Object {
+      "onChange": [Function],
+    },
+    "mixins": Array [
+      Object {
+        "props": Object {
+          "breakpoint": Object {
+            "default": "",
+            "type": [Function],
+          },
+        },
+      },
+    ],
+    "name": "v-hide-at",
+    "render": [Function],
+  },
+  "VShowAt": Object {
+    "components": Object {
+      "Fragment": Object {
+        "abstract": true,
+        "beforeDestroy": [Function],
+        "data": [Function],
+        "mounted": [Function],
+        "name": "fragment",
+        "props": Object {
+          "show": Object {
+            "default": true,
+            "type": [Function],
+          },
+        },
+        "template": <div :id="_uid">
+  <slot></slot>
+</div>,
+        "watch": Object {
+          "show": Object {
+            "handler": [Function],
+            "immediate": true,
+          },
+        },
+      },
+      "VBreakpoint": Object {
+        "beforeCreate": [Function],
+        "beforeDestroy": [Function],
+        "computed": Object {
+          "flags": [Function],
+          "noMatch": [Function],
+        },
+        "config": Object {
+          "breakpoints": Object {
+            "large": "(min-width: 892px)",
+            "medium": "(min-width: 668px)",
+            "small": "(min-width: 476px)",
+            "xlarge": "(min-width: 1100px)",
+          },
+          "debounceTime": 100,
+          "experimental": false,
+        },
+        "created": [Function],
+        "data": [Function],
+        "methods": Object {
+          "getBreakpoint": [Function],
+          "getScope": [Function],
+          "getWindowAttrs": [Function],
+          "log": [Function],
+          "match": [Function],
+        },
+        "mounted": [Function],
+        "name": "v-breakpoint",
+        "props": Object {
+          "debounceTime": Object {
+            "type": [Function],
+          },
+          "value": Object {
+            "type": [Function],
+          },
+        },
+        "provide": [Function],
+        "render": [Function],
+      },
+    },
+    "computed": Object {
+      "computedShow": [Function],
+    },
+    "config": Object {
+      "breakpoints": Object {
+        "large": "(min-width: 892px)",
+        "medium": "(min-width: 668px)",
+        "small": "(min-width: 476px)",
+        "xlarge": "(min-width: 1100px)",
+      },
+      "debounceTime": 100,
+      "experimental": false,
+    },
+    "created": [Function],
+    "data": [Function],
+    "methods": Object {
+      "onChange": [Function],
+    },
+    "mixins": Array [
+      Object {
+        "props": Object {
+          "breakpoint": Object {
+            "default": "",
+            "type": [Function],
+          },
+        },
+      },
+    ],
+    "name": "v-show-at",
+    "props": Object {
+      "forceShow": Object {
+        "default": false,
+        "type": [Function],
+      },
+    },
+    "render": [Function],
+  },
+}
+`;

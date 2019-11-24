@@ -1,15 +1,15 @@
 <template>
   <div class="docs">
     <!-- DEV -->
-    <dev>
+    <dev-only>
       <div class="dev-stats">
         <!-- <v-with-breakpoint>
           <div slot-scope="scope">component inject: { iw: {{ scope.innerWidthPx }} }</div>
-        </v-with-breakpoint> -->
+        </v-with-breakpoint>-->
         <div>stateful: { iw: {{ demo.model.innerWidthPx }} }</div>
         <!-- <div>global mixin: { iw: {{ $vBreakpoint.scope.innerWidthPx }} }</div> -->
       </div>
-    </dev>
+    </dev-only>
     <!-- FIRST PAGE -->
     <div
       :style="{ height: demo.model.innerHeightPx }"
@@ -17,7 +17,7 @@
     >
       <!-- JUMBOTRON -->
       <div class="docs-jumbotron">
-        <img class="docs-vue-logo mb-2" :src="assets.logo">
+        <img class="docs-vue-logo mb-2" :src="assets.logo" />
         <h1 class="docs-h1">Vue Breakpoint</h1>
         <p class="docs-tagline">{{ pkg.description }}</p>
 
@@ -25,9 +25,13 @@
         <v-breakpoint v-model="demo.model"></v-breakpoint>
         <!-- <v-breakpoint></v-breakpoint> -->
 
-        <div class="docs-state text-center mb-3">( {{ normalize(demo.model.breakpoint) }} )</div>
+        <div class="docs-state text-center mb-3">
+          ( {{ normalize(demo.model.breakpoint) }} )
+        </div>
         <div class="docs-emoji mb-20" ref="emoji" @mouseover="animateEmoji">
-          <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
+          <span :style="`font-size: ${emojiSize}; transition: font-size .2s`"
+            >😸</span
+          >
         </div>
         <div class="mb-5">
           <!-- Do not remove global class `github-button`! -->
@@ -37,16 +41,22 @@
             data-icon="octicon-star"
             data-show-count="true"
             aria-label="Star adi518/vue-breakpoint-component on GitHub"
-          >Star</a>
+            >Star</a
+          >
         </div>
         <p class="docs-credit mb-0">
           ~&nbsp;Made with&nbsp;
-          <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>&nbsp;by&nbsp;
+          <v-octicon
+            icon-name="heart"
+            style="fill: red; width: 1.3rem; height: 1.3rem"
+          ></v-octicon
+          >&nbsp;by&nbsp;
           <a
             class="docs-anchor--author"
             href="https://github.com/adi518"
             target="_blank"
-          >@adi518</a>&nbsp;~
+            >@adi518</a
+          >&nbsp;~
         </p>
       </div>
 
@@ -55,12 +65,16 @@
         class="docs-fixed-anchor docs-c-pointer"
         @click="scrollTo('docs')"
         tabindex
-      >Install, Examples & Documentation</a>
+        >Install, Examples & Documentation</a
+      >
     </div>
 
     <!-- SECOND PAGE -->
     <div ref="docs" class="docs-container docs-min-100vh pb-5 vh-for-mobile">
-      <div class="container docs-clearfix" :class="demo.model.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
+      <div
+        class="container docs-clearfix"
+        :class="(demo.model.noMatch && ['pl-3', 'pr-3']) || 'p-0'"
+      >
         <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
     </div>
@@ -69,7 +83,11 @@
     <div class="docs-version">{{ pkg.version }}</div>
 
     <!-- GIT RIBBON -->
-    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url"></v-git-ribbon>
+    <v-git-ribbon
+      fill-color="lightslategrey"
+      octo-color="#18202a"
+      :href="pkg.repository.url"
+    ></v-git-ribbon>
   </div>
 </template>
 
@@ -96,8 +114,8 @@ import pkg from '../../../package.json'
 
 import logo from '@/assets/logo-gradient.png'
 
-import Dev from '@/components/Dev'
 import VOcticon from 'vue-octicons'
+import DevOnly from '@/components/DevOnly'
 import VGitRibbon from '@/components/GitRibbon'
 import { Model, VWithBreakpoint } from 'vue-breakpoint-component'
 import { VBreakpoint, VShowAt, VHideAt } from '@/components/Breakpoint'
@@ -110,7 +128,7 @@ import readme from '../../../README.md'
 export default {
   name: 'VDocs',
   components: {
-    Dev,
+    DevOnly,
     VShowAt, // eslint-disable-line vue/no-unused-components
     VHideAt, // eslint-disable-line vue/no-unused-components
     VOcticon,
@@ -120,20 +138,16 @@ export default {
   },
   data: () => ({
     pkg,
-
     demo: {
       model: new Model()
     },
-
     assets: {
       logo
     },
-
     flags: {
       production: process.env.NODE_ENV !== 'development',
       development: process.env.NODE_ENV === 'development'
     },
-
     markdowns: {
       readme
     }
@@ -206,15 +220,15 @@ export default {
 // https://tympanus.net/codrops/css_reference/transform-origin/
 
 /* Meta-variables */
-@import "~@/styles/colors";
+@import '~@/styles/colors';
 
 $app-min-width: 320px;
 
 /* Bootstrap */
 // Bootstrap (required)
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 /* Bootstrap end */
 /* Headings */
 .docs-h1 {
@@ -297,7 +311,7 @@ $app-min-width: 320px;
   }
   &::after {
     left: 0;
-    content: "";
+    content: '';
     width: 100%;
     height: 1px;
     bottom: -0.15rem;
@@ -336,7 +350,7 @@ $app-min-width: 320px;
   &::before {
     height: 0;
     display: block;
-    content: "\0020";
+    content: '\0020';
     overflow: hidden;
   }
   &::after {

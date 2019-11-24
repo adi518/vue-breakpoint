@@ -86,10 +86,8 @@ export default {
       const { flags, windowAttrs, noMatch, breakpoint } = this
       return Object.assign({}, flags, windowAttrs, { noMatch, breakpoint })
     },
-    async match() {
-      let { breakpoint: curr, breakpoints } = this
-      breakpoints = Object.entries(breakpoints)
-      const breakpoint = breakpoints.reduce(
+    getBreakpoint() {
+      return Object.entries(this.breakpoints).reduce(
         (noMatch, [breakpoint, mediaQuery]) => {
           if (window.matchMedia(mediaQuery).matches) {
             return breakpoint
@@ -98,7 +96,11 @@ export default {
         },
         'no-match'
       )
-      const unchanged = curr === breakpoint
+    },
+    async match() {
+      const { breakpoint: prevBreakpoint } = this
+      const breakpoint = this.getBreakpoint()
+      const unchanged = prevBreakpoint === breakpoint
       const changed = unchanged === false
       if (unchanged) {
         // Do not update breakpoint.

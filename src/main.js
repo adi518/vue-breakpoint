@@ -1,4 +1,6 @@
 // https://github.com/Akryum/v-tooltip/blob/master/src/index.js
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
 import { extend } from './extend'
 import Breakpoint from './breakpoint'
@@ -14,7 +16,9 @@ export { default as VWithBreakpoint } from './with-breakpoint'
 export const Plugin = {
   install(Vue, config) {
     const components = extend(config)
-    Object.keys(components).forEach((name, Component) => Vue.component(name, Component))
+    Object.keys(components).forEach((name, Component) =>
+      Vue.component(name, Component)
+    )
   }
 }
 
@@ -33,7 +37,7 @@ export const Mixin = {
   }
 }
 
-export class Model { }
+export class Model {}
 
 // Auto-install (Browser/Node)
 let GlobalVue
