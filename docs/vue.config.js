@@ -2,7 +2,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 const config = {}
 
 if (isProduction) {
-  config.baseUrl = './'
+  config.publicPath = './'
 }
 
 config.chainWebpack = config => {
