@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`extend returns an extended object 1`] = `
+exports[`extend returns extended components 1`] = `
 Object {
   "VBreakpoint": Object {
-    "beforeCreate": [Function],
     "beforeDestroy": [Function],
     "computed": Object {
       "flags": [Function],
@@ -68,7 +67,6 @@ Object {
             },
           },
           "VBreakpoint": Object {
-            "beforeCreate": [Function],
             "beforeDestroy": [Function],
             "computed": Object {
               "flags": [Function],
@@ -200,7 +198,6 @@ Object {
         },
       },
       "VBreakpoint": Object {
-        "beforeCreate": [Function],
         "beforeDestroy": [Function],
         "computed": Object {
           "flags": [Function],

@@ -5,6 +5,7 @@
   "author": "Adi Sahar",
   "main": "dist/vue-breakpoint-component.umd.min.js",
   "scripts": {
+    "start": "npm run build:watch",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name %npm_package_name% ./src/main.js",
     "build:watch": "npm run build -- --watch",
@@ -48,6 +49,7 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-plugin-unit-jest": "^4.0.5",
@@ -56,6 +58,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "flush-promises": "^1.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

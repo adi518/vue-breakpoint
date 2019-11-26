@@ -1,4 +1,4 @@
-import { extend } from '@/extend'
+import { extend } from '@/main'
 
 const config = {
   breakpoints: {
@@ -10,7 +10,7 @@ const config = {
 }
 
 describe('extend', () => {
-  it('returns an extended object', () => {
+  it('returns extended components', () => {
     expect(extend(config)).toMatchSnapshot()
   })
 })

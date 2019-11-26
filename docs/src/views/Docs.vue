@@ -22,16 +22,24 @@
         <p class="docs-tagline">{{ pkg.description }}</p>
 
         <!-- DEMO -->
-        <v-breakpoint v-model="demo.model"></v-breakpoint>
+        <v-breakpoint v-model="demo.model">
+          <!-- <dev-only> -->
+          <template v-slot="scope">
+            <div>
+              <span v-if="scope.isSmall" style="font-size: 2rem">😸</span>
+              <span v-if="scope.isMedium" style="font-size: 4rem">😸</span>
+              <span v-if="scope.isLarge" style="font-size: 6rem">😸</span>
+              <span v-if="scope.isXlarge" style="font-size: 8rem">😸</span>
+              <span v-if="scope.noMatch" style="font-size: 10rem">😸</span>
+            </div>
+          </template>
+          <!-- </dev-only> -->
+        </v-breakpoint>
         <!-- <v-breakpoint></v-breakpoint> -->
 
-        <div class="docs-state text-center mb-3">
-          ( {{ normalize(demo.model.breakpoint) }} )
-        </div>
+        <div class="docs-state text-center mb-3">( {{ normalize(demo.model.breakpoint) }} )</div>
         <div class="docs-emoji mb-20" ref="emoji" @mouseover="animateEmoji">
-          <span :style="`font-size: ${emojiSize}; transition: font-size .2s`"
-            >😸</span
-          >
+          <span :style="`font-size: ${emojiSize}; transition: font-size .2s`">😸</span>
         </div>
         <div class="mb-5">
           <!-- Do not remove global class `github-button`! -->
@@ -41,22 +49,16 @@
             data-icon="octicon-star"
             data-show-count="true"
             aria-label="Star adi518/vue-breakpoint-component on GitHub"
-            >Star</a
-          >
+          >Star</a>
         </div>
         <p class="docs-credit mb-0">
           ~&nbsp;Made with&nbsp;
-          <v-octicon
-            icon-name="heart"
-            style="fill: red; width: 1.3rem; height: 1.3rem"
-          ></v-octicon
-          >&nbsp;by&nbsp;
+          <v-octicon icon-name="heart" style="fill: red; width: 1.3rem; height: 1.3rem"></v-octicon>&nbsp;by&nbsp;
           <a
             class="docs-anchor--author"
             href="https://github.com/adi518"
             target="_blank"
-            >@adi518</a
-          >&nbsp;~
+          >@adi518</a>&nbsp;~
         </p>
       </div>
 
@@ -65,8 +67,7 @@
         class="docs-fixed-anchor docs-c-pointer"
         @click="scrollTo('docs')"
         tabindex
-        >Install, Examples & Documentation</a
-      >
+      >Install, Examples & Documentation</a>
     </div>
 
     <!-- SECOND PAGE -->
@@ -83,11 +84,7 @@
     <div class="docs-version">{{ pkg.version }}</div>
 
     <!-- GIT RIBBON -->
-    <v-git-ribbon
-      fill-color="lightslategrey"
-      octo-color="#18202a"
-      :href="pkg.repository.url"
-    ></v-git-ribbon>
+    <v-git-ribbon fill-color="lightslategrey" octo-color="#18202a" :href="pkg.repository.url"></v-git-ribbon>
   </div>
 </template>
 

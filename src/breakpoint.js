@@ -3,6 +3,8 @@ import debounce from 'lodash.debounce'
 import isNumber from 'lodash.isnumber'
 import breakpoints from './breakpoints'
 
+const NO_MATCH = 'no-match'
+
 export default {
   name: 'v-breakpoint',
   config: { debounceTime: 100, breakpoints }, // Foreign key
@@ -21,26 +23,20 @@ export default {
     isRoot: false,
     windowAttrs: {},
     breakpoints: {},
+    breakpointsEntries: [],
     breakpoint: undefined,
     namespace: 'V-Breakpoint'
   }),
   provide() {
     return { breakpoint: this }
   },
-  beforeCreate() {
-    if (window.matchMedia) {
-      // Browser has support for `matchMedia` API. ✔
-    } else {
-      this.log('unsupported browser')
-    }
-  },
   created() {
+    if (!window.matchMedia) return this.log('unsupported browser')
     this.breakpoints = this.$options.config.breakpoints
-
+    this.breakpointsEntries = Object.entries(this.breakpoints)
     const debounceTime = isNumber(this.debounceTime)
       ? this.debounceTime
       : this.$options.config.debounceTime
-
     this.match = debounce(this.match, debounceTime)
   },
   mounted() {
@@ -54,10 +50,8 @@ export default {
       this.isRoot = true
       this.$root.$_vBreakpoint = this
       window.addEventListener('resize', this.match, false)
-      // Fire initial "resize" event
-      this.match()
+      this.match() // Fire initial "resize" event
     }
-
     if (this.$slots.default && this.$slots.default.length > 1) {
       this.log('vue components are limited to 1 root element')
     }
@@ -78,7 +72,7 @@ export default {
       return flags
     },
     noMatch() {
-      return this.breakpoint === 'no-match'
+      return this.breakpoint === NO_MATCH
     }
   },
   methods: {
@@ -87,36 +81,24 @@ export default {
       return Object.assign({}, flags, windowAttrs, { noMatch, breakpoint })
     },
     getBreakpoint() {
-      return Object.entries(this.breakpoints).reduce(
-        (noMatch, [breakpoint, mediaQuery]) => {
-          if (window.matchMedia(mediaQuery).matches) {
-            return breakpoint
-          }
-          return noMatch
-        },
-        'no-match'
+      return this.breakpointsEntries.reduce(
+        (noMatch, [breakpoint, mediaQuery]) =>
+          window.matchMedia(mediaQuery).matches ? breakpoint : noMatch,
+        NO_MATCH
       )
     },
     async match() {
       const { breakpoint: prevBreakpoint } = this
       const breakpoint = this.getBreakpoint()
-      const unchanged = prevBreakpoint === breakpoint
-      const changed = unchanged === false
-      if (unchanged) {
-        // Do not update breakpoint.
-      } else {
-        this.breakpoint = breakpoint
-      }
-
+      const changed = prevBreakpoint !== breakpoint
+      if (changed) this.breakpoint = breakpoint
       // Update window attributes (avoids layout-thrashing);
       // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
       this.windowAttrs = await this.getWindowAttrs()
-
       // Get updated scope and update
       // its root instance property.
       const scope = this.getScope()
       this.scope = scope
-
       // Vue Devtools has a bug where events
       // will not show up if they are fired
       // on page load, while in reality they do.
@@ -148,15 +130,14 @@ export default {
       })
     },
     log(message) {
-      message = capitalize(message)
-      console.error(`[${this.namespace} warn]: ${message}.`)
+      console.error(`[${this.namespace} warn]: ${capitalize(message)}.`)
     }
   },
   render(h) {
     if (this.$scopedSlots.default) {
-      return this.$scopedSlots.default(this.computedScope)
+      return this.$scopedSlots.default(this.scope)
     }
-    if (this.$slots.default && this.$slots.default.length) {
+    if (this.$slots.default?.length) {
       return h(this.$slots.default[0])
     }
   }
