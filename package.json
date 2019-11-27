@@ -41,12 +41,8 @@
     "vue": "^2.x"
   },
   "dependencies": {
-    "core-js": "^3.4.2",
-    "lodash.capitalize": "^4.2.1",
-    "lodash.debounce": "^4.0.8",
-    "lodash.isnumber": "^3.0.3",
-    "lodash.merge": "^4.6.2",
-    "vue": "^2.6.10"
+    "lodash": "^4.17.15",
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.4",

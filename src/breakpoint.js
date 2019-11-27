@@ -1,6 +1,4 @@
-import capitalize from 'lodash.capitalize'
-import debounce from 'lodash.debounce'
-import isNumber from 'lodash.isnumber'
+import { debounce, capitalize, isFinite } from 'lodash'
 import breakpoints from './breakpoints'
 
 const NO_MATCH = 'no-match'
@@ -34,7 +32,7 @@ export default {
     if (!window.matchMedia) return this.log('unsupported browser')
     this.breakpoints = this.$options.config.breakpoints
     this.breakpointsEntries = Object.entries(this.breakpoints)
-    const debounceTime = isNumber(this.debounceTime)
+    const debounceTime = isFinite(this.debounceTime)
       ? this.debounceTime
       : this.$options.config.debounceTime
     this.match = debounce(this.match, debounceTime)
@@ -64,12 +62,11 @@ export default {
   },
   computed: {
     flags() {
-      const flags = {}
-      for (const breakpoint in this.breakpoints) {
+      return this.breakpointsEntries.reduce((flags, [breakpoint]) => {
         const flag = `is${capitalize(breakpoint)}`
         flags[flag] = breakpoint === this.breakpoint
-      }
-      return flags
+        return flags
+      }, {})
     },
     noMatch() {
       return this.breakpoint === NO_MATCH
@@ -78,7 +75,7 @@ export default {
   methods: {
     getScope() {
       const { flags, windowAttrs, noMatch, breakpoint } = this
-      return Object.assign({}, flags, windowAttrs, { noMatch, breakpoint })
+      return { breakpoint, ...flags, noMatch, ...windowAttrs }
     },
     getBreakpoint() {
       return this.breakpointsEntries.reduce(
@@ -134,11 +131,7 @@ export default {
     }
   },
   render(h) {
-    if (this.$scopedSlots.default) {
-      return this.$scopedSlots.default(this.scope)
-    }
-    if (this.$slots.default?.length) {
-      return h(this.$slots.default[0])
-    }
+    if (this.$scopedSlots.default) return this.$scopedSlots.default(this.scope)
+    if (this.$slots.default?.length) return h(this.$slots.default[0])
   }
 }
