@@ -1,7 +1,7 @@
 import { debounce, capitalize, isFinite } from 'lodash'
 import breakpoints from './breakpoints'
 
-const NO_MATCH = 'no-match'
+export const NO_MATCH = 'no-match'
 
 export default {
   name: 'v-breakpoint',
@@ -12,6 +12,20 @@ export default {
     },
     debounceTime: {
       type: Number
+    }
+  },
+  watch: {
+    scope(value, prevValue) {
+      // Vue Devtools has a bug where events
+      // will not show up if they are fired
+      // on page load, while in reality they do.
+      const changed = value.breakpoint !== prevValue.breakpoint
+      if (changed) {
+        this.$emit(value.breakpoint)
+        this.$emit('change', value)
+        this.$emit('breakpoint', value.breakpoint)
+      }
+      this.$emit('input', value)
     }
   },
   data: () => ({
@@ -38,9 +52,8 @@ export default {
     this.match = debounce(this.match, debounceTime)
   },
   mounted() {
-    // Attach listener to `$root` to avoid
-    // more than one `resize` listener, which
-    // can cause massive performance issues.
+    // Attach listener to `$root` to
+    // avoid multiple `resize` listener.
     if (this.$root.$_vBreakpoint) {
       this.breakpoint = this.$root.$_vBreakpoint.breakpoint
       this.$watch('$root.$_vBreakpoint.scope', scope => (this.scope = scope))
@@ -92,19 +105,11 @@ export default {
       // Update window attributes (avoids layout-thrashing);
       // @link https://gist.github.com/paulirish/5d52fb081b3570c81e3a
       this.windowAttrs = await this.getWindowAttrs()
-      // Get updated scope and update
-      // its root instance property.
+      // Get updated scope and update its
+      // root instance property, which
+      // triggers its watch handler.
       const scope = this.getScope()
       this.scope = scope
-      // Vue Devtools has a bug where events
-      // will not show up if they are fired
-      // on page load, while in reality they do.
-      if (changed) {
-        this.$emit(breakpoint)
-        this.$emit('change', scope)
-        this.$emit('breakpoint', breakpoint)
-      }
-      this.$emit('input', scope)
     },
     getWindowAttrs() {
       return new Promise(resolve => {

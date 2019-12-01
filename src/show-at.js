@@ -5,6 +5,8 @@ import Fragment from './fragment'
 import VBreakpoint from './breakpoint'
 import { breakpointProp } from './mixins'
 
+import { NO_MATCH } from './breakpoint'
+
 export default {
   name: 'v-show-at',
   config: {}, // Foreign key
@@ -37,7 +39,7 @@ export default {
   methods: {
     onChange({ breakpoint, noMatch }) {
       if (noMatch) {
-        breakpoint = 'no-match'
+        breakpoint = NO_MATCH
       }
       this.show =
         this.breakpoint === breakpoint || this.$attrs.hasOwnProperty(breakpoint)
@@ -52,8 +54,8 @@ export default {
           <v-breakpoint
             on-change={this.onChange}
             breakpoints={this.breakpoints}
-            debounce-time={this.debounceTime}>
-          </v-breakpoint>
+            debounce-time={this.debounceTime}
+          ></v-breakpoint>
           {this.$slots.default}
         </fragment>
       )
@@ -62,7 +64,8 @@ export default {
       <v-breakpoint
         on-change={this.onChange}
         breakpoints={this.breakpoints}
-        debounce-time={this.debounceTime}>
+        debounce-time={this.debounceTime}
+      >
         {this.computedShow ? this.$slots.default : null}
       </v-breakpoint>
     )

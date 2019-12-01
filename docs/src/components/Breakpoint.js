@@ -1,7 +1,7 @@
 import { extend } from 'vue-breakpoint-component'
 
 const { VShowAt, VHideAt, VBreakpoint } = extend({
-  experimental: true,
+  experimental: false,
   debounceTime: 200,
   breakpoints: {
     small: '(min-width: 476px)',

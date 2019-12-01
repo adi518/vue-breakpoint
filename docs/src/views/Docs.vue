@@ -22,6 +22,16 @@
         <p class="docs-tagline">{{ pkg.description }}</p>
 
         <!-- DEMO -->
+        <dev-only>
+          <v-show-at small>
+            <div style="font-size: 1.2rem; margin-bottom: 1rem">
+              😸 ( Show-at Small ) 😸
+            </div>
+          </v-show-at>
+          <v-hide-at small>
+            😸 ( Hide-at Small ) 😸
+          </v-hide-at>
+        </dev-only>
         <v-breakpoint v-model="demo.model">
           <!-- <dev-only> -->
           <!-- <template v-slot="scope">
@@ -35,7 +45,6 @@
           </template>-->
           <!-- </dev-only> -->
         </v-breakpoint>
-        <!-- <v-breakpoint></v-breakpoint> -->
 
         <div class="docs-state text-center mb-3">
           ( {{ normalize(demo.model.breakpoint) }} )
@@ -145,7 +154,7 @@ export default {
     VHideAt, // eslint-disable-line vue/no-unused-components
     VOcticon,
     VGitRibbon,
-    VBreakpoint,
+    VBreakpoint, // eslint-disable-line vue/no-unused-components
     VWithBreakpoint // eslint-disable-line vue/no-unused-components
   },
   data: () => ({
