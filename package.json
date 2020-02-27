@@ -9,6 +9,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name %npm_package_name% ./src/main.js",
     "build:watch": "npm run build -- --watch",
+    "build:stats": "vue-cli-service build --report",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "link": "cd ./docs && npm link %npm_package_name%",
