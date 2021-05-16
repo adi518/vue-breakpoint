@@ -16,7 +16,7 @@ export default {
   },
   watch: {
     scope(value, prevValue) {
-      // Vue Devtools has a bug where events
+      // Vue devTools has a bug where events
       // will not show up if they are fired
       // on page load, while in reality they do.
       const changed = value.breakpoint !== prevValue.breakpoint
