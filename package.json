@@ -48,8 +48,8 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "node-externals": "^1.0.0",
-    "@vue/cli-plugin-babel": "^4.2.3",
+    "monorepo-utils": "^1.0.0",
+    "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.2.3",
     "@vue/cli-plugin-unit-jest": "~4.2.0",
     "@vue/cli-service": "^4.2.3",
