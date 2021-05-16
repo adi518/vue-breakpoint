@@ -1,6 +1,6 @@
 // https://github.com/bkzl/vue-fraction-grid/issues/13
 
-import merge from 'lodash.merge'
+import { merge } from 'lodash'
 import VShowAt from './show-at'
 import VHideAt from './hide-at'
 import VBreakpoint from './breakpoint'
