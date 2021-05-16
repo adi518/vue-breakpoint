@@ -18,7 +18,8 @@ export default {
   methods: {
     onChange({ breakpoint }) {
       this.hide =
-        breakpoint === this.breakpoint || this.$attrs.hasOwnProperty(breakpoint)
+        breakpoint === this.breakpoint ||
+        Object.prototype.hasOwnProperty.call(this.$attrs, breakpoint)
     }
   },
   render() {

@@ -42,7 +42,8 @@ export default {
         breakpoint = NO_MATCH
       }
       this.show =
-        this.breakpoint === breakpoint || this.$attrs.hasOwnProperty(breakpoint)
+        this.breakpoint === breakpoint ||
+        Object.prototype.hasOwnProperty.call(this.$attrs, breakpoint)
 
       this.$emit('change', { breakpoint, noMatch })
     }

@@ -27,7 +27,7 @@
     "marked": "^0.7.0",
     "popper.js": "^1.16.0",
     "prismjs": "^1.17.1",
-    "vue": "^2.6.10",
+    "vue": "^2.6.12",
     "vue-analytics": "^5.18.0",
     "vue-breakpoint-component": "^1.2.5",
     "vue-flatten-routes": "^1.1.0",
@@ -51,7 +51,7 @@
     "sass-loader": "^8.0.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
     "root": true,

@@ -1,6 +1,4 @@
 // https://github.com/Akryum/v-tooltip/blob/master/src/index.js
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
 
 import { extend } from './extend'
 import Breakpoint from './breakpoint'
