@@ -24,7 +24,7 @@
     "jquery": "^3.4.1",
     "lodash.capitalize": "^4.2.1",
     "lodash.reject": "^4.6.0",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "popper.js": "^1.16.0",
     "prismjs": "^1.17.1",
     "vue": "^2.6.12",
